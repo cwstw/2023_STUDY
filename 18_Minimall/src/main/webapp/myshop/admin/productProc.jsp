@@ -1,3 +1,4 @@
+<%@page import="com.oreilly.servlet.MultipartRequest;"%>
 <%@page import="my.shop.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

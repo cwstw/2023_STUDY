@@ -5,12 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
+import com.oreilly.servlet.MultipartRequest;
 
 public class ProductDAO {
 	private static ProductDAO pdao;
@@ -78,4 +81,14 @@ public class ProductDAO {
 		}
 		return cnt;
 	}//insertproduct
+	
+	public ArrayList<ProductBean> getAllProduct(){
+		String sql ="select * from product where pnum=?";
+		
+		
+		
+		
+	}//getAllProduct()
+	
+	
 }

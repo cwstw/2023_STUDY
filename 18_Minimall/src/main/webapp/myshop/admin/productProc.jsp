@@ -1,4 +1,5 @@
-<%@page import="com.oreilly.servlet.MultipartRequest;"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="my.shop.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,7 +16,7 @@
 	String requestFolder = request.getContextPath()+"/myshop/images";
 	System.out.println("requestFolder : "+requestFolder);
 
-	String url,msg;
+	String url="",msg="";
 	try{
 	int maxsize = 1024*1024*5;
 	String encoding = "UTF-8";
@@ -23,10 +24,10 @@
 											configFolder,
 											maxsize,
 											encoding,
-											new DefaultFileRenamepolicy());
+											new DefaultFileRenamePolicy());
 	
-	System.out.println(mr.getPrameter("pname"));
-	System.out.println(mr.getPrameter("pimage"));
+	System.out.println(mr.getParameter("pname"));
+	System.out.println(mr.getParameter("pimage"));
 	System.out.println(mr.getFilesystemName("pimage"));
 	
 	ProductDAO pdao = ProductDAO.getInstance();

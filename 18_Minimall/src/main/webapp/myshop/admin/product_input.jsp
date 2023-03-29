@@ -24,7 +24,7 @@
 	<!-- product_input.jsp<br> -->
 	<b>상품등록카테고리</b>
 	
-	<form action="productProc.jsp" method="post">
+	<form action="productProc.jsp" method="post" enctype="multipart/form-data">
 	<table width="600" class="outline">
 		<tr>
 			<th>카테고리</th>
@@ -67,6 +67,10 @@
 			<th>상품이미지</th>
 			<td>
 				<input type="file" name="pimage"><br>
+				<!-- 타입 파일이 있을 때 생각할 것
+						1. method : post
+						2. enctype="multipart/form-data" 
+				 -->
 			</td>
 		</tr>
 		

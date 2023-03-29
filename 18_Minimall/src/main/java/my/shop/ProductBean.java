@@ -11,7 +11,7 @@ public class ProductBean {
 	private String pspec;
 	private String pcontents;
 	private int point;
-	private String pinputdata;
+	private String pinputdate;
 	public int getPnum() {
 		return pnum;
 	}
@@ -72,10 +72,10 @@ public class ProductBean {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public String getPinputdata() {
-		return pinputdata;
+	public String getPinputdate() {
+		return pinputdate;
 	}
-	public void setPinputdata(String pinputdata) {
-		this.pinputdata = pinputdata;
+	public void setPinputdate(String pinputdate) {
+		this.pinputdate = pinputdate;
 	}
 }

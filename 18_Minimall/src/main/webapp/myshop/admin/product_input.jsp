@@ -3,16 +3,17 @@
 <%@page import="my.shop.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/style.css">
 <!-- product_input.jsp<br> -->
-<%@ include file="top.jsp" %> 
-<script src="<%=request.getContextPath()%>/js/jquery.js"></script> 
+<%@ include file="top.jsp" %>  
+
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.js"></script>
 <script type="text/javascript">
-	$(docuement).ready(function(){
+	$(function(){
 		$('th').addClass('m2');
-		//$('th').attc('class','m2')
+		//$('th').attr('class','m2');
 	});
 </script>
+		
 <%
 	String[] pspec = {"::NORMAL::","HIT","NEW","BEST"};
 	
@@ -24,7 +25,7 @@
 	<!-- product_input.jsp<br> -->
 	<b>상품등록카테고리</b>
 	
-	<form action="productProc.jsp" method="post" enctype="multipart/form-data">
+	<form action="productProc.jsp" method="post" enctype="multipart/form-data"> 
 	<table width="600" class="outline">
 		<tr>
 			<th>카테고리</th>
@@ -67,10 +68,6 @@
 			<th>상품이미지</th>
 			<td>
 				<input type="file" name="pimage"><br>
-				<!-- 타입 파일이 있을 때 생각할 것
-						1. method : post
-						2. enctype="multipart/form-data" 
-				 -->
 			</td>
 		</tr>
 		
@@ -102,7 +99,7 @@
 		<tr>
 			<th>상품 소개</th>
 			<td>
-				<textarea rows="4" cols="50" name="pcontents">설명</textarea>
+				<textarea rows="4" cols="50" name="pcontents" style="resize: none;">설명</textarea>
 			</td>
 		</tr>
 		
@@ -120,6 +117,11 @@
 	</table>
 	</form>
 		
-		
 	</td>
 <%@ include file="bottom.jsp" %>  
+
+
+
+
+
+

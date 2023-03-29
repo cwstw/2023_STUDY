@@ -82,13 +82,100 @@ public class ProductDAO {
 		return cnt;
 	}//insertproduct
 	
-	public ArrayList<ProductBean> getAllProduct(){
-		String sql ="select * from product where pnum=?";
-		
-		
-		
-		return null;
-	}//getAllProduct()
+	public ArrayList<ProductBean> getAllProduct() {
+		ArrayList<ProductBean> lists = new ArrayList<ProductBean>();
+		String sql = "select * from product order by pnum";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				ProductBean pb = new ProductBean();
+				
+				pb.setPnum(rs.getInt("pnum"));
+				pb.setPname(rs.getString("pname"));
+				pb.setPcategory_fk(rs.getString("pcategory_fk"));
+				pb.setPcompany(rs.getString("pcompany"));
+				pb.setPimage(rs.getString("pimage"));
+				pb.setPqty(rs.getInt("pqty"));
+				pb.setPrice(rs.getInt("price"));
+				pb.setPspec(rs.getString("pspec"));
+				pb.setPcontents(rs.getString("pcontents"));
+				pb.setPoint(rs.getInt("point"));
+				pb.setPinputdate(rs.getString("pinputdate"));
+				
+				lists.add(pb);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return lists;
+	}//getAllProduct
 	
+	public ProductBean getProductByPnum(String pnum){
+		ProductBean pb = new ProductBean();
+		
+		String sql = "select * from product where pnum="+pnum;
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				pb.setPnum(rs.getInt("pnum"));
+				pb.setPname(rs.getString("pname"));
+				pb.setPcategory_fk(rs.getString("pcategory_fk"));
+				pb.setPcompany(rs.getString("pcompany"));
+				pb.setPimage(rs.getString("pimage"));
+				pb.setPqty(rs.getInt("pqty"));
+				pb.setPrice(rs.getInt("price"));
+				pb.setPspec(rs.getString("pspec"));
+				pb.setPcontents(rs.getString("pcontents"));
+				pb.setPoint(rs.getInt("point"));
+				pb.setPinputdate(rs.getString("pinputdate"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}				
+		return pb;
+	}//getProductByPnum
 	
+	public int deleteProduct(String pnum) {
+		int cnt=-1;
+		String sql ="delete from product where pnum=?";
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, pnum);
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+			} catch (SQLException e) {
+					e.printStackTrace();
+			}
+		}
+		return cnt;
+	}//deleteProduct
 }

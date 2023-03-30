@@ -95,7 +95,7 @@ public class MemberDAO {
 		return cnt;
 	}//insertMember
 
-	public MemberDTO getIdbyRrn(MemberDTO dto){ // 3가지
+	public MemberDTO getIdbyRrn(MemberDTO dto){ // 3ê°€ì§€
 
 		String sql = "select * from members where name=? and rrn1=? and rrn2=?";
 		MemberDTO member = null;
@@ -143,7 +143,7 @@ public class MemberDAO {
 		return member;
 	}//getMemberDTO
 
-	public MemberDTO getPwbyRrnAndName(MemberDTO dto){ // 4가지
+	public MemberDTO getPwbyRrnAndName(MemberDTO dto){ // 4ê°€ì§€
 
 		String sql = "select * from members where name=? and rrn1=? and rrn2=? and id=?";
 		MemberDTO member = null;

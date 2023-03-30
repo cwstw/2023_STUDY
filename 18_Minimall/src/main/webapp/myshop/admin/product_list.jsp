@@ -3,6 +3,18 @@
 <%@page import="my.shop.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<script>
+	function deleteCheck(pnum, pimage){
+		//alert(1);
+		//대화상자 : alert, confrim, prompt
+		var isDel = confirm("정말 삭제하시겠습니까?");
+		
+		if(isDel){//확인
+			location.href="product_delete.jsp?pnum="+pnum+"pimage="+pimage;
+		} 
+	}
+</script>
 <%@ include file="top.jsp" %>
 <td colspan="6" align="center" valign="top">
 	
@@ -40,7 +52,11 @@
 						<td align="center"><%=pb.getPrice()%></td>
 						<td align="center"><%=pb.getPcompany()%></td>
 						<td align="right"><%=pb.getPqty()%></td>
-						<td align="center"><a href="">수정</a> | <a href="product_delete.jsp?<%=pb.getPnum()%>">삭제</a></td>
+						<td align="center">
+							<a href="">수정</a> | 
+							<%-- <a href="product_delete.jsp?pnum=<%=pb.getPnum()%>&pimage=<%=pb.getPimage()%>" onClick="return deleteCheck()">삭제</a> --%>
+							<a href="javascript:deleteCheck('<%=pb.getPnum()%>','<%=pb.getPimage()%>')">삭제</a>
+						</td>
 					</tr>
 	
 					<%

@@ -16,6 +16,11 @@ loginProc.jsp<br>
 	
 	if(member != null){ // 존재한다.(찾았다, 등록한 회원)
 		String _id = member.getId();
+	
+		//id를 다른 페이지에서도 사용할 수 있도록 세션 설정
+		//("별칭", 값)
+		session.setAttribute("sid", id);
+		
 		
 		if(_id.equals("admin")){ // 관리자
 			viewPage = request.getContextPath()+"/myshop/admin/main.jsp";

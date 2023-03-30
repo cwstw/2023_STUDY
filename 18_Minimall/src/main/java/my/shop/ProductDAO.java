@@ -39,7 +39,7 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}//생성자
+	}//ìƒ�ì„±ìž�
 	
 	public int insertProduct(MultipartRequest mr) {
 		
@@ -50,12 +50,12 @@ public class ProductDAO {
 			ps.setString(1, mr.getParameter("pname"));
 			
 			String p_fk = mr.getParameter("getPcategory_fk");
-			p_fk += mr.getParameter("pcode");//연결
+			p_fk += mr.getParameter("pcode");//ì—°ê²°
 			
 			ps.setString(2, p_fk);
 			
 			ps.setString(3, mr.getParameter("getPcompany"));
-			ps.setString(4, mr.getFilesystemName("getPimage"));//파일 시스템 네임
+			ps.setString(4, mr.getFilesystemName("getPimage"));//íŒŒì�¼ ì‹œìŠ¤í…œ ë„¤ìž„
 			ps.setInt(5, Integer.parseInt(mr.getParameter("getPqty")));
 			ps.setInt(6, Integer.parseInt(mr.getParameter("getPrice")));
 			ps.setString(7, mr.getParameter("getPspec"));
@@ -178,4 +178,31 @@ public class ProductDAO {
 		}
 		return cnt;
 	}//deleteProduct
+
+	public int updateProduct(MultipartRequest mr, String img) {
+		String sql = "update product set pname=?, pcompany=?, pimage=?, pqty=?, price=?, pspec=?, pcontents=?, point=? where pnum=?";
+		int cnt = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, mr.getParameter("pname"));
+			ps.setString(2, mr.getParameter("pcompany"));
+			ps.setString(3, img);
+			ps.setString(4, mr.getParameter("pqty"));
+			ps.setString(5, mr.getParameter("price"));
+			ps.setString(6, mr.getParameter("pspec"));
+			ps.setString(7, mr.getParameter("pcontents"));
+			ps.setString(8, mr.getParameter("point"));
+			ps.setString(9, mr.getParameter("pnum"));
+			
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cnt;
+	}//updateProduct
 }
+
+

@@ -53,7 +53,7 @@
 						<td align="center"><%=pb.getPcompany()%></td>
 						<td align="right"><%=pb.getPqty()%></td>
 						<td align="center">
-							<a href="">수정</a> | 
+							<a href="product_update.jsp?pnum=<%=pb.getPnum()%>">수정</a> | 
 							<%-- <a href="product_delete.jsp?pnum=<%=pb.getPnum()%>&pimage=<%=pb.getPimage()%>" onClick="return deleteCheck()">삭제</a> --%>
 							<a href="javascript:deleteCheck('<%=pb.getPnum()%>','<%=pb.getPimage()%>')">삭제</a>
 						</td>

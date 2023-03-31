@@ -203,6 +203,45 @@ public class ProductDAO {
 		}
 		return cnt;
 	}//updateProduct
+	
+	public ArrayList<ProductBean> getProductByPspec(String pspec) {
+		ArrayList<ProductBean> list = new ArrayList<ProductBean>();
+		String sql = "select * from product where pspec=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pspec);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductBean pb = new ProductBean();
+				pb.setPnum(rs.getInt("pnum"));
+				pb.setPname(rs.getString(2));
+				pb.setPcategory_fk(rs.getString(3));
+				pb.setPcompany(rs.getString(4));
+				pb.setPimage(rs.getString(5));
+				pb.setPqty(rs.getInt(6));
+				pb.setPrice(rs.getInt(7));
+				pb.setPspec(rs.getString(8));
+				pb.setPcontents(rs.getString(9));
+				pb.setPoint(rs.getInt(10));
+				pb.setPinputdate(rs.getString(11));
+				list.add(pb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}//getProductByPspec
 }
 
 

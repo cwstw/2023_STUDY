@@ -36,7 +36,7 @@
 				String imgPath = request.getContextPath()+"/myshop/images/"+pb.getPimage();
 		%>
 				<td align="center">
-				<a href="mall_prodView.jsp?pnum=<%pb.getPnum()%>">
+				<a href="mall_prodView.jsp?pnum=<%=pb.getPnum()%>">
 					<img src="<%=imgPath %>" width="80" height="40"><br>
 				</a>
 					<%=pb.getPname() %><br>

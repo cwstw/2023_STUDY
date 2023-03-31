@@ -5,6 +5,17 @@
     pageEncoding="ISO-8859-1"%>
 <link rel="stylesheet" type="text/css" href="style.css">	
 <!-- mall.jsp(pnum) => mall_prodView.jsp -->
+<script>
+	function goCart(pnum){
+		oqty = document.f.oqty.value;
+		//alert(oqty);
+		if(oqty < 1){
+			alert('주문수량은 1보다 크거나 같아야 합니다.');
+			return;
+		}
+		location.href = "<%=request.getContextPath()%>/myshop/display/mall_cartAdd.jsp?pnum="+pnum+"&oqty="+oqty;
+	}
+</script>
 <%
 	String pnum = request.getParameter("pnum");
 	ProductDAO pdao = ProductDAO.getInstance();
@@ -20,7 +31,7 @@
 	<tr>
 		<td><img src="<%=imgPath %>" width="80" height="40"></td>
 		<td>
-			<form method="post" action="">
+			<form name="f" method="post" action="">
 			상품번호 : <%=pnum %><br>
 			상품이름 : <%=pb.getPname() %><br>
 			상품가격 : <font color="red"><strong><%=df.format(pb.getPrice()) %></strong></font>원<br>
@@ -28,7 +39,7 @@
 			상품갯수 : <input type="text" name="oqty" size="2" value="1">개<br><br>
 			<table width="90%" align="center">
 				<tr>
-					<td><a href=""><img src="<%=request.getContextPath()%>/myshop/images/cartbtn.gif" width="90" height="30"></a></td>
+					<td><a href="javascript:goCart('<%=pnum%>')"><img src="<%=request.getContextPath()%>/myshop/images/cartbtn.gif" width="90" height="30"></a></td>
 					<td><a href=""><img src="<%=request.getContextPath()%>/myshop/images/orderbtn.gif" width="90" height="30"></a></td>
 				</tr>
 			</table>

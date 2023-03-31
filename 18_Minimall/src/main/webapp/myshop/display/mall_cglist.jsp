@@ -38,7 +38,9 @@
 				String imgPath = request.getContextPath()+"/myshop/images/"+pb.getPimage();
 		%>
 				<td align="center">
-					<img src="<%=imgPath %>" width="80" height="40"><br>
+					<a href="mall_prodView.jsp?pnum=<%=pb.getPnum()%>">
+					<img src="<%=imgPath %>" width="80" height="40">
+					</a><br>
 					<%=pb.getPname() %><br>
 					<font color="red"><%=df.format(pb.getPrice()) %></font>원<br>
 					<font color="blue"><%=pb.getPoint() %></font>point<br>

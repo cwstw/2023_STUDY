@@ -40,7 +40,7 @@
 				<a href="<%=conPath %>/myshop/admin/main.jsp" class="menu">관리자홈</a> |
 			<%}%>
 			<a href="mall.jsp" class="menu">쇼핑몰홈</a> |
-			<a href="" class="menu">장바구니</a> |
+			<a href="mall_cartList.jsp" class="menu">장바구니</a> |
 			<a href="" class="menu">게시판</a> |
 			<a href="" class="menu">회사소개</a>
 			

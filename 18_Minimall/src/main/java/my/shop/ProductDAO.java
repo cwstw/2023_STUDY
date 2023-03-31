@@ -242,6 +242,12 @@ public class ProductDAO {
 		}
 		return list;
 	}//getProductByPspec
+	
+	public ArrayList<ProductBean> getProductByCategory(String code){
+		
+		
+	}
+	
 }
 
 

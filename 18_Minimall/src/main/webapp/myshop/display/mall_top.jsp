@@ -58,7 +58,7 @@
 			<table border="1" name="category">
 				<%for(CategoryBean cb : lists){%>
 					<td>
-						<a href=""><%=cb.getCname()%>[<%=cb.getCode()%>]</a>
+						<a href="<%=conPath%>/myshop/display/mall_cglist.jsp?code=<%=cb.getCode()%>&cname=<%=cb.getCname()%>"><%=cb.getCname()%>[<%=cb.getCode()%>]</a>
 					</td>	
 				<%}%>
 			</table>

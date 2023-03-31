@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="my.shop.ProductDAO"%>
 <%@page import="my.shop.ProductBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -10,6 +11,9 @@
 <%
 	ProductDAO pdao = ProductDAO.getInstance();
 	String[] spec = {"HIT","NEW","BEST","NORMAL"};
+	
+	DecimalFormat df = new DecimalFormat("###,###");
+	
 	for(int i = 0; i<spec.length;i++){
 	ArrayList<ProductBean> plists = pdao.getProductByPspec(spec[i]);
 %>	
@@ -32,9 +36,11 @@
 				String imgPath = request.getContextPath()+"/myshop/images/"+pb.getPimage();
 		%>
 				<td align="center">
+				<a href="mall_prodView.jsp?pnum=<%pb.getPnum()%>">
 					<img src="<%=imgPath %>" width="80" height="40"><br>
+				</a>
 					<%=pb.getPname() %><br>
-					<font color="red"><%=pb.getPrice() %></font>원<br>
+					<font color="red"><%=df.format(pb.getPrice()) %></font>원<br>
 					<font color="blue"><%=pb.getPoint() %></font>point<br>
 				</td>
 		<%

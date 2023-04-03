@@ -22,6 +22,13 @@
 	}
 </script>
 <%
+	//새로고침 시 수량 반복 추가 방지
+	//ServletContext application = new ServletContext();
+	//application 내장 객체 : 프로젝트당 하나만 만들어짐
+	//프로젝트 전반에 걸쳐 단 한번만 사용하려면 어플리케이션 속성으로 추가
+	//application.setAttribute(속성명, 값);
+	application.setAttribute("flag", true);
+
 	String pnum = request.getParameter("pnum");
 	ProductDAO pdao = ProductDAO.getInstance();
 	ProductBean pb = pdao.getProductByPnum(pnum);

@@ -8,13 +8,19 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 <jsp:useBean id="mallCart" class="my.shop.mall.CartBean" scope="session"/>
-<%
+<%	
+	//flag = true
+	//불린으로 다운캐스팅
+	boolean flag = (Boolean)application.getAttribute("flag");
 	String pnum = request.getParameter("pnum");	
 	String oqty = request.getParameter("oqty");	
+	//정보가 계속 남아있어서 새로고침 시 계속 수량이 추가됨
 	if(!pnum.equals("00") && !oqty.equals("00")){
-		mallCart.addProduct(pnum, oqty);
+		if(flag==true){ //한번 실행 후 다시 오면 false
+			mallCart.addProduct(pnum, oqty);
+		}//if
 		//return;
-	}
+	}//if
 	
 	Vector<ProductBean> clist = mallCart.getAllProducts();
 	DecimalFormat df = new DecimalFormat("###,###");
@@ -58,5 +64,8 @@
 			</tr>
 		</table>
 			<input type="button" value="결제하기" onCLick="location.href='mall_calculate.jsp'">
-	<% }//else%>
+	<% }//else
+	//플래그를 거짓으로 만들어 다시 추가되지 않게 설정
+	application.setAttribute("flag", false);//flag=false;
+	%>
 <jsp:include page="mall_bottom.jsp"/>

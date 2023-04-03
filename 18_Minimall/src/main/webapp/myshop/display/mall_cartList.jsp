@@ -53,7 +53,7 @@
 				<td align="center">
 					<b>
 						<%=df.format(pb.getPrice())%>원<br>
-						[<%=df.format(pb.getPoint%>)] point
+						[<%=df.format(pb.getPoint())%>] point
 					</b>	
 				</td>
 				<td align="center">

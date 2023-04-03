@@ -16,10 +16,22 @@
 	int cnt = odao.insertOrder(sno,clist);//회원번호,장바구니 
 	
 	String msg="",url="";
-	if(cnt > 0){
+	if(cnt >= 0){
 		msg="주문 완료";
 		url="mall.jsp";
 		mallCart.removeAllProduct();//장바구니 상품 모두 삭제
+	%>
+	<script>
+		alert("<%=msg%>했습니다.");
+		var resp = confirm("계속하시겠습니까?");
+		
+		if(resp){
+			location.href="mall.jsp"
+		}else{
+			location.href="<%=request.getContextPath() %>/logout.jsp";
+		}//else
+</script>
+	<%
 	}else{
 		msg="주문 실패";
 		url="mall.jsp";

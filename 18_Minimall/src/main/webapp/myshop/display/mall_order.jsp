@@ -12,9 +12,9 @@
 	String pnum = request.getParameter("pnum");	
 	String oqty = request.getParameter("oqty");	
 	if(!pnum.equals("00") && !oqty.equals("00")){
-		return;
+		mallCart.addProduct(pnum, oqty);
+		//return;
 	}
-	mallCart.addProduct(pnum, oqty);
 	
 	Vector<ProductBean> clist = mallCart.getAllProducts();
 	DecimalFormat df = new DecimalFormat("###,###");
@@ -40,7 +40,7 @@
 			out.println("결제할 상품이 없습니다.</th></tr></table>");
 		}else{
 	
-			for(int i=0;i<clist.size();i++){ %>
+			for(ProductBean pb : clist){ %>
 			<tr>
 				<td align="center"><%=pb.getPname() %></td>
 				<td align="right"><%=pb.getPqty() %></td>

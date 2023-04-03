@@ -243,10 +243,47 @@ public class ProductDAO {
 		return list;
 	}//getProductByPspec
 	
-	public ArrayList<ProductBean> getProductByCategory(String code){
-		
-		
+	public ArrayList<ProductBean> getProductByCategory(String code){ 
+		ProductBean pb = null;
+		ArrayList<ProductBean> lists = new ArrayList<ProductBean>();
+		//String sql = "select * from product where pcategory_fk like '"+code+"%'";
+		String sql = "select * from product where pcategory_fk like ?"; 
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, code+"%"); // man%, child%
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				pb = new ProductBean();
+
+				pb.setPnum(rs.getInt("pnum"));
+				pb.setPname(rs.getString("pname"));
+				pb.setPcategory_fk(rs.getString("pcategory_fk"));
+				pb.setPcompany(rs.getString("pcompany"));
+				pb.setPimage(rs.getString("pimage"));
+				pb.setPqty(rs.getInt("pqty"));
+				pb.setPrice(rs.getInt("price"));
+				pb.setPspec(rs.getString("pspec"));
+				pb.setPcontents(rs.getString("pcontents"));
+				pb.setPoint(rs.getInt("point"));
+				pb.setPinputdate(rs.getString("pinputdate"));
+
+				lists.add(pb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return lists;
 	}
+
 	
 }
 

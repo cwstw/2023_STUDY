@@ -49,8 +49,42 @@ public class OrdersDAO {
 				ps.setInt(2, clist.get(i).getPnum());
 				ps.setInt(3, clist.get(i).getPqty());
 				ps.setInt(4, clist.get(i).getPnum()*clist.get(i).getPqty());
+				cnt += ps.executeUpdate();
 			}
-			cnt += ps.executeUpdate();
 		return cnt;
 	}//insertOrder
+	
+	public Vector<OrdersBean> getOrderList(String memid) {
+		String sql = "select m.name as mname, m.id mid, p.pname, o.qty, o.amount "
+				+ "from (members m inner join orders o on m.no = o.memno) "
+				+ "inner join product p on o.pnum = p.pnum where id=?";
+		Vector<OrdersBean> olist = new Vector<OrdersBean>();
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memid);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String mname = rs.getString("mname");
+				String mid = rs.getString("mid");
+				String pname = rs.getString("pname");
+				String qty = rs.getString("qty");
+				String amount = rs.getString("amount");
+			
+				OrdersBean ob = new OrdersBean();
+				ob.setMname(mname);
+				ob.setMid(mid);
+				ob.setPname(pname);
+				ob.setQty(Integer.parseInt(qty));
+				ob.setAmount(Integer.parseInt(amount));
+				
+				olist.add(ob);
+			}//while
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return olist;
+	}//getorderlist
 }

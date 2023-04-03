@@ -155,3 +155,10 @@ start with 1
 minvalue 0
 maxvalue 10000
 nocache;
+
+
+select m.name as mname, m.id mid, 
+p.pname, o.qty, o.amount 
+from (members m inner join orders o 
+on m.no = o.memno) inner join product p 
+on o.pnum = p.pnum where id='hong';

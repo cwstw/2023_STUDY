@@ -10,10 +10,15 @@
 		oqty = document.f.oqty.value;
 		//alert(oqty);
 		if(oqty < 1){
-			alert('주문수량은 1보다 크거나 같아야 합니다.');
+			alert('ì£¼ë¬¸ìëì 1ë³´ë¤ í¬ê±°ë ê°ìì¼ í©ëë¤.');
 			return;
 		}
 		location.href = "<%=request.getContextPath()%>/myshop/display/mall_cartAdd.jsp?pnum="+pnum+"&oqty="+oqty;
+	}//gocart
+	
+	function goOrder(pnum){
+		document.f.action="mall_order.jsp?pnum="+pnum;//폼 액션설정 여기서도 가능
+		document.f.submit();//서브밋 누른 것 처럼 실행
 	}
 </script>
 <%
@@ -26,21 +31,21 @@
 %>
 <table border="0" class="outline">
 	<tr align="center">
-		<th colspan="2">[<%=pb.getPname() %>] 상품 정보</th>
+		<th colspan="2">[<%=pb.getPname() %>] ìí ì ë³´</th>
 	</tr>
 	<tr>
 		<td><img src="<%=imgPath %>" width="80" height="40"></td>
 		<td>
-			<form name="f" method="post" action="">
-			상품번호 : <%=pnum %><br>
-			상품이름 : <%=pb.getPname() %><br>
-			상품가격 : <font color="red"><strong><%=df.format(pb.getPrice()) %></strong></font>원<br>
-			상품포인트 : <font color="red"><strong>[<%=df.format(pb.getPoint()) %>]</strong></font>point<br>
-			상품갯수 : <input type="text" name="oqty" size="2" value="1">개<br><br>
+			<form name="f" method="post">
+			ìíë²í¸ : <%=pnum %><br>
+			ìíì´ë¦ : <%=pb.getPname() %><br>
+			ìíê°ê²© : <font color="red"><strong><%=df.format(pb.getPrice()) %></strong></font>ì<br>
+			ìíí¬ì¸í¸ : <font color="red"><strong>[<%=df.format(pb.getPoint()) %>]</strong></font>point<br>
+			ìíê°¯ì : <input type="text" name="oqty" size="2" value="1">ê°<br><br>
 			<table width="90%" align="center">
 				<tr>
 					<td><a href="javascript:goCart('<%=pnum%>')"><img src="<%=request.getContextPath()%>/myshop/images/cartbtn.gif" width="90" height="30"></a></td>
-					<td><a href=""><img src="<%=request.getContextPath()%>/myshop/images/orderbtn.gif" width="90" height="30"></a></td>
+					<td><a href="javascript:goOrder('<%=pnum%>')"><img src="<%=request.getContextPath()%>/myshop/images/orderbtn.gif" width="90" height="30"></a></td>
 				</tr>
 			</table>
 			</form>
@@ -48,7 +53,7 @@
 	</tr>
 	<tr width="200" align="top">
 		<td colspan="2">
-			<b>상품 상세설명</b><br>
+			<b>ìí ìì¸ì¤ëª</b><br>
 			<%=pb.getPcontents() %>
 		</td>
 	</tr>

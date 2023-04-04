@@ -54,13 +54,22 @@
 	
 	<tr>
 		<th width="20%" align="center">
-			<font color="blue">카테고리</font>
-			<table border="1" name="category">
-				<%for(CategoryBean cb : lists){%>
+			<table width="100%" align="center" border="1">
+				<tr>
 					<td>
-						<a href="<%=conPath%>/myshop/display/mall_cglist.jsp?code=<%=cb.getCode()%>&cname=<%=cb.getCname()%>"><%=cb.getCname()%>[<%=cb.getCode()%>]</a>
-					</td>	
-				<%}%>
+						<a href="<%=conPath%>/myshop/display/ceo.jsp">CEO 인사말</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="<%=conPath%>/myshop/display/history.jsp">회사 연혁</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="<%=conPath%>/myshop/display/chart.jsp">조직도</a>
+					</td>
+				</tr>
 			</table>
 		</th>
 		<td>

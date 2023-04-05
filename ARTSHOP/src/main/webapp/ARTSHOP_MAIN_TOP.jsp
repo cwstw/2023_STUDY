@@ -30,11 +30,11 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">스토어</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="STORE_COMISSION.jsp">커미션</a></li>
-                                    <li><a class="dropdown-item" href="STORE_OUTSOURCING.jsp">외주</a></li>
+                                    <li><a class="dropdown-item" href="STORE_COMISSION.jsp">COMISSION</a></li>
+                                    <li><a class="dropdown-item" href="STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="LOGIN.jsp">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/LOGIN.jsp">로그인</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">문의게시판</a></li> -->
                         </ul>
                     </div>

@@ -39,13 +39,16 @@ public class MEMBERDAO {
 		return mdao;
 	}//getInstance
 	
-	public MEMBERDTO findId(String memname, String memrrn1, String memrrn2) {
-		String sql = "select * from artshop_member where memname="
-				+memname+" and memrrn1="+memrrn1
-				+" and memrrn2="+memrrn2;
+	public MEMBERDTO findId(MEMBERDTO mdto) {
+		String sql = "select * from artshop_member where memname=? and memrrn1=? and memrrn2=?";
+		
 		MEMBERDTO member=null;
 		try {
 			ps = conn.prepareStatement(sql);
+			ps.setString(1, mdto.getMemname());
+			ps.setString(2, mdto.getMemrrn1());
+			ps.setString(3, mdto.getMemrrn2());
+			
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {

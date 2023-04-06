@@ -19,6 +19,12 @@ public class MemberDAO {
 
 	private static MemberDAO mdao;
 
+	public static MemberDAO getInstance() {
+		if(mdao==null)
+			mdao = new MemberDAO();
+		return mdao;
+	}
+	
 	private MemberDAO() {
 		Context initContext;
 		try {
@@ -35,11 +41,6 @@ public class MemberDAO {
 		}
 	}
 
-	public static MemberDAO getInstance() {
-		if(mdao==null)
-			mdao = new MemberDAO();
-		return mdao;
-	}
 
 	public boolean searchId(String userid) {
 		boolean result = false;

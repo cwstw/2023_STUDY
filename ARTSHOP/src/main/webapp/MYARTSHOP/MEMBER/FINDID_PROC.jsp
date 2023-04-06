@@ -2,15 +2,16 @@
 <%@page import="ARTSHOP.MEMBER.MEMBERDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- FINDID_PROC.jsp -->
+FINDID_PROC.jsp<BR>
+	<jsp:useBean id="mdto" class="ARTSHOP.MEMBER.MEMBERDTO" />
+	<jsp:setProperty property="*" name="mdto" />
 <%
 	request.setCharacterEncoding("UTF-8");
-	String memname = request.getParameter("memname");
-	String memrrn1 = request.getParameter("memrrn1");
-	String memrrn2 = request.getParameter("memrrn2");
-
+	System.out.println(mdto.getMemname()+","+mdto.getMemrrn1()+","+mdto.getMemrrn2());
+	
+	
 	MEMBERDAO mdao = MEMBERDAO.getInstance();
-	MEMBERDTO member = mdao.findId(memname, memrrn1, memrrn2);
+	MEMBERDTO member = mdao.findId(mdto); 
 
 	String msg="",url="";
 	if(member!=null){
@@ -22,6 +23,6 @@
 	}
 %>
 <script>
-	alert(<%=msg%>);
+	alert("<%=msg%>");
 	location.href="<%=url%>";
 </script>

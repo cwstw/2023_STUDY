@@ -23,10 +23,11 @@ body{
     <label for="exampleInputPassword1" class="form-label">주민등록번호 :</label>
     <div class="row">
   		<div class="col">
-    		<input type="text" class="form-control" name="memrrn1" aria-label="rrn1">
+    		<input type="text" class="form-control" name="memrrn1" aria-label="rrn1" maxlength="6">
   		</div>
+  		- 
  		<div class="col">
-    		<input type="text" class="form-control" name="memrrn2" aria-label="rrn2">
+    		<input type="text" class="form-control" name="memrrn2" aria-label="rrn2" maxlength="7">
  		</div>
 	</div>
   </div>

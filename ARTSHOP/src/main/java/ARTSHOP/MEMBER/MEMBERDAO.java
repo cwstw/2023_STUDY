@@ -118,4 +118,23 @@ public class MEMBERDAO {
 		
 		return member;
 	}//getMemberDto
+	
+	public boolean searchId(String userid) {
+		String sql = "select * from artshop_member where memid=?";
+		boolean result = false;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

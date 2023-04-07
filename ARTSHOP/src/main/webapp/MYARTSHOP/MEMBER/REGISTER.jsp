@@ -6,6 +6,7 @@
 <!-- Core theme JS-->
 <script src="<%=request.getContextPath() %>/js/scripts.js"></script>
 <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
+<script src="<%=request.getContextPath()%>/ARTSHOP_SCRIPT.js"></script>
 <script>
 	function readImage(input) {
 	
@@ -27,12 +28,7 @@
 	        reader.readAsDataURL(input.files[0])
 	    }
 	}
-	
-	// input file에 change 이벤트 부여
-	const inputImage = document.getElementById("input-image")
-	inputImage.addEventListener("change", e => {
-	    readImage(e.target)
-	})
+
 </script>
 <style>
 body{
@@ -53,9 +49,10 @@ body{
   	<div class="mb-3">
     	<label for="exampleInputId" class="form-label">아이디 :</label>
 		<div class="input-group w-50">
-  			<input type="text" class="form-control" placeholder="ID" name="memid" aria-describedby="button-addon2">
-  			<button class="btn btn-outline-secondary" type="button" id="button-addon2">중복체크</button>
+  			<input type="text" class="form-control" placeholder="ID" name="memid" onkeydown="keyd()">
+  			<button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick="duplicate()">중복체크</button>
 		</div>
+		<small class="text-muted" id="idmessage"></small>
 	</div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">닉네임 :</label>
@@ -66,14 +63,16 @@ body{
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">비밀번호 :</label>
     <div class="input-group w-75">
-  		<input type="text" class="form-control" placeholder="Password" name="mempw">
+  		<input type="text" class="form-control" placeholder="Password" name="mempw" onBlur="return pwcheck()">
 	</div>
+	<small class="text-muted" id="pwrule">영문 소문자/숫자 조합 3~8자</small>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">비밀번호 확인 :</label>
     <div class="input-group w-75">
-  		<input type="text" class="form-control" placeholder="Password" name="mempw">
+  		<input type="text" class="form-control" placeholder="Password" name="mempw2" onKeyUp="pw2check()">
 	</div>
+	<small class="text-muted" id="pwmessage"></small>
   </div>
     <div class="mb-3">
     	<label for="exampleInputPassword1" class="form-label">이름 :</label>
@@ -93,8 +92,8 @@ body{
 	 		</div>
 		</div>
   	</div>
-	<label for="exampleInputPassword1" class="form-label">회원 종류 :&nbsp;</label>
-	<div class="form-check form-check-inline">
+	<label for="exampleInputPassword1" class="form-label">회원 종류 :&nbsp;</label><br>
+	<div class="form-check form-check-inline mb-3">
 		<input class="form-check-input" type="radio" name="memkind" id="inlineRadio1" value="작가">
 		<label class="form-check-label" for="inlineRadio1">작가회원</label>
 	</div>
@@ -106,6 +105,6 @@ body{
   	<label for="exampleFormControlTextarea1" class="form-label">자기소개 : </label>
   	<textarea class="form-control" id="exampleFormControlTextarea1" name="mempr" rows="3"></textarea>
 </div>
-  	<button type="submit" class="btn btn-primary">로그인</button>
+  	<button type="submit" class="btn btn-primary" onClick="return writeSave()">가입하기</button>
 </form>
 </div>

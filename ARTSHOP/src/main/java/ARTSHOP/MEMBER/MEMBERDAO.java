@@ -70,17 +70,51 @@ public class MEMBERDAO {
 		return member;
 	}//findid
 	
+	public MEMBERDTO findPw(MEMBERDTO mdto) {
+		String sql = "select * from artshop_member where memid=? and memname=? and memrrn1=? and memrrn2=?";
+		
+		MEMBERDTO member=null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mdto.getMemid());
+			ps.setString(2, mdto.getMemname());
+			ps.setString(3, mdto.getMemrrn1());
+			ps.setString(4, mdto.getMemrrn2());
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				member = getMemberDto(rs);
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}//finally
+		
+		return member;
+	}//findpw
+	
 	public MEMBERDTO getMemberDto(ResultSet rs2) throws SQLException {
 		MEMBERDTO member = new MEMBERDTO();
 		member.setMemnum(rs.getInt("memnum"));
 		member.setMemid(rs.getString("memid"));
 		member.setMempw(rs.getString("mempw"));
 		member.setMemname(rs.getString("memname"));
+		member.setMemname(rs.getString("memnick"));
 		member.setMemrrn1(rs.getString("memrrn1"));
 		member.setMemrrn2(rs.getString("memrrn2"));
 		member.setMemkind(rs.getString("memkind"));
 		member.setMempic(rs.getString("mempic"));
 		member.setMempr(rs.getString("mempr"));
+		System.out.println(member);
 		
 		return member;
 	}//getMemberDto

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!-- ARTSHOP_MAIN.jsp -->
 <jsp:include page="ARTSHOP_MAIN_TOP.jsp"/>
@@ -9,11 +9,11 @@
                     <div class="row gx-5 align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2">´ç½ÅÀÌ ¿øÇÏ´Â ¸ðµç »ó»ó, ´ç½ÅÀÌ ²Þ²Ù´Â ¸ðµç ¼¼°è</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">'¾ÆÆ®#'Àº ¿©·¯ºÐÀÇ »ó»óÀ» Çö½Ç·Î ¸¸µé ÀÛ°¡´Ôµé°ú ÇÔ²²ÇÕ´Ï´Ù. »ó»óÇß´ø ¸ðµç °ÍµéÀ» ±×¸²À» ÅëÇØ ÀÌ·ç¾îº¸¼¼¿ä. </p>
+                                <h1 class="display-5 fw-bolder text-white mb-2">ë‹¹ì‹ ì´ ì›í•˜ëŠ” ëª¨ë“  ìƒìƒ, ë‹¹ì‹ ì´ ê¿ˆê¾¸ëŠ” ëª¨ë“  ì„¸ê³„</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">'ì•„íŠ¸#'ì€ ì—¬ëŸ¬ë¶„ì˜ ìƒìƒì„ í˜„ì‹¤ë¡œ ë§Œë“¤ ìž‘ê°€ë‹˜ë“¤ê³¼ í•¨ê»˜í•©ë‹ˆë‹¤. ìƒìƒí–ˆë˜ ëª¨ë“  ê²ƒë“¤ì„ ê·¸ë¦¼ì„ í†µí•´ ì´ë£¨ì–´ë³´ì„¸ìš”. </p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">½ÃÀÛÇÏ±â</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="#!">´õ ¾Ë¾Æº¸±â</a>
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">ì‹œìž‘í•˜ê¸°</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" href="#!">ë” ì•Œì•„ë³´ê¸°</a>
                                 </div>
                             </div>
                         </div>

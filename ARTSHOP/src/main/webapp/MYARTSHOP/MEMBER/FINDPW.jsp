@@ -12,9 +12,13 @@ body{
 </style>
 <jsp:include page="../../ARTSHOP_MAIN_TOP.jsp"/>
 <div class="mx-auto shadow-sm p-3 mb-5 bg-body rounded" style="width: 500px; margin-top:50px;">
-  	<h2>아이디 찾기</h2>
+  	<h2>비밀번호 찾기</h2>
   	<hr>
-<form method="post" name="findidform" action="FINDID_PROC.jsp">
+<form method="post" name="findidform" action="FINDPW_PROC.jsp">
+  <div class="mb-3">
+    <label for="exampleInputId" class="form-label">아이디 :</label>
+    <input type="text" class="form-control" name="memid">
+  </div>
   <div class="mb-3">
     <label for="exampleInputId" class="form-label">이름 :</label>
     <input type="text" class="form-control" name="memname">
@@ -31,6 +35,6 @@ body{
  		</div>
 	</div>
   </div>
-  <button type="submit" class="btn btn-primary">아이디 찾기</button>
+  <button type="submit" class="btn btn-primary">비밀번호 찾기</button>
 </form>
 </div>

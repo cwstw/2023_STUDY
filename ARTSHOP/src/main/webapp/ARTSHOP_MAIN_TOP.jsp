@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
    <!-- ARTSHOP_MAIN_TOP.jsp -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="ƒøπÃº«, ø‹¡÷ «√∑ß∆˚ æ∆∆Æº• artshop" />
+        <meta name="description" content="Ïª§ÎØ∏ÏÖò, Ïô∏Ï£º ÌîåÎû´Ìèº ÏïÑÌä∏ÏÉµ artshop" />
         <meta name="author" content="cwstw" />
         <title>ART#</title>
         <!-- Favicon-->
@@ -25,17 +25,17 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/ARTSHOP_MAIN.jsp">»®</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/ARTSHOP_ABOUT.jsp">æ∆∆Æ#</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/ARTSHOP_MAIN.jsp">Ìôà</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/ARTSHOP_ABOUT.jsp">ÏïÑÌä∏#</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ω∫≈‰æÓ</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ïä§ÌÜ†Ïñ¥</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                                     <li><a class="dropdown-item" href="<%=request.getContextPath() %>/STORE/STORE_COMISSION.jsp">COMISSION</a></li>
                                     <li><a class="dropdown-item" href="<%=request.getContextPath() %>/STORE/STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/LOGIN.jsp">∑Œ±◊¿Œ</a></li>
-                            <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">πÆ¿«∞‘Ω√∆«</a></li> -->
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/LOGIN.jsp">Î°úÍ∑∏Ïù∏</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">Î¨∏ÏùòÍ≤åÏãúÌåê</a></li> -->
                         </ul>
                     </div>
                 </div>

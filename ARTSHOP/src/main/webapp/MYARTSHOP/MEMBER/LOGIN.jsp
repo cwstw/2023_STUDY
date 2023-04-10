@@ -14,7 +14,7 @@ body{
 <div class="mx-auto shadow-sm p-3 mb-5 bg-body rounded" style="width: 500px; margin-top:50px;">
   	<h2>로그인</h2>
   	<hr>
-<form method="post" name="loginform" action="LOGINPROC.jsp">
+<form method="post" name="loginform" action="LOGIN_PROC.jsp">
   <div class="mb-3">
     <label for="exampleInputId" class="form-label">아이디 :</label>
     <div class="form-floating mb-3">

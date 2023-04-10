@@ -77,7 +77,7 @@ body{
     <div class="mb-3">
     	<label for="exampleInputPassword1" class="form-label">이름 :</label>
     	<div class="input-group w-25">
-  			<input type="text" class="form-control" placeholder="Name" name="mempw">
+  			<input type="text" class="form-control" placeholder="Name" name="memname">
 		</div>
   	</div>
   	<div class="mb-3">
@@ -94,12 +94,14 @@ body{
   	</div>
 	<label for="exampleInputPassword1" class="form-label">회원 종류 :&nbsp;</label><br>
 	<div class="form-check form-check-inline mb-3">
+		<label class="form-check-label" for="inlineRadio1">
 		<input class="form-check-input" type="radio" name="memkind" id="inlineRadio1" value="작가">
-		<label class="form-check-label" for="inlineRadio1">작가회원</label>
+		작가회원</label>
 	</div>
 	<div class="form-check form-check-inline">
+		<label class="form-check-label" for="inlineRadio2">
 		<input class="form-check-input" type="radio" name="memkind" id="inlineRadio2" value="일반">
-		<label class="form-check-label" for="inlineRadio2">일반회원</label>
+		일반회원</label>
 	</div>
 	<div class="mb-3">
   	<label for="exampleFormControlTextarea1" class="form-label">자기소개 : </label>

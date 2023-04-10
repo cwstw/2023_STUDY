@@ -10,6 +10,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.oreilly.servlet.MultipartRequest;
+
 public class MEMBERDAO {
 	Connection conn=null;
 	PreparedStatement ps=null;
@@ -136,5 +138,29 @@ public class MEMBERDAO {
 		}
 		
 		return result;
-	}
+	}//searchId
+	
+	public int insertMember(MultipartRequest mr) {
+		String sql = "insert into artshop_member values(artshop_memseq.nextval,?,?,?,?,?,?,?,?,?)";
+		int cnt = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mr.getParameter("memid"));
+			ps.setString(2, mr.getParameter("mempw"));
+			ps.setString(3, mr.getParameter("memname"));
+			ps.setString(4, mr.getParameter("memnick"));
+			ps.setString(5, mr.getParameter("memrrn1"));
+			ps.setString(6, mr.getParameter("memrrn2"));
+			ps.setString(7, mr.getParameter("memkind"));
+			ps.setString(8, mr.getFilesystemName("mempic"));
+			ps.setString(9, mr.getParameter("mempr"));
+			cnt = ps.executeUpdate();
+			System.out.println("cnt : "+cnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}//insertMember
 }

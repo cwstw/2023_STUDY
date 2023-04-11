@@ -18,7 +18,7 @@ body{
   <div class="mb-3">
     <label for="exampleInputId" class="form-label">아이디 :</label>
     <div class="form-floating mb-3">
-  <input type="text" name="memid" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <input type="text" name="memid" class="form-control" id="floatingInput" placeholder="ID">
   <label for="floatingInput">ID</label>
 </div>
   </div>

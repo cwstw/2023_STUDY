@@ -18,7 +18,10 @@
 	System.out.println("requestFolder:" + requestFolder);
 	
 	int maxSize = 1024*1024*5;
+	//System.out.println("maxsize:" + maxSize);
 	String encoding="UTF-8";
+	//System.out.println("encoding:" + encoding);
+	
 	
 	String msg="", url="";
 	try{
@@ -27,12 +30,16 @@
 											maxSize,
 											encoding,
 											new DefaultFileRenamePolicy());
+		//System.out.println("mr : "+mr);
+		
 		/* 
 		System.out.println(mr.getParameter("pimage")); // null
 		System.out.println(mr.getFilesystemName("pimage")); // ~.jpg
 		System.out.println(mr.getOriginalFileName("pimage"));  */
 		
 		int cnt = mdao.insertMember(mr);   
+		//System.out.println("cnt : "+cnt);
+		
 		if(cnt >0){
 			if(mr.getParameter("memkind").equals("일반")){
 			msg = mr.getParameter("memnick")+"님 환영합니다! 이제 상상을 현실로 바꿀 시간이에요!";

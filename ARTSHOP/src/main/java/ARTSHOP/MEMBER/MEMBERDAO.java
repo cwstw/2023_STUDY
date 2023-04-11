@@ -135,6 +135,15 @@ public class MEMBERDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return result;
@@ -156,11 +165,47 @@ public class MEMBERDAO {
 			ps.setString(8, mr.getFilesystemName("mempic"));
 			ps.setString(9, mr.getParameter("mempr"));
 			cnt = ps.executeUpdate();
-			System.out.println("cnt : "+cnt);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return cnt;
 	}//insertMember
+	
+	public MEMBERDTO getMemberInfo(String id, String password) {
+		String sql = "select * from artshop_member where memid=? and mempw=?";
+		MEMBERDTO member = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, id);
+			ps.setString(2, password);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				member = getMemberDto(rs);
+			}//if
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return member;
+	}//grtMemberInfo
 }

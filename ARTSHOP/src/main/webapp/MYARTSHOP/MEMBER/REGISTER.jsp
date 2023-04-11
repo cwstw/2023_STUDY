@@ -40,7 +40,7 @@ body{
   	<h2>회원가입</h2>
   	<small class="text-muted">환영해요! 아트#은 당신을 기다리고 있었어요🎉</small>
   	<hr>
-<form method="post" name="registerform" action="REGISTER_PROC.jsp">
+<form method="post" name="registerform" action="REGISTER_PROC.jsp" enctype="multipart/form-data">
 	<label for="exampleInputId" class="form-label">프로필 사진 :</label>
 	<div class="mb-3">
   		<label for="formFileSm" class="form-label"><img src="http://placehold.it/150x150.png?text=IMAGE" width="150px" class="img-thumbnail" id="preview-image" alt="profilepic"></label>

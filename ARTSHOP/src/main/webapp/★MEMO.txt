@@ -19,7 +19,7 @@ create table artshop_member(
 	memrrn1 varchar2(10),
 	memrrn2 varchar2(10),
 	memkind varchar(10),
-	mempic varchar(20),
+	mempic varchar(50),
 	mempr varchar(150)
 	);
 	

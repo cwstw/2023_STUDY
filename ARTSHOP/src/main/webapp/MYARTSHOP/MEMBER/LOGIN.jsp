@@ -41,3 +41,4 @@ body{
   <button type="submit" class="btn btn-primary">로그인</button>
 </form>
 </div>
+<jsp:include page="../../ARTSHOP_MAIN_BOTTOM.jsp"/>

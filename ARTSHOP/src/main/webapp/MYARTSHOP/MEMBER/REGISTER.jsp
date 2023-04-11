@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- REGISTER.jsp -->
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="<%=request.getContextPath() %>/js/scripts.js"></script>
-<script src="<%=request.getContextPath() %>/js/jquery.js"></script>
-<script src="<%=request.getContextPath()%>/ARTSHOP_SCRIPT.js"></script>
 <script>
 	function readImage(input) {
 	
@@ -33,6 +27,7 @@
 <style>
 body{
  background-image: url(../IMAGES/ARTSHOP_MAIN_IMAGE02.jpg);
+ background-size: cover;
 }
 </style>
 <jsp:include page="../../ARTSHOP_MAIN_TOP.jsp"/>
@@ -110,3 +105,4 @@ body{
   	<button type="submit" class="btn btn-primary" onClick="return writeSave()">가입하기</button>
 </form>
 </div>
+<jsp:include page="../../ARTSHOP_MAIN_BOTTOM.jsp"/>

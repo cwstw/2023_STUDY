@@ -38,3 +38,4 @@ body{
   <button type="submit" class="btn btn-primary">비밀번호 찾기</button>
 </form>
 </div>
+<jsp:include page="../../ARTSHOP_MAIN_BOTTOM.jsp"/>

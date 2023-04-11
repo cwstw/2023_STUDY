@@ -9,6 +9,7 @@
         <meta name="description" content="커미션, 외주 플랫폼 아트샵 artshop" />
         <meta name="author" content="cwstw" />
         <title>ART#</title>
+        <script src="<%=request.getContextPath()%>/ARTSHOP_SCRIPT.js"></script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="<%=request.getContextPath() %>/MYARTSHOP/IMAGES/assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -25,16 +26,12 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/ARTSHOP_MAIN.jsp">홈</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/ARTSHOP_ABOUT.jsp">아트#</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">스토어</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/STORE/STORE_COMISSION.jsp">COMISSION</a></li>
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/STORE/STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/LOGIN.jsp">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="AD_MAIN.jsp">홈</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_MEMBERLIST.jsp">회원관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_PRODUCTLIST.jsp">상품관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_CATEGORYLIST.jsp">카테고리관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/BOARD/BOARDLIST.jsp">문의게시판</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/GN_MAIN.jsp">사용자홈</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">문의게시판</a></li> -->
                         </ul>
                     </div>

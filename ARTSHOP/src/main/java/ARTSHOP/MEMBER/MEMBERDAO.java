@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -11,6 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.oreilly.servlet.MultipartRequest;
+
 
 public class MEMBERDAO {
 	Connection conn=null;
@@ -207,5 +209,35 @@ public class MEMBERDAO {
 			}
 		}
 		return member;
-	}//grtMemberInfo
+	}//getMemberInfo
+	
+	public ArrayList<MEMBERDTO> getAllMember() {
+		ArrayList<MEMBERDTO> lists = new ArrayList<MEMBERDTO>();
+		String sql = "select * from artshop_member order by memnum";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MEMBERDTO member = new MEMBERDTO();
+				member.setMemnum(rs.getInt("memnum"));
+				member.setMemid(rs.getString("memid"));
+				member.setMempw(rs.getString("mempw"));
+				member.setMemname(rs.getString("memname"));
+				member.setMemnick(rs.getString("memnick"));
+				member.setMemrrn1(rs.getString("memrrn1"));
+				member.setMemrrn2(rs.getString("memrrn2"));
+				member.setMemkind(rs.getString("memkind"));
+				member.setMempic(rs.getString("mempic"));
+				member.setMempr(rs.getString("mempr"));
+				
+				lists.add(member);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return lists;
+	}//getAllMember
 }

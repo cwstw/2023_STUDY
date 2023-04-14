@@ -5,6 +5,7 @@
 var use;
 var isCheck = false;
  
+
 function writeSave(){ // 가입클릭
 	//alert(1);
 	

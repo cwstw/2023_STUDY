@@ -6,6 +6,7 @@
 <!-- AD_MEMBERUP_PROC.jsp -->
 <%
 	request.setCharacterEncoding("UTF-8");
+	String memnum = request.getParameter("memnum");
 	MEMBERDAO mdao = MEMBERDAO.getInstance();
 %>
 <jsp:useBean id="mdto" class="ARTSHOP.MEMBER.MEMBERDTO"/>
@@ -37,19 +38,19 @@
 		System.out.println(mr.getFilesystemName("pimage")); // ~.jpg
 		System.out.println(mr.getOriginalFileName("pimage"));  */
 		
-		int cnt = mdao.updateMember(mr);   
+		int cnt = mdao.updateMember(mr, memnum);    
 		//System.out.println("cnt : "+cnt);
 		
 		if(cnt >0){
 			msg = "수정 완료!";
-			url = "LOGIN.jsp";
+			url = "AD_MEMBERLIST.jsp";
 		}else{
-			msg = "수정 실패!";
-			url = "REGISTER.jsp";
+			msg = "수정 실패!01";
+			url = "AD_MEMBERLIST.jsp";
 		}//else
 	}catch(Exception e){
-		msg = "수정 실패!";
-		url = "REGISTER.jsp";
+		msg = "수정 실패!02";
+		url = "AD_MEMBERLIST.jsp";
 	}//catch
 %>
 <script type="text/javascript">

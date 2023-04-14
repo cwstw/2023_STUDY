@@ -112,13 +112,12 @@ public class MEMBERDAO {
 		member.setMemid(rs.getString("memid"));
 		member.setMempw(rs.getString("mempw"));
 		member.setMemname(rs.getString("memname"));
-		member.setMemname(rs.getString("memnick"));
+		member.setMemnick(rs.getString("memnick"));
 		member.setMemrrn1(rs.getString("memrrn1"));
 		member.setMemrrn2(rs.getString("memrrn2"));
 		member.setMemkind(rs.getString("memkind"));
 		member.setMempic(rs.getString("mempic"));
 		member.setMempr(rs.getString("mempr"));
-		System.out.println(member);
 		
 		return member;
 	}//getMemberDto
@@ -250,15 +249,26 @@ public class MEMBERDAO {
 		return lists;
 	}//getAllMember
 	
-	public int updateMember(MultipartRequest mr) {
-		String sql = "update artshop_member set memid=?, mempw=?, memname=?, memnick=?, memrrn1=?, memrrn2=?, memkind=?, mempic=?, mempr=?";
+	public int updateMember(MultipartRequest mr, String memnum) {
+		String sql = "update artshop_member set memid=?, mempw=?, memname=?, memnick=?, memrrn1=?, memrrn2=?, memkind=?, mempic=?, mempr=? where memnum=?";
 		int cnt = -1;
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			
 			ps.setString(1, mr.getParameter("memid"));
+			ps.setString(2, mr.getParameter("mempw"));
+			ps.setString(3, mr.getParameter("memname"));
+			ps.setString(4, mr.getParameter("memnick"));
+			ps.setString(5, mr.getParameter("memrrn1"));
+			ps.setString(6, mr.getParameter("memrrn2"));
+			ps.setString(7, mr.getParameter("memkind"));
+			ps.setString(8, mr.getFilesystemName("mempic"));
+			ps.setString(9, mr.getParameter("mempr"));
+			ps.setString(10, memnum);
 			
+			cnt = ps.executeUpdate();
+			System.out.println("cnt : "+cnt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -269,6 +279,36 @@ public class MEMBERDAO {
 				e.printStackTrace();
 			}
 		}		
-		return 0;
+		return cnt;
 	}//updateMember
+	
+	public MEMBERDTO getMemberByMemnum(String memnum) {
+		String sql = "select * from artshop_member where memnum=?";
+		MEMBERDTO member=null;
+		
+		try {
+			ps =conn.prepareStatement(sql);
+			ps.setString(1, memnum);
+			
+			rs= ps.executeQuery();
+			if(rs.next()) {
+				member = mdao.getMemberDto(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return member;
+	}//getmemberbymemnum
 }

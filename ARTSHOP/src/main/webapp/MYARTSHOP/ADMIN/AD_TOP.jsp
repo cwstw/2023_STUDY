@@ -9,6 +9,7 @@
         <meta name="description" content="커미션, 외주 플랫폼 아트샵 artshop" />
         <meta name="author" content="cwstw" />
         <title>ART#</title>
+        <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
         <script src="<%=request.getContextPath()%>/ARTSHOP_SCRIPT.js"></script>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="<%=request.getContextPath() %>/MYARTSHOP/IMAGES/assets/favicon.ico" />

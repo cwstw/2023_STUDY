@@ -236,8 +236,39 @@ public class MEMBERDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return lists;
 	}//getAllMember
+	
+	public int updateMember(MultipartRequest mr) {
+		String sql = "update artshop_member set memid=?, mempw=?, memname=?, memnick=?, memrrn1=?, memrrn2=?, memkind=?, mempic=?, mempr=?";
+		int cnt = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, mr.getParameter("memid"));
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		return 0;
+	}//updateMember
 }

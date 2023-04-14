@@ -33,7 +33,7 @@ body{
     <!-- Page Content-->
     <h1 class="mb-5 mt-5 text-center">회원 수정</h1>
     <div class="mx-auto shadow-sm p-3 mb-5 bg-body rounded" style="width: 600px; margin-top:50px;">
-    <form method="post" name="registerform" action="REGISTER_PROC.jsp" enctype="multipart/form-data">
+    <form method="post" name="registerform" action="AD_MEMBERUP_PROC.jsp" enctype="multipart/form-data">
 	<label for="exampleInputId" class="form-label">프로필 사진 :</label>
 	<div class="mb-3">
   		<label for="formFileSm" class="form-label"><img src="http://placehold.it/150x150.png?text=IMAGE" width="150px" class="img-thumbnail" id="preview-image" alt="profilepic"></label>

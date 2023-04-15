@@ -38,7 +38,7 @@
 		System.out.println(mr.getFilesystemName("pimage")); // ~.jpg
 		System.out.println(mr.getOriginalFileName("pimage"));  */
 		
-		int cnt = mdao.updateMember(mr, memnum);    
+		int cnt = mdao.updateMember(mr, memnum); 
 		//System.out.println("cnt : "+cnt);
 		
 		if(cnt >0){

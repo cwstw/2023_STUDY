@@ -30,7 +30,7 @@
                             <li class="nav-item"><a class="nav-link" href="AD_MAIN.jsp">홈</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_MEMBERLIST.jsp">회원관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_PRODUCTLIST.jsp">상품관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_CATEGORYLIST.jsp">카테고리관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/ADMIN/AD_ORDERLIST.jsp">주문관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/BOARD/BOARDLIST.jsp">문의게시판</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/GN_MAIN.jsp">사용자홈</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">문의게시판</a></li> -->

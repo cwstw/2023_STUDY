@@ -26,7 +26,7 @@
 		}//if
 	}//if
 			
-	int cnt = pdao.deleteProduct(memnum); 
+	int cnt = pdao.deleteMember(memnum);  
 	String msg="";
 	
 	if(cnt > 0){
@@ -37,5 +37,5 @@
 %>
 <script>
 	alert("<%=msg%>");
-	location.href="product_list.jsp";
+	location.href="AD_MEMBERLIST.jsp";
 </script>

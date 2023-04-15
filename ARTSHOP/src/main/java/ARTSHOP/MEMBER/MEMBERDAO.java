@@ -311,4 +311,19 @@ public class MEMBERDAO {
 		
 		return member;
 	}//getmemberbymemnum
+	
+	public int deleteMember(String memnum) {
+		String sql = "delete artshop_member where memnum=?";
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, memnum);
+			
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}//deleteMember
 }

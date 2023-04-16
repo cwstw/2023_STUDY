@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -39,5 +40,24 @@ public class CATEGORYDAO {
 		return cdao;
 	}//getInstance
 	
-	
+	public ArrayList<CATEGORYDTO> getAllCategory(){
+		String sql = "select * from artshop_category";
+		ArrayList<CATEGORYDTO> lists = new ArrayList<CATEGORYDTO>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				CATEGORYDTO cat = new CATEGORYDTO();
+				cat.setCatnum(rs.getInt("catnum"));
+				cat.setCatname(rs.getString("catname"));
+				
+				lists.add(cat);
+			}//while
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lists;
+	}//getAllCategory
 }

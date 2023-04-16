@@ -1,9 +1,13 @@
+<%@page import="ARTSHOP.PRODUCT.CATEGORYDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="ARTSHOP.PRODUCT.CATEGORYDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- PR_PRODUCTINPUT.jsp -->
 <%
 	request.setCharacterEncoding("utf-8");
-	
+	CATEGORYDAO cdao = CATEGORYDAO.getInstance();
+	ArrayList<CATEGORYDTO> lists = cdao.getAllCategory();
 %>
 <style>
 body{
@@ -36,9 +40,16 @@ body{
     <label for="exampleInputPassword1" class="form-label">카테고리 :</label>
     <div class="input-group w-75">
   		<select>
-  			<%for(int i=0;){ %>
-  			<option value="<%=i%>"></option>
-  			<%} %>
+  			<%
+  			if(lists.size() == 0){
+				%>
+					<option value=""> 카테고리 없음</option>
+				<%
+				} else{
+  				for(int i=0;i<=lists.size();i++){ %>
+  					<option value="<%=i%>"></option>
+  			<%}
+  			}%>
   		</select>
 	</div>
 	<small class="text-muted" id="pwrule">영문 소문자/숫자 조합 3~8자</small>

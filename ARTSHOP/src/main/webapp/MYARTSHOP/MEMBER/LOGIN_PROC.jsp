@@ -23,7 +23,9 @@
 		
 		if(_memkind.equals("운영")){ // 관리자
 			viewPage = request.getContextPath()+"/MYARTSHOP/ADMIN/AD_MAIN.jsp";
-		}else{ // 일반사용자
+		}else if(_memkind.equals("작가")){ // 작가사용자
+			viewPage = request.getContextPath()+"/MYARTSHOP/PRODUCT/PR_MAIN.jsp";
+		}else{ //일반사용자
 			viewPage = request.getContextPath()+"/MYARTSHOP/GENERAL/GN_MAIN.jsp";
 		}
 	}else{ // 존재하지 않는 회원

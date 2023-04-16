@@ -67,4 +67,39 @@ public class PRODUCTDAO {
 		
 		return lists;
 	}//getAllProduct
+	
+	public ArrayList<PRODUCTDTO> getProductById(String smemid){
+		String sql1 = "select memnick from artshop_member where memid=?";
+		String sql2 = "select * from artshop_product where prowri=?";
+		String memnick = null;
+		ArrayList<PRODUCTDTO> lists = new ArrayList<PRODUCTDTO>();
+		
+		try {
+			ps = conn.prepareStatement(sql1);
+			ps.setString(1, smemid);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				memnick = rs.getString("memnick");
+			}//if
+			ps = conn.prepareStatement(sql2);
+			ps.setString(1, memnick);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				PRODUCTDTO pdto = new PRODUCTDTO();
+				pdto.setPronum(rs.getInt("pronum"));
+				pdto.setProsub(rs.getString("prosub"));
+				pdto.setProwri(rs.getString("prowri"));
+				pdto.setProcat(rs.getString("procat"));
+				pdto.setProcon(rs.getString("procon"));
+				pdto.setPropri(rs.getInt("propri"));
+				pdto.setProingslot(rs.getInt("proingslot"));
+				pdto.setProallslot(rs.getInt("proallslot"));
+				
+				lists.add(pdto);
+			}//while
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lists;
+	}//getProductById
 }

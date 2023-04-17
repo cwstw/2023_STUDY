@@ -136,7 +136,6 @@ create table artshop_order(
 	ordnum number primary key,
 	memnum number,
 	pronum number,
-	ordqty number,
 	ordpri number,
 	ordstat varchar2(10)
 	);

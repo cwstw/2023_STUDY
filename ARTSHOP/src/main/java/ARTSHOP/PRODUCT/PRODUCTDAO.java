@@ -11,7 +11,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.oreilly.servlet.MultipartRequest;
 
 public class PRODUCTDAO {
 	Connection conn=null;
@@ -163,4 +162,70 @@ public class PRODUCTDAO {
 		
 		return cnt;
 	}//insertProduct
+	
+	public PRODUCTDTO getProductByNum(String pronum) {
+		String sql = "select * from artshop_product where pronum=?";
+		PRODUCTDTO pdto = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pronum);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				pdto = new PRODUCTDTO();
+				pdto.setPronum(rs.getInt("pronum"));
+				pdto.setProsub(rs.getString("prosub"));
+				pdto.setProwri(rs.getString("prowri"));
+				pdto.setProcat(rs.getString("procat"));
+				pdto.setProcon(rs.getString("procon"));
+				pdto.setPropri(rs.getInt("propri"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return pdto;
+	}//getProductByNum
+	
+	public int updateProduct(PRODUCTDTO pdto, String pronum) {
+		String sql = "update artshop_product set prosub=?, procat=?, procon=?, propri=? where pronum=?";
+		int cnt = -1;
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pdto.getProsub());
+			ps.setString(2, pdto.getProcat());
+			ps.setString(3, pdto.getProcon());
+			ps.setInt(4, pdto.getPropri());
+			ps.setString(5, pronum);
+			
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}//updateProduct
+	
+	public int deleteProduct(String pronum) {
+		String sql = "delete artshop_product where pronum=?";
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pronum);
+			
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}//deleteProduct
 }

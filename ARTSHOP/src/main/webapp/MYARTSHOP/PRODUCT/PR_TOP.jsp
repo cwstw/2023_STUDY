@@ -31,8 +31,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">스토어</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/STORE_COMISSION.jsp">COMISSION</a></li>
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
+                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/PRO_STORE_COMISSION.jsp">COMISSION</a></li>
+                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/PRO_STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PR_PRODUCTLIST.jsp">상품관리</a></li>

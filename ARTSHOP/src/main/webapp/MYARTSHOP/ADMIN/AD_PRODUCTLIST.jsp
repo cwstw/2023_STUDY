@@ -41,14 +41,13 @@ body{
       			<td><%=lists.get(i).getProsub() %></td>
       			<td><%=lists.get(i).getProcat() %></td>
       			<td><%=lists.get(i).getPropri() %></td>
-      			<td><%=lists.get(i).getProingslot() %> / <%=lists.get(i).getProallslot() %></td>
       			<td>
 					<div class="d-grid gap-2 d-md-block">
-	  					<button class="btn btn-warning" type="button" onClick="location.href='AD_PRODUCTUP.jsp?pronum=<%=lists.get(i).getPronum() %>'">
+	  					<button class="btn btn-warning" type="button" onClick="location.href='../PRODUCT/PR_PRODUCTUP.jsp?pronum=<%=lists.get(i).getPronum() %>'">
 	  						수정하기
 	  					</button>
 	  					 
-	  					<button class="btn btn-danger" type="button" onClick="location.href='AD_PRODUCTDEL.jsp?pronum=<%=lists.get(i).getPronum() %>'">
+	  					<button class="btn btn-danger" type="button" onClick="location.href='../PRODUCT/PR_PRODUCTDEL.jsp?pronum=<%=lists.get(i).getPronum() %>'">
 	  						삭제하기
 	  					</button>
 					</div>

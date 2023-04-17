@@ -7,8 +7,6 @@ public class PRODUCTDTO {
 	private String procat;
 	private String procon;
 	private int propri;
-	private int proingslot;
-	private int proallslot;
 	
 	public int getPronum() {
 		return pronum;
@@ -46,17 +44,4 @@ public class PRODUCTDTO {
 	public void setPropri(int propri) {
 		this.propri = propri;
 	}
-	public int getProingslot() {
-		return proingslot;
-	}
-	public void setProingslot(int proingslot) {
-		this.proingslot = proingslot;
-	}
-	public int getProallslot() {
-		return proallslot;
-	}
-	public void setProallslot(int proallslot) {
-		this.proallslot = proallslot;
-	}
-	
 }

@@ -11,6 +11,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.oreilly.servlet.MultipartRequest;
+
 public class PRODUCTDAO {
 	Connection conn=null;
 	PreparedStatement ps=null;
@@ -55,32 +57,31 @@ public class PRODUCTDAO {
 				pdto.setProcat(rs.getString("procat"));
 				pdto.setProcon(rs.getString("procon"));
 				pdto.setPropri(rs.getInt("propri"));
-				pdto.setProingslot(rs.getInt("proingslot"));
-				pdto.setProallslot(rs.getInt("proallslot"));
 				
 				lists.add(pdto);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return lists;
 	}//getAllProduct
 	
-	public ArrayList<PRODUCTDTO> getProductById(String smemid){
-		String sql1 = "select memnick from artshop_member where memid=?";
+	public ArrayList<PRODUCTDTO> getProductByNick(String memnick){
 		String sql2 = "select * from artshop_product where prowri=?";
-		String memnick = null;
 		ArrayList<PRODUCTDTO> lists = new ArrayList<PRODUCTDTO>();
 		
 		try {
-			ps = conn.prepareStatement(sql1);
-			ps.setString(1, smemid);
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				memnick = rs.getString("memnick");
-			}//if
 			ps = conn.prepareStatement(sql2);
 			ps.setString(1, memnick);
 			rs = ps.executeQuery();
@@ -92,14 +93,74 @@ public class PRODUCTDAO {
 				pdto.setProcat(rs.getString("procat"));
 				pdto.setProcon(rs.getString("procon"));
 				pdto.setPropri(rs.getInt("propri"));
-				pdto.setProingslot(rs.getInt("proingslot"));
-				pdto.setProallslot(rs.getInt("proallslot"));
 				
 				lists.add(pdto);
 			}//while
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return lists;
 	}//getProductById
+	
+	public String getNicknameById(String smemid){
+		String sql = "select memnick from artshop_member where memid=?";
+		String memnick = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, smemid);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				memnick = rs.getString("memnick");
+			}//if
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+				if(rs != null)
+					rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return memnick;
+	}//getProductById
+	
+	public int insertProduct(PRODUCTDTO pdto) {
+		String sql = "insert into artshop_product values(artshop_proseq.nextval, ?, ?, ?, ?, ?)";
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pdto.getProsub());
+			ps.setString(2, pdto.getProwri());
+			ps.setString(3, pdto.getProcat());
+			ps.setString(4, pdto.getProcon());
+			ps.setInt(5, pdto.getPropri());
+			
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps != null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}//insertProduct
 }

@@ -27,18 +27,18 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="AD_MAIN.jsp">홈</a></li>
+                            <li class="nav-item"><a class="nav-link" href="PR_MAIN.jsp">홈</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">스토어</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/STORE/STORE_COMISSION.jsp">COMISSION</a></li>
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/STORE/STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
+                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/STORE_COMISSION.jsp">COMISSION</a></li>
+                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PR_PRODUCTLIST.jsp">상품관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PR_ORDERLIST.jsp">주문관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/BOARD/BOARDLIST.jsp">문의게시판</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/MM_MYPAGE.jsp">마이페이지</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/MYPAGE.jsp">마이페이지</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">문의게시판</a></li> -->
                         </ul>
                     </div>

@@ -1,17 +1,15 @@
-<%@page import="ARTSHOP.PRODUCT.PRODUCTDTO"%>
-<%@page import="ARTSHOP.PRODUCT.PRODUCTDAO"%>
 <%@page import="ARTSHOP.PRODUCT.CATEGORYDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ARTSHOP.PRODUCT.CATEGORYDAO"%>
+<%@page import="ARTSHOP.PRODUCT.PRODUCTDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- PR_PRODUCTINPUT.jsp -->
+<!-- PR_PRODUCTUP.jsp -->
+
 <%
 	request.setCharacterEncoding("utf-8");
 	PRODUCTDAO pdao = PRODUCTDAO.getInstance();
-	String smemid = (String)session.getAttribute("smemid");
-	String nickname = pdao.getNicknameById(smemid); 
-			
+	String pronum = request.getParameter("pronum");
 	CATEGORYDAO cdao = CATEGORYDAO.getInstance();
 	ArrayList<CATEGORYDTO> lists = cdao.getAllCategory();
 %>

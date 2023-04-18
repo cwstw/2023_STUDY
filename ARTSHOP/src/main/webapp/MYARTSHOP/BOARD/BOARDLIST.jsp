@@ -87,7 +87,7 @@
 						<%
 							}
 						%>
-						<a href="content.jsp?num=<%=bb.getNum() %>&pageNum=<%=pageNum%>"><%=bb.getSubject() %></a>
+						<a href="BD_CONTENT.jsp?num=<%=bb.getNum() %>&pageNum=<%=pageNum%>"><%=bb.getSubject() %></a>
 						<%
 							if(bb.getReadcount()>= 10){ //만약 조회수가 10이상
 						%>

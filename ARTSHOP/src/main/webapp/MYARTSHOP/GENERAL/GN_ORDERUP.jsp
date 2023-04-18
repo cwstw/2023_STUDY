@@ -13,10 +13,10 @@
 		
 		if(cnt >0){
 			msg = "상태 수정 완료!";
-			url = "GN_MY_ORDERLIST.jsp";
+			url = "GN_ORDERLIST.jsp";
 		}else{
 			msg = "상태 수정 실패!";
-			url = "GN_MY_ORDERLIST.jsp";
+			url = "GN_ORDERLIST.jsp";
 		}//else
 %>
 <script type="text/javascript">

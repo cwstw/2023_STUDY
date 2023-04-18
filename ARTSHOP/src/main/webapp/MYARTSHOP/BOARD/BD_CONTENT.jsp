@@ -54,10 +54,10 @@
 	</tr>
 	<tr>
 		<th colspan="4" align="right">
-			<input type="button" id="update" value="글수정" onClick="location.href='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-			<input type="button" id="delete" value="글삭제" onClick="location.href='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
-			<input type="button" id="re" value="답글쓰기" onClick="location.href='replyForm.jsp?ref=<%=article.getRef()%>&re_step=<%=article.getRe_step()%>&re_level=<%=article.getRe_level()%>&pageNum=<%=pageNum%>'">
-			<input type="button" id="select" value="글목록" onClick="location.href='select.jsp'">
+			<input type="button" id="update" value="글수정" onClick="location.href='BD_UPDATEFORM.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" id="delete" value="글삭제" onClick="location.href='BD_DELETEFORM.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+			<input type="button" id="re" value="답글쓰기" onClick="location.href='BD_REPLYFORM.jsp?ref=<%=article.getRef()%>&re_step=<%=article.getRe_step()%>&re_level=<%=article.getRe_level()%>&pageNum=<%=pageNum%>'">
+			<input type="button" id="select" value="글목록" onClick="location.href='BOARDLIST.jsp'">
 		</th>
 	</tr>
 </table>

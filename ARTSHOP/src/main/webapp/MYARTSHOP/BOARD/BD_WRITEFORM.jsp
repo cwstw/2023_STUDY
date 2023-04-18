@@ -14,7 +14,7 @@
 </style>
 <h3 class="m-3">글쓰기</h3>
 
-<form method="post" name="wirteform" action="BD_WRITEPROC.jsp.jsp" onSubmit="return writeSave()">
+<form method="post" name="wirteform" action="BD_WRITEPROC.jsp" onSubmit="return writeSave()">
 <table width="600px">
 	<tr>
 		<th colspan="2" align="right">
@@ -45,7 +45,7 @@
 		<th colspan="2">
 			<input type="submit" id="sub" value="글쓰기">
 			<input type="reset" value="다시작성">
-			<input type="button" value="목록보기" onClick="location.href='select.jsp'">
+			<input type="button" value="목록보기" onClick="location.href='BOARDLIST.jsp'">
 		</th>
 	</tr>
 </table>

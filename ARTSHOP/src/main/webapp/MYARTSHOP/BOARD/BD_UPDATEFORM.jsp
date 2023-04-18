@@ -28,7 +28,7 @@
 <h3>글수정</h3>
 content.jsp(num)=>updateForm.jsp
 
-<form method="post" name="updateform" action="updateProc.jsp?<%=num %>&pageNum=<%=pageNum%>" onSubmit="return writeSave()">
+<form method="post" name="updateform" action="BD_UPDATEPROC.jsp?<%=num %>&pageNum=<%=pageNum%>" onSubmit="return writeSave()">
 <input type="hidden" name="num" value="<%=num%>">
 <table width="600px">
 	<tr>
@@ -55,7 +55,7 @@ content.jsp(num)=>updateForm.jsp
 		<th colspan="2">
 			<input type="submit" id="sub" value="글수정">
 			<input type="reset" value="다시작성">
-			<input type="button" value="목록보기" onClick="location.href='select.jsp'">
+			<input type="button" value="목록보기" onClick="location.href='BOARDLIST.jsp'">
 		</th>
 	</tr>
 </table>

@@ -23,9 +23,9 @@
 		//만약 현재 페이지번호가 전체 페이지 번호보다 작거나 같으면
 		//기존페이지로 이동, 아니면 기본페이지-1로 이동
 		if( pageNum <= pageCount ){
-			response.sendRedirect("select.jsp?pageNum="+pageNum);
+			response.sendRedirect("BOARDLIST.jsp?pageNum="+pageNum);
 		} else{
-			response.sendRedirect("select.jsp?pageNum="+(pageNum-1));			
+			response.sendRedirect("BOARDLIST.jsp?pageNum="+(pageNum-1));			
 		}
 	}else {
 %>

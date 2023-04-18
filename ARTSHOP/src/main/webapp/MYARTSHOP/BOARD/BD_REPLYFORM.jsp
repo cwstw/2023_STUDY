@@ -28,7 +28,7 @@
 
 <h3 class="m-3">답글쓰기</h3>
 
-<form method="post" name="replyform" action="replyProc.jsp" onSubmit="return writeSave()">
+<form method="post" name="replyform" action="BD_REPLYPROC.jsp" onSubmit="return writeSave()">
 <input type="hidden" name="ref" value="<%=ref %>">
 <input type="hidden" name="re_step" value="<%=re_step %>">
 <input type="hidden" name="re_level" value="<%=re_level %>">

@@ -28,10 +28,10 @@
 		//기존페이지로 이동, 아니면 기본페이지-1로 이동
 		if( pageNum <= pageCount ){
 			msg = "작성 성공";
-			url = "select.jsp?pageNum="+pageNum;
+			url = "BOARDLIST.jsp?pageNum="+pageNum;
 		} else{
 			msg = "작성 성공";
-			url ="select.jsp?pageNum="+(pageNum-1);			
+			url ="BOARDLIST.jsp?pageNum="+(pageNum-1);			
 		}
 	}
 %>

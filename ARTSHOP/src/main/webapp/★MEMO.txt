@@ -98,30 +98,6 @@ values(artshop_proseq.nextval, '동화느낌의 심플 삽화 커미션',
 '따뜻한 동화 삽화 느낌의 그림이 주력인 작가 아트입니다.<br>작업기간은 최소 일주일, 최대 2주입니다.',
 25000);
 
-//옵션 테이블
-drop sequence artshop_opseq;
-create sequence artshop_opseq
-	increment by 1
-	start with 1
-	minvalue 0
-	maxvalue 10000
-	nocache;
-
-drop table artshop_option;
-create table artshop_option(
-	opnum number primary key,
-	pronum number,
-	opname varchar2(20),
-	oppri number
-	);
-	
-insert into artshop_option
-values(artshop_opseq.nextval, 1, '소품추가', 3000);
-insert into artshop_option
-values(artshop_opseq.nextval, 1, '배경추가', 5000);
-insert into artshop_option
-values(artshop_opseq.nextval, 1, '인물추가', 15000);
-
 //주문 테이블
 drop sequence artshop_ordseq;
 create sequence artshop_ordseq

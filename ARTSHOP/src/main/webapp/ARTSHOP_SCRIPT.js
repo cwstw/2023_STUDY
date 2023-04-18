@@ -165,6 +165,3 @@ function pw2check(){ // a1235 =>4번 호출
 
 
 
-
-
-

@@ -326,4 +326,41 @@ public class MEMBERDAO {
 		}
 		return cnt;
 	}//deleteMember
+	
+	public String getNumById(String smemid) {
+		String sql = "select memnum from artshop_member where memid=?";
+		String memnum=null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, smemid);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				memnum = rs.getString("memnum");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return memnum;
+	}//getNumByID(smemid)
+	
+	public String getNickById(String smemid) {
+		String sql = "select memnick from artshop_member where memid=?";
+		String memnick=null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, smemid);
+			
+			rs =ps.executeQuery();
+			if(rs.next()) {
+				memnick = rs.getString("memnick");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return memnick;
+	}//getNickById(smemid)
 }

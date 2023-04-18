@@ -41,7 +41,7 @@
                             		<!-- Product actions-->
                             		<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="LOGIN.jsp">주문하기</a> 
+                                	<a class="btn btn-outline-dark mt-auto" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/LOGIN.jsp">주문하기</a> 
                                 	<a class="btn btn-outline-dark mt-auto" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PRO_DETAIL.jsp">상세보기</a>
                                 	</div>
                             		</div>

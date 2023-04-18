@@ -9,7 +9,7 @@
 	PRODUCTDAO pdao = PRODUCTDAO.getInstance();
 	ArrayList<PRODUCTDTO> lists = pdao.getAllProduct();
 %>
-<jsp:include page="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PRO_TOP.jsp"/>
+<jsp:include page="./../GENERAL/GN_TOP.jsp"/>
 <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -39,8 +39,8 @@
                             		<!-- Product actions-->
                             		<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center">
-                                	<a class="btn btn-outline-dark mt-auto" href="<%=request.getContextPath() %>/MYARTSHOP/GENERAL/GN_ORDER.jsp">주문하기</a> 
-                                	<a class="btn btn-outline-dark mt-auto" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PRO_DETAIL.jsp">상세보기</a>
+                                	<a class="btn btn-outline-dark mt-auto" href="<%=request.getContextPath() %>/MYARTSHOP/GENERAL/GN_ORDER.jsp?pronum=<%=lists.get(i).getPronum() %>">주문하기</a> 
+                                	<a class="btn btn-outline-dark mt-auto" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PRO_DETAIL.jsp?pronum=<%=lists.get(i).getPronum() %>">상세보기</a>
                                 	</div>
                             		</div>
                         		</div>

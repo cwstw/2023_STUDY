@@ -113,11 +113,13 @@ create table artshop_order(
 	memnum number,
 	pronum number,
 	ordpri number,
+	ordask varchar2(100),
+	ordemail varchar2(30),
 	ordstat varchar2(10)
 	);
 	
 insert into artshop_order
-values(artshop_ordseq.nextval, 3, 1, 1, 28000,'대기');
+values(artshop_ordseq.nextval, 3, 1, 28000, '따뜻한 색감으로 그려주세요.', 'client@naver.com', '대기');
 
 //문의게시판 테이블
 drop sequence artshop_boaseq;

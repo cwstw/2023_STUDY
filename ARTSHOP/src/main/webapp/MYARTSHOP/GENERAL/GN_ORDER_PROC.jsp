@@ -1,16 +1,23 @@
+<%@page import="ARTSHOP.MEMBER.MEMBERDAO"%>
+<%@page import="ARTSHOP.STORE.ORDERDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- GN_ORDER_PROC.jsp -->
 <%
 	request.setCharacterEncoding("utf-8");
-	PRODUCTDAO pdao = PRODUCTDAO.getInstance();
+	String smemid = (String)session.getAttribute("smemid");
+	String pronum = request.getParameter("pronum");
+	String propri = request.getParameter("propri");
+	
+	MEMBERDAO mdao = MEMBERDAO.getInstance();
+	String memnum = mdao.getNumById(smemid);  
+	ORDERDAO odao = ORDERDAO.getInstance();
 %>
-<jsp:useBean id="pdto" class="ARTSHOP.PRODUCT.PRODUCTDTO"/>
-<jsp:setProperty property="*" name="pdto"/>
+<jsp:useBean id="odto" class="ARTSHOP.STORE.ORDERDTO"/>
+<jsp:setProperty property="*" name="odto"/>
 <%
-	System.out.println("제목  :"+pdto.getProsub());
 	String msg="", url="";
-	int cnt = pdao.insertProduct(pdto); 
+	int cnt = odao.insertOrder(odto,memnum,pronum,propri); 
 		
 		if(cnt >0){
 			msg = "주문 완료!";

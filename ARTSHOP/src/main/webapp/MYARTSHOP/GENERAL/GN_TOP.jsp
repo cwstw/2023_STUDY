@@ -30,12 +30,12 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">스토어</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/PRO_STORE_COMISSION.jsp">COMISSION</a></li>
-                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/PRO_STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
+                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/GN_STORE_COMMISION.jsp">COMISSION</a></li>
+                                    <li><a class="dropdown-item" href="<%=request.getContextPath() %>/MYARTSHOP/STORE/GN_STORE_OUTSOURCING.jsp">OUTSOURCING</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/GENERAL/GN_ORDERLIST.jsp">주문목록</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/BOARD/BOARDLIST.jsp">문의게시판</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/MYPAGE.jsp">마이페이지</a></li>
                         </ul>
                     </div>
                 </div>

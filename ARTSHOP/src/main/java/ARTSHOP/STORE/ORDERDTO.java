@@ -5,6 +5,8 @@ public class ORDERDTO {
 	private int memnum;
 	private int pronum;
 	private int ordpri;
+	private String ordask;
+	private String ordemail;
 	private String ordstat;
 	public int getOrdnum() {
 		return ordnum;
@@ -35,6 +37,18 @@ public class ORDERDTO {
 	}
 	public void setOrdstat(String ordstat) {
 		this.ordstat = ordstat;
+	}
+	public String getOrdemail() {
+		return ordemail;
+	}
+	public void setOrdemail(String ordemail) {
+		this.ordemail = ordemail;
+	}
+	public String getOrdask() {
+		return ordask;
+	}
+	public void setOrdask(String ordask) {
+		this.ordask = ordask;
 	}
 	
 }

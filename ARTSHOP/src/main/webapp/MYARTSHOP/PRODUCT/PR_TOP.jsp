@@ -38,7 +38,6 @@
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PR_PRODUCTLIST.jsp">상품관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/PRODUCT/PR_ORDERLIST.jsp">주문관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/BOARD/BOARDLIST.jsp">문의게시판</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/MYARTSHOP/MEMBER/MYPAGE.jsp">마이페이지</a></li>
                             <!-- <li class="nav-item"><a class="nav-link" href="BOARD_LIST.jsp">문의게시판</a></li> -->
                         </ul>
                     </div>

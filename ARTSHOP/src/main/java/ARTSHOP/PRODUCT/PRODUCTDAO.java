@@ -228,4 +228,23 @@ public class PRODUCTDAO {
 		
 		return cnt;
 	}//deleteProduct
+	
+	public String getNicknameByNum(int pronum) {
+		String sql = "select prowri from artshop_product where pronum=?";
+		String prowri=null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, pronum);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				prowri = rs.getString("prowri");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return prowri;
+	}//getNicknameByNum(int pronum)
 }

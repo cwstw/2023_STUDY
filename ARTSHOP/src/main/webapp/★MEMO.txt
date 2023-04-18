@@ -122,28 +122,37 @@ insert into artshop_order
 values(artshop_ordseq.nextval, 3, 1, 28000, '따뜻한 색감으로 그려주세요.', 'client@naver.com', '대기');
 
 //문의게시판 테이블
-drop sequence artshop_boaseq;
-create sequence artshop_boaseq
-	increment by 1
-	start with 1
-	minvalue 0
-	maxvalue 10000
-	nocache;
+drop table board cascade constraints purge ;
+create table board(
+	num number not null primary key,
+	writer varchar2(10) not null,
+	email varchar2(10),
+	subject varchar2(20) not null,
+	passwd varchar2(12) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number  default 0 not null,
+	re_step number default 0 not null,
+	re_level number default 0 not null,
+	content varchar2(50) not null,
+	ip varchar2(15)  not null
+);
 
-drop table artshop_board;
-create table artshop_board(
-	boanum number primary key,
-	boasub varchar2(150),
-	boaid varchar2(20),
-	boaemail varchar2(20),
-	boapw varchar2(20),
-	boadate varchar2(20) default sysdate,
-	boacon varchar2(200),
-	boaread number,
-	boaref number,
-	boare_step number,
-	boare_level number
-	);
+drop sequence board_seq ;
+
+create sequence board_seq
+increment by 1
+start with 1
+minvalue 0
+maxvalue 10000
+nocache;
+
+
+select m.name as mname, m.id mid, 
+p.pname, o.qty, o.amount 
+from (members m inner join orders o 
+on m.no = o.memno) inner join product p 
+on o.pnum = p.pnum where id='hong';
 	
 insert into artshop_board
 values(artshop_boaseq.nextval, '주문 취소 문의합니다',

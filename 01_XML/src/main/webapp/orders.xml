@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<주문서 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<주문서 주문서번호="12345" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="oders.xsd">
 	<발송자>웬디</발송자>
 	<수신자>

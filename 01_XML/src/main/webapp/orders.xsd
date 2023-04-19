@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/orders" xmlns:tns="http://www.example.org/orders" elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
 	<element name="주문서">
 		<complexType>
 			<sequence>
@@ -8,24 +8,26 @@
 				<complexType>
 					<sequence>
 						<element name="이름" type="string"/>
-						<element name="나이" type="int"/>
 						<element name="주소" type="string"/>
+						<element name="도시" type="string"/>
 						<element name="국가" type="string"/>
 					</sequence>
 				</complexType>
 				</element>
-				<element name="서적">
+				<element name="서적" maxOccurs="unbounded">
 					<complexType>
 						<sequence>
 							<element name="제목" type="string"/>
 							<element name="출판사" type="string"/>
 							<element name="참고" type="string"/>
-							<element name="수량" type="int"/>
-							<element name="가격" type="int"/>
+							<element name="수량" type="positiveInteger" minOccurs="0"/>
+							<element name="가격" type="decimal"/>
 						</sequence>
+						<attribute name="번호" type="positiveInteger" use="required"/>
 					</complexType>
 				</element>
 			</sequence>
+			<attribute name="주문서번호" type="string" use="required"></attribute>
 		</complexType>
 	</element>
 </schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="쪽지">
+		<complexType> 
+			<sequence> 
+				<element name="수신" type="string"/>
+				<element name="발신" type="string"/>
+				<element name="제목" type="string"/>
+				<element name="내용" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

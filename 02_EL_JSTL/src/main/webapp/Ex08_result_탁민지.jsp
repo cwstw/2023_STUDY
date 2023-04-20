@@ -1,7 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 Ex08_result_탁민지.jsp<br>
+<jsp:useBean id="pb" class="myPkg.ParkBean"/>
+<jsp:setProperty property="*" name="pb"/>
+<jsp:useBean id="pkb" class="myPkg.ParkBean"/>
+<jsp:setProperty name="pkb" property="*"/>
+<c:if test="${param.name==''}">
+	파라미터 == ''
+</c:if><br>
+<c:if test="${pkb.name==null}">
+	pb == null
+</c:if><Br>
+<Br>
+<c:if test="${param.gender==null }">
+	파람 ==null
+</c:if><br>
+<c:if test="${pkb.gender==null }">
+	게터 ==null
+</c:if><br><br>
+
+<c:if test="${fn:length(paramValues.hobby)==0}">
+	길이 == 0
+</c:if><br>
+<c:if test="${paramValues.hobby==''}">
+	paramValues.hobby==''
+</c:if><br>
+<c:if test="${paramValues.hobby==null}">
+	paramValues.hobby==null
+</c:if><br>
+<%-- <c:if test="${pkb.hobby==''}">
+	pkb.hobby==''
+</c:if><br>
+<c:if test="${pkb.hobby==null}">
+	pkb.hobby==null
+</c:if><br> --%>
+
+<c:if test="${empty param.hobby }">
+	empty
+</c:if>
+<hr>
 <%
 	request.setCharacterEncoding("UTF-8");
 	out.print("[출력1]<br>");
@@ -11,8 +50,6 @@ Ex08_result_탁민지.jsp<br>
 	out.print(request.getParameter("height")+"<Br>");
 	out.print(request.getParameter("gender")+"<Br>");
 %>
-<jsp:useBean id="pb" class="myPkg.ParkBean"/>
-<jsp:setProperty property="*" name="pb"/>
 <Br>
 [출력2]<br>
 ${pb.name}<br>
@@ -55,3 +92,19 @@ ${param.gender }<br>
 		놀이기구 탑승 불가합니다.<br>
 	</c:otherwise>
 </c:choose>
+<hr>
+<br>
+[취미]<br>
+<c:forEach var="hobby" items="${paramValues.hobby }" varStatus="st">
+	${hobby}
+	<c:if test="${not st.last}"> , </c:if>
+</c:forEach><br>
+
+[주소]<br>
+<c:if test="${param.addr eq '선택' }">
+	선택한 주소가 없습니다.
+</c:if>
+<c:if test="${not (param.addr eq '선택') }">
+	${param.addr}
+</c:if>
+<br>

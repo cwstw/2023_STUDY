@@ -1,0 +1,18 @@
+drop sequence mseq;
+create sequence mseq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+drop table member cascade constraints;
+create table member(
+	no number primary key,
+	name varchar2(10),
+	password varchar(10)
+	);
+
+insert into member
+values(mseq.nextval,'¼öÁö','1234');
+
+commit;

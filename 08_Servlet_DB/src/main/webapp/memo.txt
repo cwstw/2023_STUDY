@@ -32,3 +32,21 @@ insert into product
 values(pseq.nextval,'사과','2000');
 
 commit;
+=====================================
+drop sequence sseq;
+create sequence sseq;
+
+drop table survey cascade constraints ;
+create table survey(
+	no number primary key,
+	name varchar2(50),
+	company varchar2(50),
+	email varchar2(50),
+	satisfaction varchar2(50),
+	part varchar2(100),
+	howto varchar2(50),
+	agree number
+) ;
+insert into survey
+values(sseq.nextval,'길동','현대','abc@daum.net','만족','서블릿','우편',1);
+commit ;

@@ -91,6 +91,28 @@ public class MemberServlet extends HttpServlet {
 			
 		}else if(command.equals("/update.mb")) {
 			System.out.println("update 수행");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			String name = request.getParameter("name");
+			String password = request.getParameter("password");
+			MemberBean mb = new MemberBean(no,name,password);
+			
+			mdao.updateMember(mb); 
+			
+			viewPage="/list.mb";
+			
+		}else if(command.equals("/updateForm.mb")) {
+			System.out.println("updateForm 수행");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			
+//			ArrayList<MemberBean> mlist = mdao.getAllMember();
+//			request.setAttribute("mlist", mlist);//속성으로 넣어서 가져가기
+			
+			MemberBean mb = mdao.getOneMember(no);
+			request.setAttribute("mb", mb);
+			viewPage="Ex01_memberUpdateForm.jsp";
+			
 		}else if(command.equals("/list.mb")) {
 			System.out.println("list 수행");
 			
@@ -101,7 +123,8 @@ public class MemberServlet extends HttpServlet {
 			viewPage="Ex01_memberList.jsp";
 			
 		}else {
-			System.out.println("delete 수행");
+
+			
 		}//if
 		
 		RequestDispatcher rs = request.getRequestDispatcher(viewPage);

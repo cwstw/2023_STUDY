@@ -20,7 +20,9 @@ Ex01_memberList.jsp<br><br>
 		<td>${requestScope.mlist[i].name}</td>
 		<td>${requestScope.mlist[i].password}</td>
 		<td><a href="delete.mb?no=${requestScope.mlist[i].no}">삭제</a></td>
-		<td><a href="update.mb?no=${requestScope.mlist[i].no}">수정</a></td>
+		<td><a href="updateForm.mb?no=${requestScope.mlist[i].no}">수정</a></td>
 	</tr>
 </c:forEach>
 </table>
+<hr>
+<a href="Ex01_memberForm.jsp">삽입</a>

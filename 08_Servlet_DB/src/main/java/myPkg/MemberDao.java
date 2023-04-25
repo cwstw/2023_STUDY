@@ -120,4 +120,42 @@ public class MemberDao {
 			}
 		}//finally
 	}//deletemember
+	
+	public MemberBean getOneMember(int no) {
+		String sql = "select * from member where no=?";
+		MemberBean mb = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				mb = new MemberBean();
+				mb.setNo(no);
+				mb.setName(rs.getString("name"));
+				mb.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mb;
+	}//getOneMember
+	
+	public void updateMember(MemberBean mb) {
+		String sql ="update member set name=?, password=? where no=?";
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mb.getName());
+			ps.setString(2, mb.getPassword());
+			ps.setInt(3, mb.getNo());
+			
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("¼º°ø : "+cnt);
+	}//updateMember
+	
 }

@@ -16,3 +16,19 @@ insert into member
 values(mseq.nextval,'수지','1234');
 
 commit;
+====================================
+drop sequence pseq;
+create sequence pseq;
+
+
+drop table product cascade constraints;
+create table product(
+	num number primary key,
+	name varchar2(10),
+	price number
+	);
+
+insert into product
+values(pseq.nextval,'사과','2000');
+
+commit;

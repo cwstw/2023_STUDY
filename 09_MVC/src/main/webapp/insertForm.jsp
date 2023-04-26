@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 insertForm.jsp<br>
+<%
+	application.setAttribute("flag", "false");
+%>
 <h2>도서등록</h2>
 <form action="insert.bk" method="post">
 	제목 : <input type="text" name="title"><br>

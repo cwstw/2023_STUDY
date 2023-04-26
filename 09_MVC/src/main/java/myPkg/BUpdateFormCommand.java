@@ -7,8 +7,10 @@ public class BUpdateFormCommand implements BCommand{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+		int no = Integer.parseInt(request.getParameter("no"));
+		BookDao bdao = BookDao.getInstance();
+		BookBean bb = bdao.getBookByNo(no);
+		request.setAttribute("bb", bb);
 	}
 
 }

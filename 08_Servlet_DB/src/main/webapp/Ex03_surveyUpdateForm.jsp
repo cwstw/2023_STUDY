@@ -7,7 +7,8 @@ Ex03_surveyUpdateForm.jsp<br>
  String[] satisfaction = {"매우만족", "만족", "보통", "불만족", "매우불만족"};
  String[] partArr = {"JAVA", "Spring", "UML", "JDBC", "서블릿" ,"JSP"};
 %>
-<form action="insert.sv" method="post"> 
+<form action="update.sv" method="post"> 
+<input type="hidden" name="no" value="${sb.no}">
 	 과정 만족도 설문<br>
 	 아래 항목을 입력해 주세요.<P>
 	
@@ -54,7 +55,7 @@ Ex03_surveyUpdateForm.jsp<br>
 	
 	<p>
 	<input type="checkbox" name="agree" value="1" <c:if test="${sb.agree == 1 }">checked</c:if>> 정보 발송에 동의합니다.<br>
-	<input type="submit" value="전송">
+	<input type="submit" value="수정하기">
 </form>
 
 

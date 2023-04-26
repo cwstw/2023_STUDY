@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SurveyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ServletContext sc;
+	SurveyDao sdao;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -33,7 +34,14 @@ public class SurveyServlet extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
-		sc = config.getServletContext();
+		String driver = config.getInitParameter("driver");
+		String url = config.getInitParameter("url");
+		String id = config.getInitParameter("id");
+		String pw = config.getInitParameter("pw");
+		System.out.println(driver);
+		sc = config.getServletContext(); 
+		
+		sdao = new SurveyDao(driver,url,id,pw);
 	}
 
 	/**
@@ -65,7 +73,7 @@ public class SurveyServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		SurveyDao sdao = new SurveyDao();
+		//SurveyDao sdao = new SurveyDao();
 		String viewPage = null;
 
 		String uri = request.getRequestURI();
@@ -130,7 +138,39 @@ public class SurveyServlet extends HttpServlet {
 			viewPage = "Ex03_surveyUpdateForm.jsp";
 			
 		}else if(command.equals("/update.sv")) {
+				String name = request.getParameter("name");
+				String company = request.getParameter("company");
+				String email = request.getParameter("email");
+				String satisfaction = request.getParameter("satisfaction");
+				String[] partArr = request.getParameterValues("part");
+				String howto = request.getParameter("howto");
+				//int agree = Integer.parseInt(request.getParameter("agree"));
 
+				String agreeStr = request.getParameter("agree"); // "1"
+				int agree;
+				if(agreeStr == null) { // 체크 안함(0)
+					agree = 0;
+				}else { // 체크 함(1)
+					agree = 1;
+				}
+
+				String part="";
+				if(partArr == null) {
+					part = "선택한 관심 분야가 없습니다.";
+				}else {
+					for(int i=0;i<partArr.length;i++) {
+						part += partArr[i];
+						if(i != partArr.length - 1) {
+							part += ",";
+						}
+					}
+				}
+				//part = 서블릿,스프링,UML
+
+				SurveyBean sb = new SurveyBean(0,name,company,email,satisfaction,part,howto,agree);
+				sdao.updateSurvey(sb);
+				
+				viewPage = "/list.sv";
 		}else if(command.equals("/list.sv")) {
 			ArrayList<SurveyBean> lists = sdao.getAllSurvey();
 			request.setAttribute("slists", lists);

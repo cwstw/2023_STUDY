@@ -8,34 +8,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SurveyDao {
-	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String id="jspid";
-	String pw ="jsppw";
-	Connection conn=null;
-	PreparedStatement ps=null;
-	ResultSet rs=null;
-	
-	SurveyDao(){
+	String id = "jspid";
+	String pw = "jsppw";
+	Connection conn = null;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+
+	public SurveyDao() {
 		try {
-			Class.forName(driver);
-			System.out.println("드라이버 로드 성공");
-			conn = DriverManager.getConnection(url,id,pw);
-			System.out.println("계정 로드 성공");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, id, pw);
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로드 실패");
 			e.printStackTrace();
 		} catch (SQLException e) {
-			System.out.println("계정 로드 실패");
 			e.printStackTrace();
 		}
-	}//생성자
-	
+	}
+
 	public void insertSurvey(SurveyBean sb) {
-		String sql = "insert into survey values(sseq.nextval,?,?,?,?,?,?,?)";
-		int cnt = -1;
+		String sql="insert into Survey values(sseq.nextval,?,?,?,?,?,?,?)";
 		try {
-			ps = conn.prepareStatement(sql);
+			ps=conn.prepareStatement(sql);
 			ps.setString(1, sb.getName());
 			ps.setString(2, sb.getCompany());
 			ps.setString(3, sb.getEmail());
@@ -43,24 +37,32 @@ public class SurveyDao {
 			ps.setString(5, sb.getPart());
 			ps.setString(6, sb.getHowto());
 			ps.setInt(7, sb.getAgree());
-			
-			cnt = ps.executeUpdate();
+
+			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+				if(conn!=null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		System.out.println("성공 : "+cnt);
-	}//insertSurvey
-	
-	public ArrayList<SurveyBean> getAllSurvey(){
-		String sql = "select * from survey order by asc";
+	}
+
+	public ArrayList<SurveyBean> getAllSurvey() {
 		ArrayList<SurveyBean> list = new ArrayList<SurveyBean>();
+		String sql = "select * from survey order by no";
 		try {
-			ps= conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			
 			while(rs.next()) {
 				SurveyBean sb = new SurveyBean();
-				
 				sb.setNo(rs.getInt("no"));
 				sb.setName(rs.getString("name"));
 				sb.setCompany(rs.getString("company"));
@@ -69,13 +71,90 @@ public class SurveyDao {
 				sb.setPart(rs.getString("part"));
 				sb.setHowto(rs.getString("howto"));
 				sb.setAgree(rs.getInt("agree"));
-				
+
 				list.add(sb);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(rs!=null)
+					rs.close();
+				if(conn!=null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		System.out.println(list.size());
 		return list;
-	}//getAllSurvey
+	}
+
+	public void deleteSurvey(String no) {
+		String sql = "delete from survey where no=?";
+
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, no);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null)
+					ps.close();
+				if(conn!=null)
+					conn.close();
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public SurveyBean getOneSurvey(String no) {
+		SurveyBean sb = new SurveyBean();
+		String sql="select * from survey where no=?";
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, no);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				sb.setNo(rs.getInt("no"));
+				sb.setName(rs.getString("name"));
+				sb.setCompany(rs.getString("company"));
+				sb.setEmail(rs.getString("email"));
+				sb.setSatisfaction(rs.getString("satisfaction"));
+				sb.setPart(rs.getString("part"));
+				sb.setHowto(rs.getString("howto"));
+				sb.setAgree(rs.getInt("agree"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+				if(conn!=null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sb;
+	}
 }
+
+
+
+
+
+

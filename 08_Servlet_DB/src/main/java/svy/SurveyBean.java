@@ -9,10 +9,8 @@ public class SurveyBean {
 	private String part;
 	private String howto;
 	private int agree;
-	
-	
 	public SurveyBean() {
-		super();
+		
 	}
 	public SurveyBean(int no, String name, String company, String email, String satisfaction, String part, String howto,
 			int agree) {

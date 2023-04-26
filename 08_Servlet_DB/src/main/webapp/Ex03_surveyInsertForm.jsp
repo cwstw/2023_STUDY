@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 Ex03_surveyInsertForm.jsp<br>
+
+<%
+	application.setAttribute("flag","false");
+	//flag = false  
+%>
 <form action="insert.sv" method="post"> 
 	 과정 만족도 설문<br>
 	 아래 항목을 입력해 주세요.<P>
@@ -14,7 +20,7 @@ Ex03_surveyInsertForm.jsp<br>
 	<input type="radio" name = "satisfaction" value="매우만족" checked="checked">매우 만족 
 	<input type="radio" name = "satisfaction" value="만족">만족
 	<input type="radio" name = "satisfaction" value="보통">보통
-	<input type="radio" name = "satisfacStion" value="불만족">불만족
+	<input type="radio" name = "satisfaction" value="불만족">불만족
 	<input type="radio" name = "satisfaction" value="매우불만족">매우불만족
 	<p>
 	<b>관심있는 분야는 무엇입니까?</b><br>
@@ -34,4 +40,3 @@ Ex03_surveyInsertForm.jsp<br>
 	<input type="checkbox" name="agree" checked="checked" value="1"> 정보 발송에 동의합니다.<br>
 	<input type="submit" value="전송">
 </form>
-<a href="list.sv">목록보기</a>

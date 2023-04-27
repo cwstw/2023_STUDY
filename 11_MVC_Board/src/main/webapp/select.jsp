@@ -4,6 +4,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="color.jsp" %>    
 <link rel="stylesheet" type="text/css" href="./style.css">
 
@@ -34,9 +36,8 @@ select.jsp<br>
 		</td>
 	</tr>
 </table><br>
-<%
-	if(count == 0){
-%>
+<c:if test="${param.count==0}">
+
 <table id="write">
 	<tr>
 		<td align="center" bgcolor="<%=value_c%>">
@@ -44,9 +45,8 @@ select.jsp<br>
 		</td>
 	</tr>
 </table><br>
-<%
-	} else{
-%>
+</c:if>
+<c:if test="${param.count==0}">
 		<table border="1" id="list">
 			<tr height="30" bgcolor="<%=title_c %>">
 				<th>번호</th>
@@ -56,21 +56,17 @@ select.jsp<br>
 				<th>조회</th>
 				<th>IP</th>
 			</tr>
-		<%for(BoardBean bb : lists){ %>
+		<c:forEach var="bb" items="${param.lists}">
 				<tr height="30" align="center" bgcolor="<%=value_c%>">
-					<td><%=bb.getNum() %></td> 
+					<td>${bb.num}</td> 
 					<td align="left" style="padding-left:20px">
-						<%
-							int wid = 20;
-							if(bb.getRe_level() > 0){ //만약 답글이면
-								wid = 20 * bb.getRe_level();
-						%>
-							<img src="images/level.gif" width="<%=wid%>" height="20px">
+						<c:set var="wid" value="20"/>
+						<c:if test="${bb.re_level >0}">
+							<c:set target="wid" value="${20*bb.re_level}"/>
+							<img src="images/level.gif" width="${wid}" height="20px">
 							<img src="images/re.gif">
-						<%
-							}
-						%>
-						<a href="content.jsp?num=<%=bb.getNum() %>&pageNum=<%=pageNum%>"><%=bb.getSubject() %></a>
+						</c:if>
+						<a href="content.jsp?num=${bb.num}&pageNum=${param.pageNum}">${bb.subject}</a>
 						<%
 							if(bb.getReadcount()>= 10){ //만약 조회수가 10이상
 						%>
@@ -84,10 +80,10 @@ select.jsp<br>
 					<td><%=bb.getReadcount() %></td>
 					<td><%=bb.getIp() %></td>
 				</tr>
-			<%}//for %>
+			</c:forEach>
 </table>
+</c:if>
 <%
-	}//else
 	if(count>0){
 		//pageCount :  필요한 페이지 갯수
 		//23 / 5 => 4 + (나머지가 0이면 0 아니면 1)

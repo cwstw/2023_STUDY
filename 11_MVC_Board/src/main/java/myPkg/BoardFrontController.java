@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,18 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MovieServlet
+ * Servlet implementation class BoardFrontController
  */
-@WebServlet("*.mv")
-public class MovieServlet extends HttpServlet {
-	MCommand mc=null;
-	ServletContext sc;
+@WebServlet("*.bd")
+public class BoardFrontController extends HttpServlet {
+	BCommand bc = null;
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MovieServlet() {
+    public BoardFrontController() {
         // TODO Auto-generated constructor stub
     }
 
@@ -31,19 +29,21 @@ public class MovieServlet extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		sc = config.getServletContext();
+
 	}
 
 	/**
 	 * @see Servlet#destroy()
 	 */
 	public void destroy() {
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		doProcess(request, response);
 	}
@@ -64,48 +64,52 @@ public class MovieServlet extends HttpServlet {
 		String command = uri.substring(conPath.length());
 		String viewPage="";
 		
-		if(command.equals("/insert.mv")) {
-			mc = new MInsertCommand();
-			mc.execute(request, response);
+		if(command.equals("/write.bd")) {
+			bc = new BWriteCommand();
+			bc.execute(request, response);
 			
-			viewPage="list.mv";
-		}else if(command.equals("/list.mv")) {
-			if(sc.getAttribute("flag").equals("false")) {
-			mc = new MListCommand();
-			mc.execute(request, response);
+			viewPage="/list.bd";
+		} else if(command.equals("/list.bd")) {
+			bc = new BListCommand();
+			bc.execute(request, response);
 			
-			sc.setAttribute("flag", "true");
-			}
-			viewPage="movieList.jsp";
-		}else if(command.equals("/id_check.mv")) {
-			mc = new MIdCheckCommand();
-			mc.execute(request, response);
+			viewPage="/select.jsp";
+		} else if(command.equals("/content.bd")) {
+			bc = new BContentCommand();
+			bc.execute(request, response);
 			
-			return;
-		}else if(command.equals("/delete.mv")) {
-			mc = new MDeleteCommand(); 
-			mc.execute(request, response);
+			viewPage="/content.jsp";
+		} else if(command.equals("/deleteForm.bd")) {
+			bc = new BDeleteFormCommand(); 
+			bc.execute(request, response);
 			
-			viewPage="/list.mv";
-		}else if(command.equals("/deleteAll.mv")) {
-			mc = new MDeleteAllCommand();
-			mc.execute(request, response);
+			viewPage="/delete.bd";
+		} else if(command.equals("/delete.bd")) {
+			bc = new BDeleteCommand();
+			bc.execute(request, response);
 			
-			viewPage="/list.mv";
-		}else if(command.equals("/updateForm.mv")) {
-			mc = new MUpdateFormCommand();
-			mc.execute(request, response);
+			viewPage="/select.jsp";
+		} else if(command.equals("/updateForm.bd")) {
+			bc = new BUpdateFormCommand();
+			bc.execute(request, response);
 			
-			viewPage="updateMovie.jsp";
-		}else if(command.equals("/update.mv")) {
-			mc = new MUpdateCommand();
-			mc.execute(request, response);
+			viewPage="/select.jsp";
+		} else if(command.equals("/update.bd")) {
+			bc = new BUpdateCommand();
+			bc.execute(request, response);
 			
-			viewPage="/list.mv";
+			viewPage="/select.jsp";
+		} else if(command.equals("/replyForm.bd")) {
+			bc = new BReplyFormCommand();
+			bc.execute(request, response);
+			
+			viewPage="/select.jsp";
+		} else if(command.equals("/reply.bd")) {
+			
 		}
-		
 		RequestDispatcher rd = request.getRequestDispatcher(viewPage);
 		rd.forward(request, response);
-	}//doProcess
+		
+	}//doprocess
 
 }

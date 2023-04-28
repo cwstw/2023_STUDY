@@ -10,7 +10,7 @@ public class BDeleteFormCommand implements BCommand{
 		String num = request.getParameter("num");
 		String pageNum = request.getParameter("pageNum");
 
-	
+		
 	}
 
 }

@@ -21,36 +21,28 @@
 <script src="js/jquery.js"></script>
 <script src="script.js"></script>
 <!-- ==============style/script============== -->
-<%
-	BoardDao bdao = BoardDao.getInstance();
-	String num = request.getParameter("num");
-	String pageNum = request.getParameter("pageNum");
-	
-	BoardBean article = bdao.getContentByNum(num); 
-%>
-
 
 <h3>글수정</h3>
 content.jsp(num)=>updateForm.jsp
 
-<form method="post" name="updateform" action="updateProc.jsp?<%=num %>&pageNum=<%=pageNum%>" onSubmit="return writeSave()">
-<input type="hidden" name="num" value="<%=num%>">
+<form method="post" name="updateform" action="update.bd?${article.num }&pageNum=${pageNum}" onSubmit="return writeSave()">
+<input type="hidden" name="num" value="${article.num}">
 <table>
 	<tr>
 		<th>이 름</th>
-		<td><input type="text" name="writer" value="<%=article.getWriter()%>"></td>
+		<td><input type="text" name="writer" value="${article.writer }"></td>
 	</tr>
 	<tr>
 		<th>제 목</th>
-		<td><input type="text" name="subject" value="<%=article.getSubject()%>"></td>
+		<td><input type="text" name="subject" value="${article.subject }"></td>
 	</tr>
 	<tr>
 		<th>Email</th>
-		<td><input type="text" name="email" value="<%=article.getEmail()%>"></td>
+		<td><input type="text" name="email" value="${article.email }"></td>
 	</tr>
 	<tr>
 		<th>내 용</th>
-		<td><textarea name="content" rows="20" cols="95"><%=article.getContent()%></textarea></td>
+		<td><textarea name="content" rows="20" cols="95">${article.content}</textarea></td>
 	</tr>
 	<tr>
 		<th>비밀번호</th>

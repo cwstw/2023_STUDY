@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="color.jsp" %>
-<%
-	String ref = request.getParameter("ref");
-	String re_step = request.getParameter("re_step");
-	String re_level = request.getParameter("re_level");
-	String pageNum = request.getParameter("pageNum");
-	
-	System.out.println(ref+", "+re_step+", "+re_level);
-%>
 
 <link rel="stylesheet" type="text/css" href="./style.css">
 <style>
@@ -34,15 +26,15 @@
 <h3>답글쓰기</h3>
 content.jsp(부모정보 3가지)=>replyForm.jsp
 
-<form method="post" name="replyform" action="replyProc.jsp" onSubmit="return writeSave()">
-<input type="hidden" name="ref" value="<%=ref %>">
-<input type="hidden" name="re_step" value="<%=re_step %>">
-<input type="hidden" name="re_level" value="<%=re_level %>">
-<input type="hidden" name="pageNum" value="<%=pageNum %>">
+<form method="post" name="replyform" action="reply.bd" onSubmit="return writeSave()">
+<input type="hidden" name="ref" value="${param.ref}">
+<input type="hidden" name="re_step" value="${param.re_step }">
+<input type="hidden" name="re_level" value="${param.re_level }">
+<input type="hidden" name="pageNum" value="${param.pageNum }">
 <table>
 	<tr>
 		<th colspan="2" align="right">
-			<a href="select.jsp">글목록</a>
+			<a href="list.bd">글목록</a>
 		</th>
 	</tr>
 	<tr>
@@ -69,7 +61,7 @@ content.jsp(부모정보 3가지)=>replyForm.jsp
 		<th colspan="2">
 			<input type="submit" id="sub" value="답글쓰기">
 			<input type="reset" value="다시작성">
-			<input type="button" value="목록보기" onClick="location.href='select.jsp'">
+			<input type="button" value="목록보기" onClick="/list.bd">
 		</th>
 	</tr>
 </table>

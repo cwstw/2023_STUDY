@@ -74,12 +74,12 @@ public class BoardFrontController extends HttpServlet {
 			bc.execute(request, response);
 			
 			viewPage="/select.jsp";
-		} else if(command.equals("/content.bd")) {
+		} else if(command.equals("/content.bd")) {//목록보기에서 제목 클릭
 			bc = new BContentCommand();
 			bc.execute(request, response);
 			
 			viewPage="/content.jsp";
-		} else if(command.equals("/deleteForm.bd")) {
+		} else if(command.equals("/deleteForm.bd")) { //content에서 호출
 			bc = new BDeleteFormCommand(); 
 			bc.execute(request, response);
 			
@@ -88,24 +88,35 @@ public class BoardFrontController extends HttpServlet {
 			bc = new BDeleteCommand();
 			bc.execute(request, response);
 			
-			viewPage="/select.jsp";
-		} else if(command.equals("/updateForm.bd")) {
+			if(request.getAttribute("match").equals("flase")) {
+				return; //비밀번호 틀림
+			}else {
+				viewPage="/list.bd?pageNum="+request.getParameter("pageNum");//일치 시 이동
+			}
+		} else if(command.equals("/updateForm.bd")) {//content에서
 			bc = new BUpdateFormCommand();
 			bc.execute(request, response);
 			
-			viewPage="/select.jsp";
+			viewPage="/updateFrom.jsp";
 		} else if(command.equals("/update.bd")) {
 			bc = new BUpdateCommand();
 			bc.execute(request, response);
 			
-			viewPage="/select.jsp";
+			if(request.getAttribute("match").equals("flase")) {
+				return; //비밀번호 틀림
+			}else {
+				viewPage="/select.jsp";//일치 시 이동
+			}
 		} else if(command.equals("/replyForm.bd")) {
 			bc = new BReplyFormCommand();
 			bc.execute(request, response);
 			
-			viewPage="/select.jsp";
+			viewPage="/reply.bd";
 		} else if(command.equals("/reply.bd")) {
+			bc = new BReplyCommand();
+			bc.execute(request, response);
 			
+			viewPage="/list.bd";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(viewPage);
 		rd.forward(request, response);

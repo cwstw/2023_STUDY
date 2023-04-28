@@ -58,7 +58,7 @@
 		<th colspan="2">
 			<input type="submit" id="sub" value="글쓰기">
 			<input type="reset" value="다시작성">
-			<input type="button" value="목록보기" onClick="location.href='list.bd'">
+			<input type="button" value="목록보기" onClick="/list.bd'">
 		</th>
 	</tr>
 </table>

@@ -1,6 +1,7 @@
 package myPkg;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,37 +12,44 @@ public class BDeleteCommand implements BCommand{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		BoardDao bdao = BoardDao.getInstance();
 		String num = request.getParameter("num");
 		String passwd = request.getParameter("passwd");
-		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
-		
-		BoardDao bdao = BoardDao.getInstance(); 
-		
+		String pageNum = request.getParameter("pageNum");
 		
 		int cnt = bdao.deleteArticle(num, passwd);
 		
-		if(cnt == 1){
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = null;
+		if(cnt != 1) {
+			try {
+				out = response.getWriter();
+				out.println("<script>alert('ë¹„ë²ˆì¼ì¹˜ ì•ˆí•¨');history.go(-1)</script>");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			out.flush();//alertì„ ë¸Œë¼ìš°ì €ì— ì¶œë ¥request.setAttribute("match", "false");
+			request.setAttribute("match", "false");
+		}else { // ì‚­ì œ ì„±ê³µí–ˆìœ¼ë©´
+			
 			int pageSize = 5;
-			int count = bdao.getArticleCount(); //16=>15, 3ÆäÀÌÁö
-			int pageCount = count / pageSize + (count%pageSize==0? 0 : 1);
-			//¸¸¾à ÇöÀç ÆäÀÌÁö¹øÈ£°¡ ÀüÃ¼ ÆäÀÌÁö ¹øÈ£º¸´Ù ÀÛ°Å³ª °°À¸¸é
-			//±âÁ¸ÆäÀÌÁö·Î ÀÌµ¿, ¾Æ´Ï¸é ±âº»ÆäÀÌÁö-1·Î ÀÌµ¿
-				try {
-					if( pageNum <= pageCount ){
-					response.sendRedirect("select.jsp?pageNum="+pageNum);
-					} else{
-						response.sendRedirect("select.jsp?pageNum="+(pageNum-1));			
-					}//if
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}else {
-			/*
-			 * <script type="text/javascript"> alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù."); <%--
-			 * location.href="<%=url%>"; --%> history.go(-1); </script>
-			 */
-		}//if
+			int count = bdao.getArticleCount();
+			int pageCount = count/pageSize + (count%pageSize==0? 0 : 1);
+			System.out.println("pageCount : " + pageCount);
+			System.out.println("count : " + count);
+			
+			int pageN = Integer.parseInt(pageNum);
+			
+			System.out.println("pageN : " + pageN);
+			if(pageCount < pageN){ // 3 < 4 (4-1)    3 < 2
+				pageNum = String.valueOf(pageN-1);
+			}else {
+				
+			}
+			
+			request.setAttribute("match", "true");
+			request.setAttribute("pageNum", pageNum);
+		}
 	}
 
 }

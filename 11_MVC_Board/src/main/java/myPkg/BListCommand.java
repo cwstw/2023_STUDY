@@ -13,30 +13,46 @@ public class BListCommand implements BCommand{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int pageSize = 5;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-		
-		String pageNum = request.getParameter("pageNum");//내가 선택한 페이지 번호
-		System.out.println("pageNum : "+pageNum);
-		if(pageNum==null){
-			pageNum="1";//pageNum에 아무런 값이 없으면 1부터 시작
+		String pageNum = request.getParameter("pageNum");
+
+		if(pageNum == null) {
+			pageNum = "1";
 		}
-		
-		//선택한 페이지 번호 숫자로 변경
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+		int pageSize = 10;
 		int currentPage = Integer.parseInt(pageNum);
-		//currentPage가 1일 경우 1
-		int startRow = (currentPage-1)*pageSize+1;
-		//currentPage가 1일 경우 5
+		int startRow = (currentPage-1) * pageSize +1;
 		int endRow = currentPage * pageSize;
-		
+
+		ArrayList<BoardBean> list = new ArrayList<BoardBean>();
 		BoardDao bdao = BoardDao.getInstance();
-		
-		ArrayList<BoardBean> lists = null;
 		int count = bdao.getArticleCount();
-		if(count > 0) {
-			//startRow와 endRow를 넘겨 5개만 가져오기
-			lists = bdao.getArticles(startRow,endRow);
+
+		int number = count - (currentPage-1) * pageSize;
+		list = bdao.getArticles(startRow, endRow);
+
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		int pageBlock = 3;
+
+		int startPage = ((currentPage -1 ) / pageBlock*pageBlock) +1 ;
+		int endPage = startPage + pageBlock-1;
+
+		if(pageCount < endPage) {
+			endPage = pageCount;
 		}
+
+		System.out.println();
+
+		request.setAttribute("list", list);
+		request.setAttribute("count", count);
+		request.setAttribute("number", number);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage",endPage );
+		request.setAttribute("pageCount", pageCount);
+
 	}
 
 }

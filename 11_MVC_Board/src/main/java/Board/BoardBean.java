@@ -36,6 +36,16 @@ public class BoardBean {
 		this.content = content;
 		this.ip = ip;
 	}
+	public BoardBean(int num, String writer, String email, String subject, String passwd, Timestamp reg_date,
+			String content) {
+		this.num = num;
+		this.writer = writer;
+		this.email = email;
+		this.subject = subject;
+		this.passwd = passwd;
+		this.reg_date = reg_date;
+		this.content = content;
+	}
 	public int getNum() {
 		return num;
 	}

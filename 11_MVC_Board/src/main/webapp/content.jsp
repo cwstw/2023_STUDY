@@ -36,7 +36,7 @@
 		<th>작성자</th>
 		<td>${article.wirter}</td>
 		<th>작성일</th>
-		<td><%=sdf.format(${article.reg_date) %></td>
+		<td>${article.reg_date}</td>
 	</tr>
 	<tr>
 		<th>글제목</th>
@@ -50,7 +50,7 @@
 		<th colspan="4" align="right">
 			<input type="button" id="update" value="글수정" onClick="updateForm.bd?num=${article.num}&pageNum=${param.pageNum }'">
 			<input type="button" id="delete" value="글삭제" onClick="deleteForm.bd?num=${article.num}&pageNum=${param.pageNum }'">
-			<input type="button" id="re" value="답글쓰기" onClick="replyForm?ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}&pageNum=${param.pageNum }'">
+			<input type="button" id="re" value="답글쓰기" onClick="replyForm.bd?ref=${article.ref}&re_step=${article.re_step}&re_level=${article.re_level}&pageNum=${param.pageNum }'">
 			<input type="button" id="select" value="글목록" onClick="list.bd">
 		</th>
 	</tr>

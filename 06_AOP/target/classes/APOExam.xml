@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="mystudent" class="com.spring.ex.StudentImpl"/>
+	<bean id="myworker" class="com.spring.ex.WorkerImpl"/>
+	
+	<bean id="myhello" class="com.spring.ex.Hello"/>
+	<bean id="mygoodbye" class="com.spring.ex.Goodbye"/>
+	<bean id="mystart" class="com.spring.ex.Start"/>
+	<bean id="myend" class="com.spring.ex.End"/>
+	
+	
+</beans>

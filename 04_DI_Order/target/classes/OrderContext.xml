@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="ddao" class="sample1.DeliveryDao"/>
+	<bean id="odao" class="sample1.OrderDao"/>
+	<bean id="sv" class="sample1.Service">
+		<property name="odao"><!-- 객체 odao -->
+			<ref bean="odao"/><!-- 괄호 안 odao -->
+		</property>
+		<property name="ddao"><!-- 객체 odao -->
+			<ref bean="ddao"/><!-- 괄호 안 odao -->
+		</property>
+	</bean>
+</beans>

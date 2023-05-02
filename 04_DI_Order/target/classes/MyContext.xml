@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- sample3.PersonImpl person = new sample3.PersonImpl("홍길동",33,177.3) -->
+	
+	<bean id="person" class="sample3.PersonImpl" c:name="홍길동" c:age="33" c:height="177.3"/>
+<!-- 		<constructor-arg>
+			<value>홍길동</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value type="int">33</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value type="double">177.3</value>
+		</constructor-arg>
+	</bean> -->
+<!-- 	
+sample3.StudentImpl student = new sample3.StudentImpl()
+student.setKor(77)
+student.setEng(88)
+student.setPer(person)
+ -->
+	<bean id="student" class="sample3.StudentImpl" p:kor="77" p:eng="88" p:per-ref="person"/>
+<!-- 		<property name="kor">
+			<value type="int">77</value>
+		</property>
+		<property name="eng">
+			<value type="int">88</value>
+		</property>
+		<property name="per">
+			<ref bean="person" />
+		</property>
+	</bean> -->
+<!-- 
+sample3.MyInfo myinfo = new sample3.MyInfo()
+myinfo.setPer(person)
+myinfo.setStu(student)
+ -->
+	<bean id="myinfo" class="sample3.MyInfo">
+		<property name="per">
+			<ref bean="person" />
+		</property>
+		<property name="stu">
+			<ref bean="student" />
+		</property>
+	</bean>
+
+</beans>

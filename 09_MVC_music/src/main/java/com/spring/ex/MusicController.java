@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/music")
+@RequestMapping("music")
 public class MusicController {
 	
 	@RequestMapping("/form")
@@ -37,6 +37,15 @@ public class MusicController {
 	
 	@RequestMapping("/input3")
 	public String result3(MusicBean mb) {
+//		String title = request.getParameter("title");
+//		String singer = request.getParameter("singer");
+//		String price = request.getParameter("price");
+//		
+//		MusicBean mb = new MusicBean();
+//		mb.setTitle(title);
+//		mb.setSinger(singer);
+//		mb.getPrice(price);
+//		reqeust.setAttribute("mb",mb);
 		System.out.println("title : "+mb.getTitle());
 		System.out.println("singer : "+mb.getSinger());
 		System.out.println("price : "+mb.getPrice());

@@ -10,6 +10,7 @@
 </style>
 form.jsp<br>
 <form:form commandName="memberBean" action="form" method="post">
+<!-- form 태그의 메서드는 지정해주지 않으면 default가 post(원래는 get) -->
 	아이디 : <input type="text" name="id">
 	<form:errors cssClass="err" path="id"/>
 	<br>

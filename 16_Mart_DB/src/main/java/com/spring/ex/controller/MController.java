@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.ex.command.MCommand;
 import com.spring.ex.command.MDeleteCommand;
+import com.spring.ex.command.MDeleteMultiCommand;
 import com.spring.ex.command.MInsertFormCommand;
 import com.spring.ex.command.MListCommand;
 import com.spring.ex.command.MUpdateCommand;
@@ -62,7 +63,7 @@ public class MController {
 	public String update(Model model, MDto mdto) {
 		cm = new MUpdateCommand();
 		cm.execute(model);
-		return "list";
+		return "redirect:/list";
 	}
 
 	@RequestMapping("delete")
@@ -72,7 +73,16 @@ public class MController {
 		model.addAttribute("num",num);
 		cm = new MDeleteCommand();
 		cm.execute(model);
-		return "list";
+		return "redirect:/list";
+	}
+
+	@RequestMapping("deleteMulti")
+	public String deleteMulti(Model model, HttpServletRequest request) {
+		model.addAttribute("req",request);
+		
+		cm = new MDeleteMultiCommand();
+		cm.execute(model);
+		return "redirect:/list";
 	}
 	
 }

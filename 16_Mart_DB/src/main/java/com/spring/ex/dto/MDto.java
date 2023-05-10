@@ -2,38 +2,35 @@ package com.spring.ex.dto;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class MDto {
 	
 	private int num;
 	
-	@NotBlank(message = "아이디를 입력하세요")
+	@NotBlank(message = "id 입력누락")
 	private String id;
-	@NotBlank(message = "비밀번호를 입력하세요")
+	
+	@NotBlank(message = "pw 입력누락")
 	private String pw;
-	@NotNull(message = "상품이름을 선택하세요")
+	
+	@NotNull(message="1개 이상의 상품을 선택하세요")
 	private String product;
-	@NotBlank(message = "배송 시간을 선택하세요")
-	private String time;
-	@NotBlank(message = "결제 방법을 선택하세요")
+	
+	//@NotBlank(message = "time 입력 누락(@NotBlank)")
+	//@NotEmpty(message = "time 입력 누락(@NotEmpty)")
+	//@NotNull(message = "time 입력 누락(@NotNull)")
+	@Length(min = 1, message = "time 입력 누락(@Length")
+	private String time; // select~option
+	
+	@NotBlank(message="approve 입력 누락")
 	private String approve;
+	
+	//@NotNull(message = "agree 입력 누락")
 	private String agree;
 	
-	
-	public MDto() {
-		super();
-	}
-	public MDto(int num, String id, String pw, String product, String time, String approve, String agree) {
-		super();
-		this.num = num;
-		this.id = id;
-		this.pw = pw;
-		this.product = product;
-		this.time = time;
-		this.approve = approve;
-		this.agree = agree;
-	}
 	public int getNum() {
 		return num;
 	}
@@ -76,7 +73,5 @@ public class MDto {
 	public void setAgree(String agree) {
 		this.agree = agree;
 	}
-	
-	
 	
 }

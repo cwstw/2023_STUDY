@@ -179,6 +179,24 @@ public class MDao {
 			}
 		}//finally
 	}
+
+	public void deleteMultiByNum(String[] num) {
+		String sql = "delete from mart where num =?";
+		for(int i=0;i<num.length-1;i++) {
+			sql +=" or num=?";
+		}//for
+		try {
+			ps = conn.prepareStatement(sql);
+			
+			for(int i=0; i<num.length;i++) {
+				ps.setInt(i+1, Integer.parseInt(num[i]));
+			}//for
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

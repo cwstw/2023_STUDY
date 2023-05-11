@@ -17,7 +17,7 @@ public class AlbumDao {
 	//root-context에서 만들어둔 객체를 주입
 	//자식이 하나밖에 없으면 퀄리파이어 필요x
 	@Autowired
-	SqlSessionTemplate sqlSqssionTemplate;
+	SqlSessionTemplate sqlSqssionTemplate; //접속 정보
 	
 	public AlbumDao() {
 		System.out.println("AlbumDao() 생성자");
@@ -30,5 +30,13 @@ public class AlbumDao {
 		System.out.println("lists.size() : "+lists.size());
 		
 		return lists;
+	}//getAlbumList
+	
+	public int InsertAlbum(AlbumBean ab) {//mapper명과 동일
+		//mapper의 namespace+파일명 경로
+		int cnt = -1;
+		//ab를 넘겨줌
+		cnt = sqlSqssionTemplate.insert(namespace+".InsertAlbum",ab);
+		return cnt;
 	}
 }

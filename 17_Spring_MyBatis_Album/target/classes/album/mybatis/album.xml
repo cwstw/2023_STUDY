@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- album.xml -->
+<!-- album.xml(mapper) -->
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -9,5 +9,10 @@
 		select * from albums
 		order by num desc
 	</select>
-
+	<!-- AlbumBean ab가 넘어옴, 자동으로 getter 호출해서 값 삽입
+		성공적으로 삽입된 갯수 리턴 -->
+	<insert id="InsertAlbum">
+		insert into albums(num,title,singer,price,day)
+		values(albums_seq,#{title},#{singer},#{price},#{day})
+	</insert>
 </mapper>

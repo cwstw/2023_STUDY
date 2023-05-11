@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../common/common.jsp" %>
 <!-- label의 for는 input의 id와 연결 -->
 alubumInsertForm.jsp<br>
 
-<form action="insert.ab" method="post">
+<form:form action="insert.ab" method="post">
 	<p>
 		<label for="title">노래제목 :</label>
 		<input type="text" name="title" id="title">
@@ -23,4 +24,4 @@ alubumInsertForm.jsp<br>
 	<p>
 		<input type="submit" value="추가하기">
 	</p>
-</form>
+</form:form>

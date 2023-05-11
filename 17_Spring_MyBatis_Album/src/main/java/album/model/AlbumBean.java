@@ -1,12 +1,29 @@
 package album.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class AlbumBean {
 	
 	//mybatis를 위해서는 칼럼 이름과 변수 이름이 똑같아야 한다.
+	
 	private int num;
+	
+	@NotBlank(message = "제목 누락")
 	private String title;
+	
+	@Size(min=3,max=7,message = "3~7글자 사이 입력")//갯수
+	@NotBlank(message = "가수 누락")
 	private String singer;
+	
+	@Min(value = 1000, message = "1000원 이상")//값
+	@NotBlank(message = "가격 누락")
 	private String price; //유효성 검사는 int면 불가
+	@NotBlank(message = "발매일 누락")
 	private String day;
 	
 	

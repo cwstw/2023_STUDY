@@ -15,4 +15,11 @@
 		insert into albums(num,title,singer,price,day)
 		values(albums_seq,#{title},#{singer},#{price},#{day})
 	</insert>
+	<delete id="DeleteAlbum">
+		delete albums where num=#{num}
+	</delete>
+	<select id="GetAlbumByNum" resultType="album.model.AlbumBean">
+		select * from albums
+		where num=#{num}
+	</select>
 </mapper>

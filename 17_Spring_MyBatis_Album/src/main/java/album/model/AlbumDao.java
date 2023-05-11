@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 //컴포넌트는 AlbumDao myAlbumDao = new AlbumDao();와 같다.
 @Component("myAlbumDao")
 public class AlbumDao {
-
+	
 	//mapper의 namespace와 동일하게 입력
 	private String namespace="album.AlbumBean";
 	
@@ -38,5 +38,17 @@ public class AlbumDao {
 		//ab를 넘겨줌
 		cnt = sqlSqssionTemplate.insert(namespace+".InsertAlbum",ab);
 		return cnt;
+	}
+	
+	public int deleteAlbum(int num) {
+		int cnt = -1;
+		//num을 넘겨줌
+		cnt = sqlSqssionTemplate.insert(namespace+".DeleteAlbum",num);
+		return cnt;
+	}
+
+	public AlbumBean getAlbumByNum(int num) {
+		AlbumBean ab = sqlSqssionTemplate.selectOne(namespace+".GetAlbumByNum",num);
+		return ab;
 	}
 }

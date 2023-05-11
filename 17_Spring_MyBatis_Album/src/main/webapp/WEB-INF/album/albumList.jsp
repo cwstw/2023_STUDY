@@ -10,7 +10,7 @@ albumList.jsp<br>
 
 <table border="1">
 	<tr>
-		<td colspan="5" align="right">
+		<td colspan="6" align="right">
 			<input type="button" value="추가하기" onClick="insert()">
 		</td>
 	</tr>
@@ -20,14 +20,16 @@ albumList.jsp<br>
 		<td>가수</td>
 		<td>가격</td>
 		<td>발매일</td>
+		<td>삭제</td>
 	</tr>
 	<c:forEach var="al" items="${albumLists}">
 	<tr>
 		<td>${al.num }</td>
-		<td>${al.title }</td>
+		<td><a href="detail.ab?num=${al.num }">${al.title }</a></td>
 		<td>${al.singer }</td>
 		<td>${al.price }</td>
 		<td>${al.day }</td>
+		<td><a href="delete.ab?num=${al.num}">삭제</a></td>
 	</tr>
 	</c:forEach>
 </table>

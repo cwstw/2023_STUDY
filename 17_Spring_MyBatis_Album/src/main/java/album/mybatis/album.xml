@@ -5,10 +5,18 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- dtd : 태그 규칙 파일 -->
 <mapper namespace="album.AlbumBean">
-	<select id="GetAlbumList" resultType="album.model.AlbumBean">
+	<!-- 동적 쿼리 -->
+	<select id="GetAlbumList" resultType="album.model.AlbumBean" parameterType="hashmap">
 		select * from albums
+		<if test="whatColumn == 'title'">
+			where title like #{keyword}
+		</if>
+		<if test="whatColumn == 'singer'">
+			where singer like #{keyword}
+		</if>
 		order by num desc
 	</select>
+	
 	<!-- AlbumBean ab가 넘어옴, 자동으로 getter 호출해서 값 삽입
 		성공적으로 삽입된 갯수 리턴 -->
 	<insert id="InsertAlbum">

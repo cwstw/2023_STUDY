@@ -7,7 +7,23 @@ albumList.jsp<br>
 		location.href="insert.ab"
 	}
 </script>
-
+<h2>상품 리스트 화면</h2>
+<center>
+<!-- 
+whatColumn=title
+whatColumn=singer
+keyword=마
+keyword=아
+ -->
+	<form action="list.ab" method="get">
+		<select name="whatColumn">
+			<option value="">전체검색</option>
+			<option value="title">노래제목</option>
+			<option value="title">가수명</option>
+		</select>
+		<input type="text" value="keyword">
+		<input type="submit" value="검색">
+	</form>
 <table border="1">
 	<tr>
 		<td colspan="7" align="right">
@@ -35,3 +51,6 @@ albumList.jsp<br>
 	</tr>
 	</c:forEach>
 </table>
+</center>
+
+

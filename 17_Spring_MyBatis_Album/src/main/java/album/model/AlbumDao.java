@@ -1,6 +1,7 @@
 package album.model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -23,10 +24,10 @@ public class AlbumDao {
 		System.out.println("AlbumDao() 생성자");
 	}//생성자
 	
-	public List<AlbumBean> getAlbumList(){
+	public List<AlbumBean> getAlbumList(Map<String, String> map){
 		
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
-		sqlSqssionTemplate.selectList(namespace+".GetAlbumList");
+		sqlSqssionTemplate.selectList(namespace+".GetAlbumList",map);
 		System.out.println("lists.size() : "+lists.size());
 		
 		return lists;

@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+<!-- dtd : 태그 규칙 파일 -->
 <mapper namespace="album.AlbumBean">
 	<select id="GetAlbumList" resultType="album.model.AlbumBean">
 		select * from albums
@@ -22,4 +22,9 @@
 		select * from albums
 		where num=#{num}
 	</select>
+	<update id="UpdateAlbum">
+		update albums set title=#{title}, singer=#{singer},
+		price=#{price}, day=#{day} where num=#{num}
+	</update>
+	
 </mapper>

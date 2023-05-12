@@ -51,4 +51,11 @@ public class AlbumDao {
 		AlbumBean ab = sqlSqssionTemplate.selectOne(namespace+".GetAlbumByNum",num);
 		return ab;
 	}
+
+	public int updateAlbum(AlbumBean ab) {
+		int cnt = -1;
+		//num을 넘겨줌
+		cnt = sqlSqssionTemplate.update(namespace+".UpdateAlbum",ab);
+		return cnt;
+	}
 }

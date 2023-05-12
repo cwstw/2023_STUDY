@@ -183,38 +183,62 @@ public class Paging {
 			String whatColumn, 
 			String keyword,
 			String whologin) {		
-
+		
+		//null이면 1페이지부터 시작
 		if(  _pageNumber == null || _pageNumber.equals("null") || _pageNumber.equals("")  ){
 			
 			System.out.println("_pageNumber:"+_pageNumber); // null
 			_pageNumber = "1" ;
 		}
+		
+		//넘어오는 값을 변수에 넣음
 		this.pageNumber = Integer.parseInt( _pageNumber ) ; 
-
+		
+		//null이면 한페이지에 글이 2개씩 보이도록
 		if( _pageSize == null || _pageSize.equals("null") || _pageSize.equals("") ){
 			_pageSize = "2" ; // 한 페이지에 보여줄 레코드 갯수
-		}		
+		}
+		
+		//넘어오는 값을 변수에 넣음
 		this.pageSize = Integer.parseInt( _pageSize ) ;
 		
+		//pagesize를 limit에 저장
 		this.limit = pageSize ; // 한 페이지에 보여줄 레코드 갯수
-
+		
+		//넘어오는 값을 변수에 넣음
 		this.totalCount = totalCount ; 
-
+		
+		//전체 페이지 수를 한 페이지에 보여줄 글 수 값으로 나눈 후 올림하고 정수로 형변환
+		//ex: (double)전체 10/ 페이지 3 = 3.33333 => ceil하면 무조건 올림 => 4
+		//필요한 전체 페이지 개수 구함
 		this.totalPage = (int)Math.ceil((double)this.totalCount / this.pageSize) ;
 		
+		//각 페이지의 글 시작번호와 끝번호
+		//현재 페이지 번호-1*총 페이지수+1
+		//ex: pagenumber=2, pagesize =3 => beginrow = 4, endrow =6
+		// 1페이지=1 2 3/ 2페이지=4 5 6/ 3페이지=7 8 9
 		this.beginRow = ( this.pageNumber - 1 )  * this.pageSize  + 1 ;
 		this.endRow =  this.pageNumber * this.pageSize ;
 		
+		// 현재 페이지 번호가 전체 페이지 보다 크면 => 전체 페이지와 같도록 변경(마지막 페이지)
 		if( this.pageNumber > this.totalPage ){
 			this.pageNumber = this.totalPage ;
 		}
 		
+		//ex : 1일 때 1-1*3=0 (1페이지 클릭 시 건너뛸 글 없음)
+		//2일 때 2-1*3=3 (2페이지 클릭 시 3개 건너뜀)
+		//건너뛸 갯수 (글이 페이지당 설정한 개수 씩 보이도록 설정)
 		this.offset = ( pageNumber - 1 ) * pageSize ; 
 		
+		//보여줄 마지막 글 수가 전체 갯수보다 클 경우 같게 변경
+		//한 페이지에 필요한 마지막 글 수가 전체 글 수보다 더 높게 연산되었을 때 바로 잡아줌
 		if( this.endRow > this.totalCount ){
 			this.endRow = this.totalCount  ;
 		}
-
+		
+		//페이지 시작 번호와 끝나는 번호 1 2 3
+		//(현재 페이지 수-1)/한 페이지에 보여줄 1 2 3 수*(한 페이지에 보여줄 1 2 3 수+1)
+		//ex: 5-1/ 3*3+1 begin : 4 end : 6
 		this.beginPage = ( this.pageNumber - 1 ) / this.pageCount * this.pageCount + 1  ;
 		this.endPage = this.beginPage + this.pageCount - 1 ;
 		
@@ -233,14 +257,14 @@ public class Paging {
 		this.pagingHtml = getPagingHtml(url) ;
 	
 	}
-	
+	//url을 넘김
 	private String getPagingHtml( String url ){ //페이징 문자열을 만든다.
 		System.out.println("getPagingHtml url:"+url); 
 		// getPagingHtml url:/ex/list.ab
 		
 		String result = "" ;
 		String added_param = "&whatColumn=" + whatColumn + "&keyword=" + keyword ; // &whatColumn=singer&keyword=아
-		
+		//begin 페이지가 1이 아니면 맨처음으로 갈 수 있는 링크를 만들기
 		if (this.beginPage != 1) { // 앞쪽, pageSize:한 화면에 보이는 레코드 수
 			result += "&nbsp;<a href='" + url  
 					+ "?pageNumber=" + ( 1 ) + "&pageSize=" + this.pageSize 
@@ -250,7 +274,7 @@ public class Paging {
 					+ added_param + "'>이전</a>&nbsp;" ;
 		}
 		
-		//가운데
+		//가운데 begin부처 end까지 반복
 		for (int i = this.beginPage; i <= this.endPage ; i++) {
 			if ( i == this.pageNumber ) {
 				result += "&nbsp;<font color='red'>" + i + "</font>&nbsp;"	;
@@ -275,7 +299,9 @@ public class Paging {
 			result += "&nbsp;<a href='" + url  
 					+ "?pageNumber=" + (this.totalPage ) + "&pageSize=" + this.pageSize 
 					+ added_param + "'>맨 끝</a>&nbsp;" ;
-		}		
+		}
+		
+		//위 연산을 활용하여 문자열 리턴
 		System.out.println("result2:"+result);
 		// result2 : <a href='/ex/list.ab?pageNumber=1&pageSize=2'>맨 처음</a>&nbsp;&nbsp;<a href='/ex/list.ab?pageNumber=3&pageSize=2&whatColumn=null&keyword=null'>이전</a>&nbsp;&nbsp;<font color='red'>4</font>&nbsp;&nbsp;<a href='/ex/list.ab?pageNumber=5&pageSize=2&whatColumn=null&keyword=null'>5</a>&nbsp;
 		

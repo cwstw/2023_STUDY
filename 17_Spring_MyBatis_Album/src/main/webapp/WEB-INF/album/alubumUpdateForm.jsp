@@ -28,7 +28,9 @@ alubumUpdateForm.jsp<br>
 	</p>
 	<p>
 		<label for="day">발매일 :</label>
-		<input type="text" name="day" id="day" value="${album.day}">
+		<fmt:parseDate var="newDay" value="${album.day }" pattern="yyyy-MM-dd"/>
+		<fmt:formatDate var="fNewDay" value="${newDay}" pattern="yyyy-MM-dd"/>
+		<input type="text" name="day" id="day" value="${fNewDay }">
 		<form:errors cssClass="err" path="day"/>
 	</p>
 	<p>

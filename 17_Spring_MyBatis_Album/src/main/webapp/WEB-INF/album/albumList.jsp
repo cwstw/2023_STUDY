@@ -7,7 +7,7 @@ albumList.jsp<br>
 		location.href="insert.ab"
 	}
 </script>
-<h2>상품 리스트 화면</h2>
+<h2>상품 리스트 화면(전체 레코드 갯수:${pageInfo.getTotalCount})</h2>
 <center>
 <!-- 
 whatColumn=title
@@ -45,12 +45,22 @@ keyword=아
 		<td><a href="detail.ab?num=${al.num }">${al.title }</a></td>
 		<td>${al.singer }</td>
 		<td>${al.price }</td>
-		<td>${al.day }</td>
+		<td>
+			<fmt:parseDate var="newDay" value="${al.day }" pattern="yyyy-MM-dd"/>
+			<fmt:formatDate var="fNewDay" value="${newDay}" pattern="yyyy-MM-dd"/>
+			${fNewDay }
+		</td>
 		<td><a href="delete.ab?num=${al.num}">삭제</a></td>
 		<td><a href="update.ab?num=${al.num}">수정</a></td>
 	</tr>
 	</c:forEach>
 </table>
 </center>
+<center>
+${pageInfo.pagingHtml}
+</center>
+<!-- 1 2 3 4 5 [다음]
+	각 숫자 클릭 시 list.ab 요청
+ -->
 
 

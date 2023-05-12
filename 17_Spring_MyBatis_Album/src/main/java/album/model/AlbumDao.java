@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import utility.Paging;
 
 //컴포넌트는 AlbumDao myAlbumDao = new AlbumDao();와 같다.
 @Component("myAlbumDao")
@@ -24,10 +27,14 @@ public class AlbumDao {
 		System.out.println("AlbumDao() 생성자");
 	}//생성자
 	
-	public List<AlbumBean> getAlbumList(Map<String, String> map){
+	public List<AlbumBean> getAlbumList(Map<String, String> map,Paging pageInfo){
 		
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
-		sqlSqssionTemplate.selectList(namespace+".GetAlbumList",map);
+		
+		//건너뛸 레코드/가져올 레코드 갯수
+		RowBounds rowbounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		
+		sqlSqssionTemplate.selectList(namespace+".GetAlbumList",map,rowbounds);
 		System.out.println("lists.size() : "+lists.size());
 		
 		return lists;
@@ -57,6 +64,11 @@ public class AlbumDao {
 		int cnt = -1;
 		//num을 넘겨줌
 		cnt = sqlSqssionTemplate.update(namespace+".UpdateAlbum",ab);
+		return cnt;
+	}
+
+	public int getTotalCount(Map<String,String> map) {
+		int cnt = sqlSqssionTemplate.selectOne(namespace+".GetTotalCount", map);
 		return cnt;
 	}
 }

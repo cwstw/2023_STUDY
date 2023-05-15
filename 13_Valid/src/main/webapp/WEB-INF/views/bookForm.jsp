@@ -9,17 +9,17 @@ bookForm.jsp<br>
 }
 </style>
 <form:form action="form" method="post">
-	제목 : <inptut type="text" name="title" value="${bookBean.title }">
-	<form:errors cssClass="err" path="title"><br>
+	제목 : <input type="text" name="title" value="${bookBean.title }">
+	<form:errors cssClass="err" path="title"/><br>
 	
-	저자 : <inptut type="text" name="author" value="${bookBean.author }">
-	<form:errors cssClass="err" path="author"><br>
+	저자 : <input type="text" name="author" value="${bookBean.author }">
+	<form:errors cssClass="err" path="author"/><br>
 	
-	가격 : <inptut type="text" name="price" value="${bookBean.price }">
-	<form:errors cssClass="err" path="price"><br>
+	가격 : <input type="text" name="price" value="${bookBean.price }">
+	<form:errors cssClass="err" path="price"/><br>
 	
-	출판사 : <inptut type="text" name="publisher" value="${bookBean.publisher }">
-	<form:errors cssClass="err" path="publisher"><br>
+	출판사 : <input type="text" name="publisher" value="${bookBean.publisher }">
+	<form:errors cssClass="err" path="publisher"/><br>
 	
 	구입가능서점 :
 	<input type="checkbox" name="bookstore" value="교보문고" <%if(${bookBean.bookstore}.contains("교보문고")){ %>checked<%} %>>교보문고

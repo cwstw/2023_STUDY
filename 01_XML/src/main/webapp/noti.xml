@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
- <쪽지 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="noti.xsd">
-	<수신>김상민</수신>
-	<발신>황현숙</발신>
-	<제목>출장 스케쥴</제목>
-	<내용>이번 주말 출장 잊지마세요.</내용>
-</쪽지>

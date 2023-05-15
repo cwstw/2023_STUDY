@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 start.jsp<br>
 <%
-	response.sendRedirect("list.ab");
+	response.sendRedirect("list.tv");
 %>

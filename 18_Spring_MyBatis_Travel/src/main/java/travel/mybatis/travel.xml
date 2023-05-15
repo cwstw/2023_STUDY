@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- album.xml(mapper) -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 네임스페이스 travel.TravelBean은 경로를 의미하지 않음.
+  		그냥 이름을 지어준 것이 때문에 경로와 꼭 맞출 필요는 x -->
+<mapper namespace="travel.TravelBean">
+	<select id="GetAllTravel" resultType="travel.model.TravelBean" parameterType="hashmap">
+		select * from travel
+		<if test="whatColumn == 'area'">
+			where area like #{keyword}
+		</if>
+		<if test="whatColumn == 'style'">
+			where area like #{keyword}
+		</if>
+		order by num desc
+	</select>
+	
+	<insert id="InsertTravel">
+		insert into travel(num,name,age,area,style,price)
+		values(travel_seq.nextval,#{name},#{age},#{area},#{style},#{price})
+	</insert>
+
+	<select id="GetTotalCount" resultType="int" parameterType="hashmap">
+		select count(*) from travel
+		<if test="whatColumn == 'area'">
+			where area like #{keyword}
+		</if>
+		<if test="whatColumn == 'style'">
+			where area like #{keyword}
+		</if>
+	</select>
+
+	<select id="GetOneTravel" resultType="travel.model.TravelBean">
+		select * from travel
+			where num=#{num}
+	</select>
+
+</mapper>

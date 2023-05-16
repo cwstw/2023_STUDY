@@ -3,5 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="movie.MovieBean">
+	<select id="GetTotalCount" resultType="int" parameterType="hashMap">
+		select count(*) from movie
+		<if test="whatColumn == 'genre'">
+			where genre like #{keyword}
+		</if>
+		<if test="whatColumn == 'grade'">
+			where grade like #{keyword}
+		</if>
+		<if test="whatColumn == 'actor'">
+			where actor like {keyword}
+		</if>
+	</select>
 
+	<select id="GetAllMovie" resultType="myMovie">
+		select * from movie
+		<if test="whatColumn == 'genre'">
+			where genre like #{keyword}
+		</if>
+		<if test="whatColumn == 'grade'">
+			where grade like #{keyword}
+		</if>
+		<if test="whatColumn == 'actor'">
+			where actor like #{keyword}
+		</if>
+		order by num desc
+	</select>
 </mapper>

@@ -1,0 +1,36 @@
+검색 : 장르 등급 배우
+한 페이지에 2 레코드씩
+*.mv 요청
+
+
+drop table movie;
+create table movie(
+	num number not null  primary key,
+	title varchar2(20) not null,
+	nation varchar2(25) not null,
+	genre varchar2(40),
+	grade varchar2(5),
+	actor varchar2(50)
+);
+
+drop sequence mv_seq;
+create sequence mv_seq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+insert into movie(num,title,nation,genre,grade,actor)
+values(mv_seq.nextval,'외계인','한국','액션,판타지','15','류준열,김우빈,김태리');
+
+commit;
+col num for 99
+col title for a10
+col nation for a8
+col genre for a20
+col grade for a5
+col actor for a25
+
+select * from movie;
+

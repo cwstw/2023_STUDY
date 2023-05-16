@@ -30,6 +30,7 @@ public class TravelUpdateController {
 			@RequestParam("num") int num,
 			@RequestParam("pageNumber") int pageNumber,
 			Model model) {
+		System.out.println("get방식 update()");
 		TravelBean tb = tdao.getOneTravel(num);
 		model.addAttribute("tb",tb);
 		model.addAttribute("pageNumber",pageNumber);
@@ -41,7 +42,7 @@ public class TravelUpdateController {
 			@RequestParam("pageNumber") int pageNumber,
 			@ModelAttribute("travel") @Valid TravelBean tb,
 			BindingResult br) {
-		
+		System.out.println("post방식 update()");
 		ModelAndView mav = new ModelAndView();
 		if(br.hasErrors()) {
 			mav.addObject("pageNumber",pageNumber);
@@ -50,9 +51,11 @@ public class TravelUpdateController {
 			int cnt = -1;
 			cnt = tdao.updateTravel(tb);
 			if(cnt != -1) {//성공
-			mav.setViewName(gotoPage+"pageNumber="+pageNumber);
+				mav.setViewName(gotoPage+"pageNumber="+pageNumber);
 			}else {//실패
-				mav.setViewName(getPage);
+				mav.addObject("pageNumber",pageNumber);
+				mav.addObject("num",tb.getNum());
+				mav.setViewName("redirect:/"+command);
 			}
 		}
 		return mav;

@@ -68,5 +68,15 @@ public class TravelDao {
 		}
 		return cnt;
 	}
+
+	public int deleteTravel(int num) {
+		int cnt = -1;
+		try {
+		cnt = sqlSessionTemplate.delete(namespace+".DeleteTravel",num);
+		} catch(DataAccessException e){
+			System.out.println("데이터 삭제 오류");
+		}
+		return cnt;
+	}
 	
 }

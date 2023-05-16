@@ -41,4 +41,7 @@
 		area=#{area}, style=#{style}, price=#{price}
 		where num=#{num}
 	</update>
+	<delete id="DeleteTravel">
+		delete travel where num=#{num}
+	</delete>
 </mapper>

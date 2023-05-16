@@ -28,7 +28,8 @@ public class TravelDetailController {
 	
 	@RequestMapping(command)
 	public String doAction(
-			@ModelAttribute("num") int num, Model model) {
+			@ModelAttribute("num") int num,
+			Model model) {
 		
 		TravelBean tb = tdao.getOneTravel(num);
 		

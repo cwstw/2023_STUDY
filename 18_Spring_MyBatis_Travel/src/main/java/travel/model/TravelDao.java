@@ -58,5 +58,15 @@ public class TravelDao {
 		tb = sqlSessionTemplate.selectOne(namespace+".GetOneTravel",num);
 		return tb;
 	}
+
+	public int updateTravel(TravelBean tb) {
+		int cnt = -1;
+		try {
+		cnt = sqlSessionTemplate.update(namespace+".UpdateTravel",tb);
+		} catch(DataAccessException e){
+			System.out.println("데이터 수정 오류");
+		}
+		return cnt;
+	}
 	
 }

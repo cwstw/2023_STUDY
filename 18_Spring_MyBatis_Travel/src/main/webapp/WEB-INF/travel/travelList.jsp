@@ -6,6 +6,9 @@
 	function insert(){
 		location.href="insert.tv";
 	}
+	function goUpdate(num, pageNumber){
+		location.href="update.tv?num="+num+"&pageNumber="+pageNumber;
+	}
 </script>
 <center>
 <h3>여행 리스트 화면</h3>
@@ -48,13 +51,15 @@
 	<c:forEach var="travel" items="${lists}">
 	<tr>
 		<td>${travel.num}</td>
-		<td><a href="detail.tv?num=${travel.num}">${travel.name}</a></td>
+		<td><a href="detail.tv?num=${travel.num}&pageNumber=${pageInfo.pageNumber}">${travel.name}</a></td>
 		<td>${travel.age}</td>
 		<td>${travel.area}</td>
 		<td>${travel.style}</td>
 		<td>${travel.price}</td>
 		<td><a href="delete.tv?num=${travel.num}">삭제</a></td>
-		<td><a href="update.tv?num=${travel.num}">수정</a></td>
+		<td>
+		<input type="button" value="수정" onClick="goUpdate(${travel.num}, ${pageInfo.pageNumber})">
+		</td>
 	</tr>
 	</c:forEach>
 </table>

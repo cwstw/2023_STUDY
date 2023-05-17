@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import utility.Paging;
@@ -36,6 +37,14 @@ public class MovieDao {
 		return lists;
 	}
 	
-	
+	public int insertMovie(MovieBean mb) {
+		int cnt = -1;
+		try {
+		cnt = sst.insert(namespace+".InsertMovie",mb);
+		} catch(DataAccessException e){
+			System.out.println("데이터 삽입 오류");
+		}
+		return cnt;
+	}
 	
 }

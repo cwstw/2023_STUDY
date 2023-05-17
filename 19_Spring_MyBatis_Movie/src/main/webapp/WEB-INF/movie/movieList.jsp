@@ -16,9 +16,9 @@
 </form>
 <table border="1">
 	<tr>
-		<th colspan="9">
-			<input type="button" value="추가하기" onClick="location.href='#insert.mv'">
-		</th>
+		<td colspan="9" align="right">
+			<input type="button" value="추가하기" onClick="location.href='/ex/insert.mv'">
+		</td>
 	</tr>
 	<tr>
 		<th>번호</th>
@@ -33,15 +33,15 @@
 	</tr>
 	<c:forEach var="mv" items="${lists}">
 		<tr>
-			<th>${mv.num}</th>
-			<th>${mv.name}</th>
-			<th>${mv.continent}</th>
-			<th>${mv.nation}</th>
-			<th>${mv.genre}</th>
-			<th>${mv.grade}</th>
-			<th>${mv.actor}</th>
-			<th><a href="delete?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">삭제</a></th>
-			<th><a href="delete?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">수정</a></th>
+			<td>${mv.num}</td>
+			<td>${mv.title}</td>
+			<td>${mv.continent}</td>
+			<td>${mv.nation}</td>
+			<td>${mv.genre}</td>
+			<td>${mv.grade}</td>
+			<td>${mv.actor}</td>
+			<td><a href="delete?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">삭제</a></th>
+			<td><a href="delete?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">수정</a></th>
 		</tr>
 	</c:forEach>
 </table>

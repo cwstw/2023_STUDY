@@ -29,4 +29,10 @@
 		</if>
 		order by num desc
 	</select>
+	
+	<insert id="InsertMovie">
+		insert into movie(num,title,continent,nation,genre,grade,actor)
+		values(travel_seq.nextval,#{title},#{continent},#{nation},#{genre},#{grade},#{actor})
+	</insert>
+	
 </mapper>

@@ -32,6 +32,7 @@ public class MovieListController {
 			@RequestParam(value="pageNumber", required=false) String pageNumber,
 			HttpServletRequest request
 			) {
+		System.out.println("list.mv ฟไรป");
 		
 		Map<String,String> map = new HashMap<String,String>();
 		

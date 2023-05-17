@@ -62,9 +62,71 @@
 		}
 	}//firstchange
 	
-	function Check(){
+	//중복체크
+	$(document).ready(function(){
+		//alert(1);
 		
-	}//중복체크
+		var isCheck = false;
+		var use;
+		
+		$('#title_check').click(function(){
+			//alert(2);
+			
+			isCheck = true;
+			
+			$.ajax({
+				url : "title_check_proc.mv",
+				data : ({
+						inputtitle : $('input[name = title]').val()	
+				}),
+				success : function(data){
+					alert('data:' + data+","+data.length);
+					
+					if($("input[name=title]").val() ==""){
+						//alert("제목 누락 되어있습니다.");
+						//use = "missing";
+						//$('#titlemessage').show();
+						$('#titleMessage').html("<font color=green>입력 누락되었습니다.</font>");
+						$('#titleMessage').show();
+						
+					} else if(data == 'YES'){
+						$('#titleMessage').html("<font color = 'blue'>사용가능합니다</font>");
+						$('#titleMessage').show();
+						use = "possible";
+						
+					} else{
+						$('#titleMessage').html("<font color = 'red'>이미 등록한 제목입니다.</font>");
+						$('#titleMessage').show();
+						use = "impossible";
+					}
+					
+				}//success
+				
+			}); //ajax
+		}); // 중복체크 클릭
+		
+		$("input[name=title]").keydown(function(){ 
+			$('#titleMessage').css('display','none');
+		});//keydown
+		
+		$("#sub").click(function () { // 추가하기(submit)
+			if(!isCheck){
+				alert("중복체크를 먼저 해주세요");
+				return false;
+			}
+			else if(use == "impossible"){
+				alert("이미 존재하는 영화입니다");
+				$('input[name=title]').select();
+				return false;
+			}
+			else if($('input[name=title]').val() == ""){
+				alert("제목을 입력하세요");
+				$('input[name=title]').focus();
+				return false;
+			}
+		}); // sub
+	});
+	
 </script>
 <style>
 	.err{
@@ -82,7 +144,8 @@
  <p>
   <label for="title">영화 제목 : </label>
   <input type="text" name="title" id="title" value="${ mv.title }">
-  <input type="button" value="중복체크" onClick="Check()">
+  <input type="button" value="중복체크" id="title_check">
+  <span id="titleMessage"></span>
   <form:errors cssClass="err" path="title"/>
  </p>
  <p>

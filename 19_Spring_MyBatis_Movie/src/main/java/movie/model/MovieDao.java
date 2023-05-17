@@ -47,4 +47,28 @@ public class MovieDao {
 		return cnt;
 	}
 	
+	public boolean searchTitle(String inputtitle) {
+		boolean flag = false;
+		int cnt = sst.selectOne(namespace + ".CheckTitle", inputtitle);
+		if(cnt > 0) {
+			flag = true; // 이미 존재함 
+		}
+		return flag;
+	}
+
+	public MovieBean getOneMovie(int num) {
+		MovieBean mv = new MovieBean();
+		mv = sst.selectOne(namespace+".GetOneMovie",num);
+		return mv;
+	}
+
+	public int deleteMovie(int num) {
+		int cnt = -1;
+		try {
+		cnt = sst.delete(namespace+".DeleteMovie",num);
+		} catch(DataAccessException e){
+			System.out.println("데이터 삭제 오류");
+		}
+		return cnt;
+	}
 }

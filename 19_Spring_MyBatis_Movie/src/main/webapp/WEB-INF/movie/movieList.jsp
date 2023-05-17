@@ -34,7 +34,7 @@
 	<c:forEach var="mv" items="${lists}">
 		<tr>
 			<td>${mv.num}</td>
-			<td>${mv.title}</td>
+			<td><a href="detail.mv?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">${mv.title}</a></td>
 			<td>${mv.continent}</td>
 			<td>${mv.nation}</td>
 			<td>${mv.genre}</td>

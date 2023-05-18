@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import movie.model.MovieBean;
 import movie.model.MovieDao;
-import travel.model.TravelBean;
 
 @Controller
 public class MovieUpdateColtroller {

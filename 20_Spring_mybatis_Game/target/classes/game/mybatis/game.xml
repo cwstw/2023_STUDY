@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game.GameBean">
+	<select id="GetAllGame" resultType="myGame">
+		select * from games
+		<if test="searchCol == 'genre'">
+			where genre like #{searchWord}
+		</if>
+		<if test="searchCol == 'title'">
+		 where title like #{searchWord} 
+		</if>
+		order by num desc
+	</select>
+
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from games
+		<if test="searchCol == 'genre'">
+			where genre like #{searchWord}
+		</if>
+		<if test="searchCol == 'title'">
+		 where title like #{searchWord} 
+		</if>
+	</select>
+
+	<select id="GetOneGame" resultType="myGame">
+		select * from games
+		where num=#{num}
+	</select>
+	
+	<insert id="InsertGame">
+		insert into games
+		values(games_seq.nextval,#{title},#{genre},#{difficulty})
+	</insert>
+	
+	<update id="UpdateGame">
+		update games set title=#{titile}, genre=#{genre},
+		difficulty=#{difficulty} where num=#{num}
+	</update>
+	
+	<delete id="DeleteGame">
+		delete games where num=#{num}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,30 @@
+//게임
+drop sequence users_seq;
+create sequence games_seq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+drop table games cascade constraints;
+create table games(
+  num number primary key,
+  title varchar(50),
+  genre varchar2(20),
+  difficulty varchar2(20)
+);
+
+insert into games(num,title,genre,difficulty)
+values(games_seq.nextval,'고양이타운','아케이드','쉬움');
+insert into games(num,title,genre,difficulty)
+values(games_seq.nextval,'케나','어드벤처','보통');
+insert into games(num,title,genre,difficulty)
+values(games_seq.nextval,'동물의숲','힐링','쉬움');
+insert into games(num,title,genre,difficulty)
+values(games_seq.nextval,'동물의숲','3인칭슈팅','보통');
+insert into games(num,title,genre,difficulty)
+values(games_seq.nextval,'다크소울','액션','매우어려움');
+
+Ref: items.game_num > games.num // many-to-one
+Ref: users.owneditem_num > items.num// many-to-one

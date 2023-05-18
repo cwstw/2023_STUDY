@@ -40,8 +40,8 @@
 			<td>${mv.genre}</td>
 			<td>${mv.grade}</td>
 			<td>${mv.actor}</td>
-			<td><a href="delete?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">삭제</a></th>
-			<td><a href="delete?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">수정</a></th>
+			<td><a href="delete.mv?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">삭제</a></th>
+			<td><a href="update.mv?num=${mv.num}&pageNumber=${pageInfo.pageNumber}">수정</a></th>
 		</tr>
 	</c:forEach>
 </table>

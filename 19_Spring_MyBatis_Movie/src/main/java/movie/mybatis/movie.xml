@@ -44,4 +44,10 @@
 		delete movie where num=#{num}
 	</delete>
 	
+	<update id="UpdateMovie">
+		update movie set title=#{title}, continent=#{continent},
+		nation=#{nation}, genre=#{genre}, grade=#{grade},
+		actor=#{actor} where num=#{num}
+	</update>
+	
 </mapper>

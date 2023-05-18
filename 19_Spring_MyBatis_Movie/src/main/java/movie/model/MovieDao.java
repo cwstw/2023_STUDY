@@ -71,4 +71,14 @@ public class MovieDao {
 		}
 		return cnt;
 	}
+
+	public int updateMovie(MovieBean mb) {
+		int cnt = -1;
+		try {
+		cnt = sst.update(namespace+".UpdateMovie",mb);
+		} catch(DataAccessException e){
+			System.out.println("데이터 삭제 오류");
+		}
+		return cnt;
+	}
 }

@@ -1,4 +1,4 @@
-package travel.controller;
+package movie.controller;
 
 import javax.validation.Valid;
 
@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import movie.model.MovieBean;
+import movie.model.MovieDao;
 import travel.model.TravelBean;
-import travel.model.TravelDao;
 
 @Controller
-public class TravelUpdateController {
+public class MovieUpdateColtroller {
 
-	private final String command = "update.tv";
-	private final String getPage = "travelUpdateForm";
+	private final String command = "/update.mv";
+	private final String getPage = "movieUpdateForm";
 	private final String gotoPage = "redirect:/list.tv";
 	
 	@Autowired
-	TravelDao tdao;
+	MovieDao mdao;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public String doAction(
@@ -31,16 +32,16 @@ public class TravelUpdateController {
 			@RequestParam("pageNumber") int pageNumber,
 			Model model) {
 		System.out.println("get방식 update()");
-		TravelBean tb = tdao.getOneTravel(num);
-		model.addAttribute("tb",tb);
+		MovieBean mb = mdao.getOneMovie(num);
+		model.addAttribute("mb",mb);
 		model.addAttribute("pageNumber",pageNumber);
 		return getPage;
 	}
-
+	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public ModelAndView doAction(
 			@RequestParam("pageNumber") int pageNumber,
-			@ModelAttribute("travel") @Valid TravelBean tb,
+			@ModelAttribute("movie") @Valid MovieBean mb,
 			BindingResult br) {
 		System.out.println("post방식 update()");
 		ModelAndView mav = new ModelAndView();
@@ -49,12 +50,12 @@ public class TravelUpdateController {
 			mav.setViewName(getPage);
 		}else {
 			int cnt = -1;
-			cnt = tdao.updateTravel(tb);
+			cnt = mdao.updateMovie(mb);
 			if(cnt != -1) {//성공
 				mav.setViewName(gotoPage+"?pageNumber="+pageNumber);
 			}else {//실패
 				mav.addObject("pageNumber",pageNumber);
-				mav.addObject("num",tb.getNum());
+				mav.addObject("num",mb.getNum());
 				mav.setViewName("redirect:/"+command);
 			}
 		}

@@ -38,21 +38,17 @@ public class GameInsertController {
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public ModelAndView doAction(
-			@ModelAttribute("gb") @Valid GameBean gb,
-			BindingResult br) {
+			@ModelAttribute("gb") GameBean gb) {
 		
 		ModelAndView mav = new ModelAndView();
-		if(br.hasErrors()) {
-			mav.setViewName(getPage);
-		}else {
-			int cnt = -1;
+		int cnt = -1;
 			cnt = gdao.insertGame(gb); 
 			if(cnt != -1) {//성공
 			mav.setViewName(gotoPage);
 			}else {//실패
 				mav.setViewName(getPage);
 			}
-		}
+		
 		return mav;
 	}
 	

@@ -39,14 +39,9 @@ public class GameUpdateController {
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public ModelAndView doAction(
 			@RequestParam("pageNumber") int pageNumber,
-			@ModelAttribute("movie") @Valid GameBean gb,
-			BindingResult br) {
+			@ModelAttribute("gb") GameBean gb) {
 		ModelAndView mav = new ModelAndView();
-		if(br.hasErrors()) {
-			mav.addObject("pageNumber",pageNumber);
-			mav.setViewName(getPage);
-		}else {
-			int cnt = -1;
+		int cnt = -1;
 			cnt = mdao.updateGame(gb);
 			if(cnt != -1) {//¼º°ø
 				mav.setViewName(gotoPage+"?pageNumber="+pageNumber);
@@ -55,7 +50,7 @@ public class GameUpdateController {
 				mav.addObject("num",gb.getNum());
 				mav.setViewName("redirect:/"+command);
 			}
-		}
+		
 		return mav;
 	}
 	

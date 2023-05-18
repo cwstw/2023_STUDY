@@ -3,7 +3,7 @@
 <%@ include file="../common/common.jsp" %>
 <!-- gameList.jsp -->
 <center>
-	<form action="list.gm" method="get">
+	<form action="list.game" method="get">
 		<select name="searchCol">
 			<option value="">전체검색
 			<option value="title">제목검색
@@ -28,8 +28,8 @@
 			<td>${gl.title}</td>
 			<td>${gl.genre}</td>
 			<td>${gl.difficulty}</td>
-			<td><a href="update.gm?num=${gm.num}&pageNumber=${pageNumber}">수정</a></td>
-			<td><a href="delete.gm?num=${gm.num}&pageNumber=${pageNumber}">삭제</a></td>
+			<td><a href="update.game?num=${gm.num}&pageNumber=${pageNumber}">수정</a></td>
+			<td><a href="delete.game?num=${gm.num}&pageNumber=${pageNumber}">삭제</a></td>
 		</tr>
 		</c:forEach>
 	</table>

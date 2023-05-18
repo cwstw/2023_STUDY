@@ -16,11 +16,11 @@
 
 	<select id="GetTotalCount" resultType="int">
 		select count(*) from games
-		<if test="searchCol == 'genre'">
-			where genre like #{searchWord}
-		</if>
 		<if test="searchCol == 'title'">
 		 where title like #{searchWord} 
+		</if>
+		<if test="searchCol == 'genre'">
+			where genre like #{searchWord}
 		</if>
 	</select>
 

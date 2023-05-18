@@ -1,7 +1,11 @@
 package game.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class GameBean {
+	
 	private int num;
+
 	private String title;
 	private String genre;
 	private String difficulty;

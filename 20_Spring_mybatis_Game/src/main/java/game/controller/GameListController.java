@@ -36,7 +36,7 @@ public class GameListController {
 		System.out.println("list doAction()");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("searchCol",searchCol); 
-		map.put("searchWord",searchWord);
+		map.put("searchWord","%"+searchWord+"%");
 		
 		int totalCount = gdao.getTotalCount(map);
 		String url = request.getContextPath()+"/"+command;

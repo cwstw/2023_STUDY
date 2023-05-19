@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="product.model.ProductBean" alias="myProd"/>
+	</typeAliases>
+
+	<mappers>
+		<!-- 테이블마다 매퍼 작성, 파일 다 만들어야 실행 가능 -->
+		<mapper resource="mybatis/member.xml"/>
+		<mapper resource="mybatis/product.xml"/>
+		<mapper resource="mybatis/order.xml"/>
+		<mapper resource="mybatis/orderdetail.xml"/>
+		<mapper resource="mybatis/composite.xml"/>
+	</mappers>
+</configuration>

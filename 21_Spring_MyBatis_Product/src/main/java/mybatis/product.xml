@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product.model.Product">
+	<select id="CountProducts" resultType="int">
+		select count(*) from products
+		<if test="whatColumn=='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn=='contents'">
+			where contents like #{keyword}
+		</if>
+	</select>
+
+	<select id="GetProductList" resultType="MyProduct">
+  		select * from products
+  		<if test="whatColumn=='name'">
+  		where name like #{keyword}
+  		</if>
+  		<if test="whatColumn=='contents'">
+  		where contents like #{keyword}
+  		</if>
+  		order by num desc
+  	</select>
+  	
+  	<insert id="InsertProduct">
+		insert into products(num, name, company, image, stock, price,  contents, point, inputdate)
+		values(seqprod.nextval,#{name},#{company},#{image},#{stock},#{price},#{contents},#{point},#{inputdate})   
+	</insert>
+	
+	<select id="GetOneProduct" resultType="MyProduct">
+		select * from products where num = #{num}
+	</select>
+</mapper>
+
+<!-- product.xml -->

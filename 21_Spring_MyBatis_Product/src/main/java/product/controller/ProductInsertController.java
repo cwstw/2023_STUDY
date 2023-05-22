@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,17 @@ public class ProductInsertController {
 	
 	@Autowired
 	ServletContext servletContext;
-	
+	//상품 목록 보기에서 추가 클릭
 	@RequestMapping(value=command, method = RequestMethod.GET)
-	public String doAction() {
-		return getPage;
+	public String doAction(HttpSession session) {
+		//로그인 시 로그인 정보(loginInfo) 세션 설정
+		System.out.println(session.getAttribute("loginInfo"));
+		
+		if(session.getAttribute("loginInfo")==null) {//로그인 안 함
+			return "redirect:/loginForm.mb"; //MemberLoginForm.jsp로 이동
+		}else { //로그인 함
+			return getPage;
+		}
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)

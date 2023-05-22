@@ -11,7 +11,7 @@
 	}	
 </style>
 <h2>상품 추가 화면</h2>
-<form:form commandName="" action="insert.prod" method="post" enctype="multipart/form-data">
+<form:form commandName="productBean" action="insert.prod" method="post" enctype="multipart/form-data">
 	<p>
 		*상품명 : 
 		<input type="text" name="name">

@@ -29,7 +29,16 @@ public class ProductBean {
 	
 	private MultipartFile upload;
 	//setter getter Ãß°¡
+	private String upload2;
 	
+	
+	
+	public String getUpload2() {
+		return upload2;
+	}
+	public void setUpload2(String upload2) {
+		this.upload2 = upload2;
+	}
 	public MultipartFile getUpload() {
 		return upload;
 	}

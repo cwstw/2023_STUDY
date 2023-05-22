@@ -33,6 +33,14 @@
 	<select id="GetOneProduct" resultType="MyProduct">
 		select * from products where num = #{num}
 	</select>
+
+	<update id="UpdateProduct">
+		update products set 
+		name=#{name}, company=#{company}, image=#{image},
+		stock=#{stock},price=#{price},
+		contents=#{contents},point=#{point}
+		where num = #{num}
+	</update>
 </mapper>
 
 <!-- product.xml -->

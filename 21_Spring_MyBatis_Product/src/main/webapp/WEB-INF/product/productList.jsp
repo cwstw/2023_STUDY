@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
     
 <%@include file="../common/common.jsp"%>
-    
+<%
+/* 	HttpSession.getAttribute session;
+	session.getAttribute("name"); */
+%>
 productList.jsp<br>
 <center>
 <h1>상품 리스트 화면</h1>

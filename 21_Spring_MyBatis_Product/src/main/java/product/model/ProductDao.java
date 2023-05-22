@@ -52,4 +52,10 @@ public class ProductDao {
 		return 0;
 	}
 
+	public int updateProduct(ProductBean pb) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.update(namespace+".UpdateProduct",pb);
+		return cnt;
+	}
+
 }

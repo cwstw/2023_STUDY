@@ -40,6 +40,22 @@ public class MemberDao {
 		lists = sst.selectList(namespace+".GetAllMember",map,rowBounds);
 		return lists;
 	}
-	
-	
+
+	public int deleteMember(String id) {
+		int cnt = sst.delete(namespace+".DeleteMember",id);
+		return cnt;
+	}
+
+	public MemberBean getOneMember(String id) {
+		MemberBean mb = sst.selectOne(namespace+".GetOneMember",id);
+		return mb;
+	}
+
+	public int updateMember(MemberBean mb) {
+		int cnt = sst.update(namespace+".UpdateMember",mb);
+		return cnt;
+	}
+
 }
+
+

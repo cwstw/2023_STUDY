@@ -5,6 +5,9 @@
 	function register(){
 		location.href="regisertForm.mb";
 	}
+	function memberList(){
+		location.href="list.mb";
+	}
 </script>
 <form action="login" method="">
 	<table border="1" height="150px">
@@ -21,7 +24,7 @@
 				<input type="submit" value="로그인">
 				<input type="reset" value="취소">
 				<input type="button" value="회원가입" onClick="register()">
-				<input type="button" value="회원목록보기">
+				<input type="button" value="회원목록보기" onClick="memberList()">
 			</td>
 		</tr>
 	</table>

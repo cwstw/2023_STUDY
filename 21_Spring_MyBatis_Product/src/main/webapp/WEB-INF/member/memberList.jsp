@@ -42,14 +42,14 @@
 		<c:forEach var="member" items="${memberLists }">
 		<tr>
 			<td>${member.id}</td>
-			<td><a href="detail.mb?num=${member.num}&pageNumber=${pageNumeber}">${member.name}</a></td>
+			<td><a href="detail.mb?id=${member.id}&pageNumber=${pageNumeber}">${member.name}</a></td>
 			<td>${member.password}</td>
 			<td>${member.gender}</td>
 			<td>${member.hobby}</td>
 			<td>${member.address}</td>
 			<td>${member.mpoint}</td>
-			<td><a href="delete.mb?num=${member.num}&pageNumber=${pageNumeber}">삭제</a></td>
-			<td><a href="delete.mb?num=${member.num}&pageNumber=${pageNumeber}">수정</a></td>
+			<td><a href="delete.mb?id=${member.id}&pageNumber=${pageNumeber}">삭제</a></td>
+			<td><a href="update.mb?id=${member.id}&pageNumber=${pageNumeber}">수정</a></td>
 		</tr>
 		</c:forEach>
 	</table>

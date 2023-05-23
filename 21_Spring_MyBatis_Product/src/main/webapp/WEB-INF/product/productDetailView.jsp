@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!-- productDetailView.jsp -->
 <center>
-	<h2>상품 상세 화면</h2>
+	<h2>상품 상세 화면(${productBean.num})</h2>
 	<table border="1">
 		<tr>
 			<td rowspan="6">
@@ -26,9 +26,13 @@
 		<tr>
 			<td>주문수량</td>
 			<td>
-				주문수량2
-				<input type="text" name="orderCount" value="1">
-				<input type="button" value="주문">
+				<!-- mall.controller.CartAddController -->
+				<form action="add.mall" method="post">
+					<input type="hidden" name="num" value="${productBean.num}">
+					<input type="hidden" name="pageNumber" value="${pageNumber}">
+				주문수량 : <input type="text" name="orderqty" value="1">
+				<input type="submit" value="주문">
+				</form>
 			</td>
 		</tr>
 		<tr>

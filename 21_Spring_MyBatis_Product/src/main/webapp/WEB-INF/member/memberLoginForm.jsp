@@ -9,7 +9,7 @@
 		location.href="list.mb";
 	}
 </script>
-<form action="login" method="">
+<form action="loginForm.mb" method="post">
 	<table border="1" height="150px">
 		<tr>
 			<td>아이디</td>

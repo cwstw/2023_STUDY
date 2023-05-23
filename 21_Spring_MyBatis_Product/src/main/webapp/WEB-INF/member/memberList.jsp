@@ -41,8 +41,8 @@
 		</tr>
 		<c:forEach var="member" items="${memberLists }">
 		<tr>
-			<td>${member.id}</td>
-			<td><a href="detail.mb?id=${member.id}&pageNumber=${pageNumeber}">${member.name}</a></td>
+			<td><a href="detail.mb?id=${member.id}&pageNumber=${pageNumeber}">${member.id}</a></td>
+			<td>${member.name}</td>
 			<td>${member.password}</td>
 			<td>${member.gender}</td>
 			<td>${member.hobby}</td>

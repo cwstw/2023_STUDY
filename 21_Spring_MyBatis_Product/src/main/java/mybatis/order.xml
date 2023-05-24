@@ -10,6 +10,11 @@
 	<select id="GetMaxOid" resultType="int">
 		select max(oid) from orders
 	</select>
+
+	<select id="getOrderList" resultType="order.model.Order">
+		select * from orders
+		where mid = #{ordersId}
+	</select>
 </mapper>
 
 <!-- order.xml -->

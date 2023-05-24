@@ -1,5 +1,7 @@
 package order.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,11 @@ public class OrdersDao {
 	public int getMaxOid() {
 		int oid = sst.selectOne(namespace+".GetMaxOid");
 		return oid;
+	}
+
+	public List<OrdersBean> getOrdersById(String ordersId) {
+		List<OrdersBean> olists = sst.selectOne(namespace+".getOrderList",ordersId);
+		return olists;
 	}
 	
 	

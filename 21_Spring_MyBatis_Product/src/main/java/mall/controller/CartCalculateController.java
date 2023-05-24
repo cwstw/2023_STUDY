@@ -51,7 +51,7 @@ public class CartCalculateController {
 			//4. 제일 큰(제일 최근의 주문한) 주문번호(oders 테이블의 시퀀스번호) 가져오기
 			int oid = odao.getMaxOid();
 			
-			//5. 장바구니의 정보를 가져와서 map에 저장(상품번호, 수량)
+			//5. 속성 설정된 장바구니의 정보를 가져와서 map에 저장(상품번호, 수량)
 			Map<Integer,Integer> mapLists = ((MyCartList)session.getAttribute("mycart")).getAllOrderLists();
 			
 			//6. 키의 값(상품 번호)만 가져오는 메서드

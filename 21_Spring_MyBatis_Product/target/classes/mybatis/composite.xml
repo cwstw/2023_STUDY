@@ -3,7 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product.model.Composite">
-
+	<select id="GetOrderDetailByOid" resultType="mall.cart.ShoppingList">
+	 select o.pnum, p.name as pname, p.price, o.qty, o.qty*price as amount
+	 from product p inner join orderdetails o
+	 on p.num = o.pnum
+	 where o.oid=#{oid}
+	</select>
 </mapper>
 
 <!-- composite.xml -->

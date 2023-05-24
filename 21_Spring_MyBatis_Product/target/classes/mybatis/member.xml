@@ -42,6 +42,11 @@
 	<delete id="DeleteMember">
 		delete member where id = #{id}
 	</delete>
+
+	<update id="IncreasePoint">
+		update member set mpoint=mpoint+100
+		where id = #{mid}
+	</update>
 </mapper>
 
 <!-- member.xml -->

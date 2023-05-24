@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import order.model.OrderDetailsBean;
 import utility.Paging;
 
 @Component
@@ -55,6 +56,11 @@ public class ProductDao {
 	public int updateProduct(ProductBean pb) {
 		int cnt = -1;
 		cnt = sqlSessionTemplate.update(namespace+".UpdateProduct",pb);
+		return cnt;
+	}
+
+	public int decreaseStock(OrderDetailsBean odb) {
+		int cnt = sqlSessionTemplate.update(namespace+".DecreaseStrock",odb);
 		return cnt;
 	}
 

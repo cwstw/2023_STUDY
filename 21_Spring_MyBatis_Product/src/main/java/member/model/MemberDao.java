@@ -56,6 +56,11 @@ public class MemberDao {
 		return cnt;
 	}
 
+	public int increasePoint(String mid) {
+		int cnt = sst.update(namespace+".IncreasePoint",mid);
+		return cnt;
+	}
+
 }
 
 

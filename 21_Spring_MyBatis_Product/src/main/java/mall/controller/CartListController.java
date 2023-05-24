@@ -1,4 +1,4 @@
-package mall.cart;
+package mall.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mall.cart.MyCartList;
+import mall.cart.ShoppingList;
 import product.model.ProductBean;
 import product.model.ProductDao;
 

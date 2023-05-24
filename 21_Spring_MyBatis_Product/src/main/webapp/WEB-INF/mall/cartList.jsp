@@ -26,7 +26,7 @@
 		</c:forEach>
 		<tr>
 			<td colspan="3">
-				<a href="">결제하기</a>
+				<a href="calculate.mall?num">결제하기</a>
 				<a href="">추가주문</a>
 			</td>
 			<td>총금액 : ${totalAmount}</td>

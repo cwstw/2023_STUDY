@@ -12,7 +12,7 @@ orderdetailView.jsp
 		</tr>
 		<tr>
 			<td colspan="5">
-				배송지 : ${loginInfo.address1}${loginInfo.address2}
+		배송지 : ${loginInfo.address1}${loginInfo.address2}
 			</td>
 		</tr>
 

@@ -1,20 +1,34 @@
 package board.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class BoardBean {
 	//밑줄 칼럼 붙여쓰기
 	private int num;
+	
+	@NotEmpty(message = "공백 불가")
 	private String writer;
+	
+	@NotEmpty(message = "공백 불가")
 	private String email;
+
+	@NotEmpty(message = "공백 불가")
 	private String subject;
+
+	@NotEmpty(message = "공백 불가")
 	private String passwd;
-	private Timestamp regdate;
+	
+	private Date regdate;
 	private int readcount;
 	private int ref;
 	private int restep;
 	private int relevel;
+
+	@NotEmpty(message = "공백 불가")
 	private String content;
+	
 	private String ip;
 	public int getNum() {
 		return num;
@@ -46,11 +60,11 @@ public class BoardBean {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	public Timestamp getRegdate() {
+	public Date getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Timestamp timestamp) {
-		this.regdate = timestamp;
+	public void setRegdate(Date date) {
+		this.regdate = date;
 	}
 	public int getReadcount() {
 		return readcount;

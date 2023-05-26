@@ -4,13 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<typeAliases>
-		<typeAlias type="board.model.BoardBean" alias="MyBoard"/>
-	</typeAliases>
-	
 	<!-- 칼럼 이름에 밑줄이 있어도 변수 이름을 그냥 작성할 수 있게 해주는 셋팅 -->
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	
+
+	<typeAliases>
+		<typeAlias type="board.model.BoardBean" alias="MyBoard"/>
+	</typeAliases>
 </configuration>

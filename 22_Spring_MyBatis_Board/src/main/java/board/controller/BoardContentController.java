@@ -13,7 +13,8 @@ import board.model.BoardDao;
 public class BoardContentController {
 
 	private final String command = "/content.bd";
-	private final String getPage = "boardContentView";
+	private final String getPage = "redirect:/content.bd";
+	private final String gotoPage = "boardContentView";
 	
 	@Autowired
 	BoardDao bdao;
@@ -21,16 +22,21 @@ public class BoardContentController {
 	@RequestMapping(value=command)
 	public ModelAndView doAction(
 			@RequestParam("num") int num,
-			@RequestParam("pageNumber") String pageNumber
+			@RequestParam("pageNumber") int pageNumber
 			) {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		BoardBean bb = bdao.getBoardByNum(num);
-		
-		mav.addObject("bb",bb);
-		mav.addObject("pageNumber",pageNumber);
-		mav.setViewName(getPage);
+		int cnt = bdao.updateReadcount(num);
+		if(cnt != -1) {
+			BoardBean bb = bdao.getBoardByNum(num);
+			mav.addObject("bb",bb);
+			mav.addObject("pageNumber",pageNumber);
+			mav.setViewName(gotoPage);
+		}else {
+			mav.setViewName(getPage);
+		}
+
 		return mav;
 	}
 	

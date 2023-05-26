@@ -12,29 +12,32 @@
 		margin:auto;
 		width:700px;
 	}
+
 </style>
 <!-- boardList.jsp -->
 <script>
 	function insert(){
-		location.href="/insert.bd";
+		location.href="insert.bd";
 	}
 </script>
 <center>
 	<h2>게시글 목록</h2>
 	<form action="list.bd" method="get">
 		<select name="whatColumn">
-			<option value="">전체 검색
+			<option value="">전체 검색</option>
 			<option value="subject">글제목</option>
 			<option value="writer">글쓴이</option>
-		</select> <input type="text" name="keyword"> <input type="submit" value="검색">
+		</select>
+		<input type="text" name="keyword">
+		<input type="submit" value="검색">
 	</form>
 	
-	글 목록 ( 전체 글 : ${pageIngo.totalCount} ) <br>
+	글 목록 ( 전체 글 : ${pageInfo.totalCount} ) <br>
 	
 	<table border="1">
 		<tr>
 			<td colspan="6" align="right">
-				<input type="button" value="추가하기" onClick="insert">
+				<input type="button" value="추가하기" onClick="insert()">
 			</td>
 		</tr>
 		<tr>
@@ -56,16 +59,16 @@
 			<tr height="30" align="center" bgcolor="<%=value_c%>">
 				<td>${bl.num}</td>
 				<td align="left" style="padding-left:20px">
-					<c:if test="${bl.reglevel > 0}">
+					<c:if test="${bl.relevel > 0}">
 						<c:set var="wid" value="${20*bl.relevel}"/>
+						<img src="resources/images/level.gif" width="${wid}" height="20px">
+						<img src="resources/images/re.gif">
 					</c:if>
-					<img src="../images/level.gif" width="${wid}" height="20px">
-					<img src="../images/re.gif">
-					<a href="content.bd?num=${bl.num}&pageNumber=${pageNumber}">
+					<a href="content.bd?num=${bl.num}&pageNumber=${pageInfo.pageNumber}">
 						${bl.subject}
 					</a>
 					<c:if test="${bl.readcount >=10 }">
-						<img src="images/hot.gif" height="20px">
+						<img src="resources/images/hot.gif" height="20px">
 					</c:if>
 				</td>
 				<td>${bl.writer}</td>

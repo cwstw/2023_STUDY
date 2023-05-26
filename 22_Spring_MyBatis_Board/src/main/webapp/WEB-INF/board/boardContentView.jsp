@@ -17,20 +17,7 @@
 		background: <%=value_c%>
 	}
 </style>
-<script>
-	function update(int num, int pageNumber){
-		location.href="update.bd?num="+num+"&pageNum="+pageNumber;
-	}
-	function deleteOne(int num, int pageNumber){
-		location.href="delete.bd?num="+num+"&pageNum="+pageNumber;
-	}
-	function reply(int ref, int restep, int relevel, int pageNumber){
-		location.href="reply.bd?ref="+ref+"&re_step="+restep+"&re_level="+relevel+"&pageNum="+pageNumber;
-	}
-	function list(int pageNumber){
-		location.href="list.bd?pageNum="+pageNumber;
-	}
-</script>
+
 <!-- boardContentView.jsp -->
 <h3>글 내용 보기</h3>
 <table>
@@ -60,10 +47,10 @@
 	</tr>
 	<tr>
 		<th colspan="4" align="right">
-			<input type="button" id="update" value="글수정" onClick="update(${bb.num},${pageNumeber})">
-			<input type="button" id="delete" value="글삭제" onClick="deleteOne(${bb.num},${pageNumeber})">
-			<input type="button" id="re" value="답글쓰기" onClick="reply(${bb.ref},${bb.restep},${relevel},${pageNumeber})">
-			<input type="button" id="select" value="글목록" onClick="list(${pageNumeber})">
+			<input type="button" id="update" value="글수정" onClick="location.href='update.bd?num=${bb.num}&pageNumber=${pageNumber}'">
+			<input type="button" id="delete" value="글삭제" onClick="location.href='delete.bd?num=${bb.num}&pageNumber=${pageNumber}'">
+			<input type="button" id="re" value="답글쓰기" onClick="location.href='reply.bd?ref=${bb.ref}&restep=${bb.restep }&relevel=${bb.relevel }&pageNumber=${pageNumber}&num=${bb.num }'">
+			<input type="button" id="select" value="글목록" onClick="location.href='list.bd?pageNumber=${pageNumber}'">
 		</th>
 	</tr>
 </table>

@@ -1,4 +1,4 @@
-<%@page import="member.model.MemberBean"%>
+<%@page import="board.model.BoardBean"%>
 <%@page import="java.net.http.HttpResponse"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

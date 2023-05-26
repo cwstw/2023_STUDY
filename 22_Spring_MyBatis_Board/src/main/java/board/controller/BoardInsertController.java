@@ -23,7 +23,7 @@ public class BoardInsertController {
 
 	private final String command = "/insert.bd";
 	private final String getPage = "boardInsertForm";
-	private final String gotoPage = "redirect:/list.mv";
+	private final String gotoPage = "redirect:/list.bd";
 	
 	@Autowired
 	BoardDao bdao;
@@ -35,24 +35,30 @@ public class BoardInsertController {
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	public ModelAndView doAction(
-			@ModelAttribute("pb") BoardBean bb,
-			@RequestParam("pageNumber") int pageNumber,
+			@ModelAttribute("bb") @Valid BoardBean bb,
+			@RequestParam("pageNumeber") int pageNumber,
+			BindingResult result,
 			HttpServletRequest request
 			) {
-		
+			System.out.println("post insert 요청");
 			ModelAndView mav = new ModelAndView();
 			
+			mav.addObject("pageNumber",pageNumber);
 			bb.setIp(request.getRemoteAddr());
 			
 			int cnt = -1;
-			
-			cnt = bdao.insertBoard(bb);
-			
-			if(cnt != -1) {//성공
-				mav.setViewName(gotoPage);
-			}else {//실패
+			if(result.hasErrors()) {//오류 있음
 				mav.setViewName(getPage);
+			}else {
+				cnt = bdao.insertBoard(bb);
+				
+				if(cnt != -1) {//성공
+					mav.setViewName(gotoPage);
+				}else {//실패
+					mav.setViewName(getPage);
+				}
 			}
+			
 		return mav;
 	}
 	

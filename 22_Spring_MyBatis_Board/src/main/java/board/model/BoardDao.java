@@ -1,6 +1,5 @@
 package board.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +30,7 @@ public class BoardDao {
 
 	public List<BoardBean> getBoardList(Paging pageInfo, Map<String, String> map) {
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
-		List<BoardBean> lists = new ArrayList<BoardBean>();
-		lists = sst.selectList(namespace+".GetBoardList",map,rowBounds);
+		List<BoardBean> lists = sst.selectList(namespace+".GetBoardList",map,rowBounds);
 		return lists;
 	}
 
@@ -42,8 +40,13 @@ public class BoardDao {
 		return cnt;
 	}
 
+	public int updateReadcount(int num) {
+		int cnt = sst.update(namespace+".UpdateReadcount",num);
+		return cnt;
+	}
+
 	public BoardBean getBoardByNum(int num) {
-		 BoardBean bb = sst.selectOne(namespace+".GetTotalCount",num);
+		BoardBean bb = sst.selectOne(namespace+".GetBoardByNum",num);
 		return bb;
 	}
 
@@ -64,15 +67,19 @@ public class BoardDao {
 		return cnt;
 	}
 
-	public int UpdateReplyCount(BoardBean bb) {
-		int cnt = -1; 
-		cnt = sst.update(namespace+".UpdateReplyCount",bb);
-		return cnt;
-	}
-
 	public int insertReply(BoardBean bb) {
 		int cnt = -1;
-		cnt = sst.insert(namespace+".InsertReply",bb);
+		cnt = sst.update(namespace+".UpdateReplyCount",bb);
+		if(cnt != -1) {//수정 성공
+			int re_step = bb.getRestep()+1;
+			bb.setRestep(re_step);
+			int re_level = bb.getRelevel()+1;
+			bb.setRelevel(re_level);
+			
+			cnt = sst.insert(namespace+".InsertReply",bb);
+		}else {
+			cnt = -1;
+		}
 		return cnt;
 	}
 

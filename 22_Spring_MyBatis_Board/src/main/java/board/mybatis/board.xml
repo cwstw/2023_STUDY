@@ -4,30 +4,42 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="board.BoardBean">
 	<select id="GetTotalCount" resultType="int">
-		select count(*) from board
-		<if test="whtColumn == '제목'">
-			where subject = #{keyword}
+		select count(*)		        
+		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip
+		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip 
+		from board
+		order by ref desc, re_step asc ))
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
 		</if>
-		<if test="whtColumn == '글쓴이'">
-			where writer = #{keyword}
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
 		</if>
 	</select>
 
 	<select id="GetBoardList" resultType="myBoard">
-		select * from board
-		<if test="whtColumn == '제목'">
-			where subject = #{keyword}
+		select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip		        
+		from (select rownum as rank, num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip
+		from (select num, writer, email, subject, passwd, reg_date, readcount, ref, re_step, re_level, content, ip 
+		from board
+		order by ref desc, re_step asc ))
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
 		</if>
-		<if test="whtColumn == '글쓴이'">
-			where writer = #{keyword}
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
 		</if>
-		order by num desc
 	</select>
 	
 	<insert id="InsertBoard">
 		insert into board(num,writer,subject,email,content,passwd,reg_date,ref,re_step,re_level,ip)
 		values(board_seq.nextval,#{writer},#{subject},#{email},#{content},#{passwd},sysdate,board_seq.currval,0,0,#{ip})
 	</insert>
+
+	<update id="UpdateReadcount">
+		update board set readcount = readcount+1
+		where num = #{num}
+	</update>
 
 	<select id="GetBoardByNum" resultType="myBoard">
 		select * from board
@@ -36,7 +48,7 @@
 
 	<select id="CheckByPasswd" resultType="myBoard">
 		select * from board
-		where num = #{num}, passwd = #{passwd}
+		where num = #{num} and passwd = #{passwd}
 	</select>
 	
 	<update id="UpdateBoard">
@@ -51,8 +63,8 @@
 	</delete>
 	
 	<update id="UpdateReplyCount">
-		update board set restep = restep+1
-		where ref = #{ref} and restep > #{restep}
+		update board set re_step = #{restep}+1
+		where ref = #{ref} and re_step > #{restep}
 	</update>
 	
 	<insert id="InsertReply">

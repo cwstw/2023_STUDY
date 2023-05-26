@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="../common/common.jsp" %>
 <%@include file="../color.jsp" %>
 <link rel="stylesheet" type="text/css" href="./style.css">
 <style>
@@ -16,19 +17,24 @@
 	th{
 		background: <%=value_c%>
 	}
+	.err{
+		font-weight: bold;
+		color : red;
+	}
 </style>
 <!-- pwCheckForm.jsp -->
 <center>
 	<h3>글삭제</h3>
-	<form method="post" action="check.bd">
+	<form:form method="post" action="delete.bd">
 	<input type="hidden" name="pageNumber" value="${pageNumber}">
-	<input type="hidden" name="num" value="${bb.num}">
+	<input type="hidden" name="num" value="${num}">
 	<table>
 	<tr>
 		<th>비밀번호를 입력하세요.</th>
 	</tr>
 	<tr>
-		<td>비밀번호 : <input type="password" name="passwd" style="width:70px"></td>
+		<td>비밀번호 : <input type="text" name="passwd" style="width:70px">
+		</td>
 	</tr>
 	
 	<tr>
@@ -38,5 +44,5 @@
 		</th>
 	</tr>
 	</table>
-	</form>
+	</form:form>
 </center>
